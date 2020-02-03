@@ -1,0 +1,21 @@
+body {
+    margin-top: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+@media screen and (min-width: 800px) {
+    body {
+        padding-right: 25%;
+        padding-left: 25%;
+    }
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.title {
+    text-align: center;
+}

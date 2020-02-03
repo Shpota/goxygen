@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  app:
+    build: .
+    container_name: app
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      profile: prod
+  db:
+    image: mongo:4.2.2
+    container_name: db
+    environment:
+      MONGO_INITDB_DATABASE: tech
+    volumes:
+      - ./init-db.js:/docker-entrypoint-initdb.d/init.js
