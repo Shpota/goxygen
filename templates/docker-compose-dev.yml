@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  dev_db:
+    image: mongo:4.2.2
+    environment:
+      MONGO_INITDB_DATABASE: tech
+    ports:
+      - 27017:27017
+    volumes:
+      - ./init-db.js:/docker-entrypoint-initdb.d/init.js
