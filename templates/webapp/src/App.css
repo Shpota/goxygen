@@ -6,16 +6,21 @@ body {
 
 @media screen and (min-width: 800px) {
     body {
-        padding-right: 25%;
-        padding-left: 25%;
+        padding-right: 28%;
+        padding-left: 28%;
     }
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+    background-color:lightgray;
 }
 
 .title {
+    text-align: center;
+}
+
+.logo {
     text-align: center;
 }
