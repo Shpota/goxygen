@@ -8,45 +8,16 @@ package static
 
 func Sources() map[string]string {
 	return map[string]string{
-		"webapp/package.json": `{
-  "name": "webapp-template",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "axios": "^0.19.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.3.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
-}
+		"webapp/src/setupTests.js": `// jest-dom adds custom jest matchers for asserting on DOM nodes.
+// allows you to do things like:
+// expect(element).toHaveTextContent(/react/i)
+// learn more: https://github.com/testing-library/jest-dom
+import '@testing-library/jest-dom/extend-expect';`,
+		"README.md": `#project-name
 `,
 		"webapp/public/manifest.json": `{
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "project-name",
+  "name": "project-name",
   "icons": [
     {
       "src": "favicon.ico",
@@ -73,253 +44,6 @@ func Sources() map[string]string {
 		"webapp/public/robots.txt": `# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
-`,
-		"webapp/src/index.js": `import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import {App} from './App';
-
-ReactDOM.render(<App/>, document.getElementById('root'));
-`,
-		"Dockerfile": `FROM node:12.15 AS JS_BUILD
-COPY webapp /webapp
-WORKDIR webapp
-RUN npm install && npm run build --prod
-
-FROM golang:1.13.7-alpine AS GO_BUILD
-RUN apk add build-base
-COPY server /server
-WORKDIR /server
-RUN go build -o /go/bin/server
-
-FROM alpine:3.11
-COPY --from=JS_BUILD /webapp/build* ./webapp/
-COPY --from=GO_BUILD /go/bin/server ./
-CMD ./server
-`,
-		"server/db/db.go": `package db
-
-import (
-	"context"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
-	"log"
-	"server-template/model"
-)
-
-type DB interface {
-	GetTechnologies() ([]*model.Technology, error)
-}
-
-type MongoDB struct {
-	collection *mongo.Collection
-}
-
-func NewMongo(client *mongo.Client) DB {
-	tech := client.Database("tech").Collection("tech")
-	return MongoDB{collection: tech}
-}
-
-func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
-	res, err := m.collection.Find(context.TODO(), bson.M{})
-	if err != nil {
-		log.Printf("Error while fetching taks: %s", err.Error())
-		return nil, err
-	}
-	var tech []*model.Technology
-	err = res.All(context.TODO(), &tech)
-	if err != nil {
-		log.Printf("Error while decoding tech: %s", err.Error())
-		return nil, err
-	}
-	return tech, nil
-}
-`,
-		"webapp/.env.development": `REACT_APP_API_URL=http://localhost:8080`,
-		"webapp/.env.production": `REACT_APP_API_URL=`,
-		"docker-compose-dev.yml": `version: "3.7"
-services:
-  dev_db:
-    image: mongo:4.2.2
-    environment:
-      MONGO_INITDB_DATABASE: tech
-    ports:
-      - 27017:27017
-    volumes:
-      - ./init-db.js:/docker-entrypoint-initdb.d/init.js
-`,
-		"webapp/src/App.css": `body {
-    margin-top: 5%;
-    padding-right: 5%;
-    padding-left: 5%;
-}
-
-@media screen and (min-width: 800px) {
-    body {
-        padding-right: 28%;
-        padding-left: 28%;
-    }
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-    background-color:lightgray;
-}
-
-.title {
-    text-align: center;
-}
-
-.logo {
-    text-align: center;
-}
-`,
-		"webapp/src/setupTests.js": `// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom/extend-expect';`,
-		"webapp/src/App.js": `import React from 'react';
-import './App.css';
-import logo from './logo.svg';
-import {Technologies} from "./technologies/Technologies";
-
-export function App() {
-    return (
-        <div className="app">
-            <h2 className="title">Project Name</h2>
-            <div className="logo"><img src={logo} height="150px" alt="logo"/></div>
-            <div>
-                This project is generated with <b><a
-                href="https://github.com/shpota/goxygen">goxygen</a></b>.
-                <p/>The following list of technologies comes from
-                a REST API call to the Go-based back end. Find
-                and change the corresponding code
-                in <code>webapp/src/technologies/Technologies.js
-                </code> and <code>server/web/app.go</code>.
-                <Technologies/>
-            </div>
-        </div>
-    );
-}
-`,
-		"webapp/src/App.test.js": `import React from 'react';
-import {render} from '@testing-library/react';
-import {App} from './App';
-
-test('renders learn react link', () => {
-    const {getByText} = render(<App/>);
-    const linkElement = getByText(/goxygen/i);
-    expect(linkElement).toBeInTheDocument();
-});
-`,
-		"webapp/src/index.css": `body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-`,
-		"README.md": `#project-name
-`,
-		"server/go.mod": `module server-template
-
-go 1.13
-
-require (
-	github.com/gorilla/mux v1.7.3
-	go.mongodb.org/mongo-driver v1.2.1
-)
-`,
-		"server/model/technology.go": `package model
-
-type Technology struct {
-	Name    string ` + "`" + `json:"name"` + "`" + `
-	Details string ` + "`" + `json:"details"` + "`" + `
-}
-`,
-		"server/server.go": `package main
-
-import (
-	"context"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
-	"log"
-	"os"
-	"server-template/db"
-	"server-template/web"
-)
-
-func main() {
-	client, err := mongo.Connect(context.TODO(), clientOptions())
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer client.Disconnect(context.TODO())
-	mongoDB := db.NewMongo(client)
-	// CORS is enabled only in prod profile
-	cors := os.Getenv("profile") == "prod"
-	app := web.NewApp(mongoDB, cors)
-	err = app.Serve()
-	log.Println("Error", err)
-}
-
-func clientOptions() *options.ClientOptions {
-	host := "db"
-	if os.Getenv("profile") != "prod" {
-		host = "localhost"
-	}
-	return options.Client().ApplyURI(
-		"mongodb://" + host + ":27017",
-	)
-}
-`,
-		"webapp/public/index.html": `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the ` + "`" + `public` + "`" + ` folder during the build.
-      Only files inside the ` + "`" + `public` + "`" + ` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running ` + "`" + `npm run build` + "`" + `.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run ` + "`" + `npm start` + "`" + `.
-      To create a production bundle, use ` + "`" + `npm run build` + "`" + `.
-    -->
-  </body>
-</html>
 `,
 		"webapp/src/logo.svg": `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
@@ -649,79 +373,61 @@ func clientOptions() *options.ClientOptions {
                 inkscape:export-ydpi="67.080002" />
     </g>
 </svg>`,
-		"webapp/src/technologies/Technologies.css": `.technologies {
-    margin-top: 5px;
+		"webapp/src/App.css": `body {
+    margin-top: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
+    font-size: larger;
 }
-`,
-		"webapp/src/technologies/Technologies.js": `import React, {Component} from "react";
-import axios from "axios";
-import "./Technologies.css"
 
-export class Technologies extends Component {
-    state = {
-        technologies: []
-    };
-
-    componentDidMount() {
-        axios.get(` + "`" + `${process.env.REACT_APP_API_URL}/api/technologies` + "`" + `)
-            .then(resp => this.setState({
-                technologies: resp.data
-            }));
-    }
-
-    render() {
-        const technologies = this.state.technologies.map((technology, i) =>
-            <li key={i}>
-                <b>{technology.name}</b>: {technology.details}
-            </li>
-        );
-        return (
-            <ul className="technologies">
-                {technologies}
-            </ul>
-        );
+@media screen and (min-width: 800px) {
+    body {
+        padding-right: 28%;
+        padding-left: 28%;
     }
 }
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+    background-color: #b3e6ff;
+}
+
+.title {
+    text-align: center;
+}
+
+.logo {
+    text-align: center;
+}
 `,
-		".gitignore": `*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-*.test
-*.out
+		"webapp/src/App.test.js": `import React from 'react';
+import {render} from '@testing-library/react';
+import {App} from './App';
+
+test('renders learn react link', () => {
+    const {getByText} = render(<App/>);
+    const linkElement = getByText(/goxygen/i);
+    expect(linkElement).toBeInTheDocument();
+});
 `,
-		"docker-compose.yml": `version: "3.7"
+		"webapp/src/index.js": `import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import {App} from './App';
+
+ReactDOM.render(<App/>, document.getElementById('root'));
+`,
+		"docker-compose-dev.yml": `version: "3.7"
 services:
-  app:
-    build: .
-    container_name: app
-    ports:
-      - 8080:8080
-    depends_on:
-      - db
-    environment:
-      profile: prod
-  db:
+  dev_db:
     image: mongo:4.2.2
-    container_name: db
     environment:
       MONGO_INITDB_DATABASE: tech
+    ports:
+      - 27017:27017
     volumes:
       - ./init-db.js:/docker-entrypoint-initdb.d/init.js
-`,
-		"init-db.js": `db.tech.insert({
-    "name": "Go",
-    "details": "An open source programming language that makes it easy to build simple and efficient software."
-});
-db.tech.insert({
-    "name": "React",
-    "details": "A JavaScript library for building user interfaces."
-});
-db.tech.insert({
-    "name": "MongoDB",
-    "details": "A general purpose, document-based, distributed database."
-});
 `,
 		"server/web/app.go": `package web
 
@@ -729,7 +435,7 @@ import (
 	"encoding/json"
 	"github.com/gorilla/mux"
 	"net/http"
-	"server-template/db"
+	"project-name/db"
 )
 
 type App struct {
@@ -783,6 +489,301 @@ func disableCors(h http.HandlerFunc) http.HandlerFunc {
 	}
 }
 `,
+		"webapp/.env.development": `REACT_APP_API_URL=http://localhost:8080`,
+		"webapp/public/index.html": `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using goxygen"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the ` + "`" + `public` + "`" + ` folder during the build.
+      Only files inside the ` + "`" + `public` + "`" + ` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running ` + "`" + `npm run build` + "`" + `.
+    -->
+    <title>project-name</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run ` + "`" + `npm start` + "`" + `.
+      To create a production bundle, use ` + "`" + `npm run build` + "`" + `.
+    -->
+  </body>
+</html>
+`,
+		"server/server.go": `package main
+
+import (
+	"context"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+	"log"
+	"os"
+	"project-name/db"
+	"project-name/web"
+)
+
+func main() {
+	client, err := mongo.Connect(context.TODO(), clientOptions())
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer client.Disconnect(context.TODO())
+	mongoDB := db.NewMongo(client)
+	// CORS is enabled only in prod profile
+	cors := os.Getenv("profile") == "prod"
+	app := web.NewApp(mongoDB, cors)
+	err = app.Serve()
+	log.Println("Error", err)
+}
+
+func clientOptions() *options.ClientOptions {
+	host := "db"
+	if os.Getenv("profile") != "prod" {
+		host = "localhost"
+	}
+	return options.Client().ApplyURI(
+		"mongodb://" + host + ":27017",
+	)
+}
+`,
+		"webapp/src/App.js": `import React from 'react';
+import './App.css';
+import logo from './logo.svg';
+import {Tech} from "./tech/Tech";
+
+export function App() {
+    return (
+        <div className="app">
+            <h2 className="title">project-name</h2>
+            <div className="logo"><img src={logo} height="150px" alt="logo"/></div>
+            <div>
+                This project is generated with <b><a
+                href="https://github.com/shpota/goxygen">goxygen</a></b>.
+                <p/>The following list of technologies comes from
+                a REST API call to the Go-based back end. Find
+                and change the corresponding code
+                in <code>webapp/src/tech/Tech.js
+                </code> and <code>server/web/app.go</code>.
+                <Tech/>
+            </div>
+        </div>
+    );
+}
+`,
+		"webapp/src/tech/Tech.css": `.technologies {
+    margin-top: 5px;
+}
+`,
+		"webapp/src/tech/Tech.js": `import React, {Component} from "react";
+import axios from "axios";
+import "./Tech.css"
+
+export class Tech extends Component {
+    state = {
+        technologies: []
+    };
+
+    componentDidMount() {
+        axios.get(` + "`" + `${process.env.REACT_APP_API_URL}/api/technologies` + "`" + `)
+            .then(resp => this.setState({
+                technologies: resp.data
+            }));
+    }
+
+    render() {
+        const technologies = this.state.technologies.map((technology, i) =>
+            <li key={i}>
+                <b>{technology.name}</b>: {technology.details}
+            </li>
+        );
+        return (
+            <ul className="technologies">
+                {technologies}
+            </ul>
+        );
+    }
+}
+`,
+		".gitignore": `*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+`,
+		"docker-compose.yml": `version: "3.7"
+services:
+  app:
+    build: .
+    container_name: app
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      profile: prod
+  db:
+    image: mongo:4.2.2
+    container_name: db
+    environment:
+      MONGO_INITDB_DATABASE: tech
+    volumes:
+      - ./init-db.js:/docker-entrypoint-initdb.d/init.js
+`,
+		"server/go.mod": `module project-name
+
+go 1.13
+
+require (
+	github.com/gorilla/mux v1.7.3
+	go.mongodb.org/mongo-driver v1.2.1
+)
+`,
+		"server/model/technology.go": `package model
+
+type Technology struct {
+	Name    string ` + "`" + `json:"name"` + "`" + `
+	Details string ` + "`" + `json:"details"` + "`" + `
+}
+`,
+		"webapp/package.json": `{
+  "name": "project-name",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.3.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
+`,
+		"webapp/src/index.css": `body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+`,
+		"Dockerfile": `FROM node:12.15 AS JS_BUILD
+COPY webapp /webapp
+WORKDIR webapp
+RUN npm install && npm run build --prod
+
+FROM golang:1.13.7-alpine AS GO_BUILD
+RUN apk add build-base
+COPY server /server
+WORKDIR /server
+RUN go build -o /go/bin/server
+
+FROM alpine:3.11
+COPY --from=JS_BUILD /webapp/build* ./webapp/
+COPY --from=GO_BUILD /go/bin/server ./
+CMD ./server
+`,
+		"init-db.js": `db.tech.insert({
+    "name": "Go",
+    "details": "An open source programming language that makes it easy to build simple and efficient software."
+});
+db.tech.insert({
+    "name": "React",
+    "details": "A JavaScript library for building user interfaces."
+});
+db.tech.insert({
+    "name": "MongoDB",
+    "details": "A general purpose, document-based, distributed database."
+});
+`,
+		"server/db/db.go": `package db
+
+import (
+	"context"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
+	"log"
+	"project-name/model"
+)
+
+type DB interface {
+	GetTechnologies() ([]*model.Technology, error)
+}
+
+type MongoDB struct {
+	collection *mongo.Collection
+}
+
+func NewMongo(client *mongo.Client) DB {
+	tech := client.Database("tech").Collection("tech")
+	return MongoDB{collection: tech}
+}
+
+func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
+	res, err := m.collection.Find(context.TODO(), bson.M{})
+	if err != nil {
+		log.Println("Error while fetching technologies:", err.Error())
+		return nil, err
+	}
+	var tech []*model.Technology
+	err = res.All(context.TODO(), &tech)
+	if err != nil {
+		log.Println("Error while decoding technologies:", err.Error())
+		return nil, err
+	}
+	return tech, nil
+}
+`,
+		"webapp/.env.production": `REACT_APP_API_URL=`,
 	}
 }
 

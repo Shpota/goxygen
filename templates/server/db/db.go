@@ -5,7 +5,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"log"
-	"server-template/model"
+	"project-name/model"
 )
 
 type DB interface {
@@ -24,13 +24,13 @@ func NewMongo(client *mongo.Client) DB {
 func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
 	res, err := m.collection.Find(context.TODO(), bson.M{})
 	if err != nil {
-		log.Printf("Error while fetching taks: %s", err.Error())
+		log.Println("Error while fetching technologies:", err.Error())
 		return nil, err
 	}
 	var tech []*model.Technology
 	err = res.All(context.TODO(), &tech)
 	if err != nil {
-		log.Printf("Error while decoding tech: %s", err.Error())
+		log.Println("Error while decoding technologies:", err.Error())
 		return nil, err
 	}
 	return tech, nil

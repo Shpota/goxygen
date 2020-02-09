@@ -11,6 +11,7 @@ import (
 
 func Generate(projectName string) {
 	for path, srcText := range static.Sources() {
+		srcText = strings.Replace(srcText, "project-name", projectName, -1)
 		binary := []byte(srcText)
 		generateFile(projectName, path, binary)
 	}

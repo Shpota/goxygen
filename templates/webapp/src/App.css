@@ -2,6 +2,7 @@ body {
     margin-top: 5%;
     padding-right: 5%;
     padding-left: 5%;
+    font-size: larger;
 }
 
 @media screen and (min-width: 800px) {
@@ -14,7 +15,7 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-    background-color:lightgray;
+    background-color: #b3e6ff;
 }
 
 .title {
