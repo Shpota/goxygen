@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
-import "./Technologies.css"
+import "./Tech.css"
 
-export class Technologies extends Component {
+export class Tech extends Component {
     state = {
         technologies: []
     };

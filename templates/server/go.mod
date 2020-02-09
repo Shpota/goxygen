@@ -1,4 +1,4 @@
-module server-template
+module project-name
 
 go 1.13
 

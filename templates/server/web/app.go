@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"github.com/gorilla/mux"
 	"net/http"
-	"server-template/db"
+	"project-name/db"
 )
 
 type App struct {

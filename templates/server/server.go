@@ -6,8 +6,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
 	"os"
-	"server-template/db"
-	"server-template/web"
+	"project-name/db"
+	"project-name/web"
 )
 
 func main() {
