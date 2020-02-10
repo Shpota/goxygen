@@ -6,10 +6,12 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"strings"
 )
 
 func Generate(projectName string) {
+	fmt.Println("Generating", projectName)
 	for path, srcText := range static.Sources() {
 		srcText = strings.Replace(srcText, "project-name", projectName, -1)
 		binary := []byte(srcText)
@@ -17,6 +19,10 @@ func Generate(projectName string) {
 	}
 	for path, binary := range static.Images() {
 		generateFile(projectName, path, binary)
+	}
+	err := initGitRepo(projectName)
+	if err != nil {
+		fmt.Println("Failed to setup a Git repository:", err)
 	}
 	fmt.Println("Generation completed.")
 }
@@ -38,4 +44,23 @@ func generateFile(pjRoot string, path string, content []byte) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func initGitRepo(projectName string) error {
+	fmt.Println("setting up Git repository")
+	cmd := exec.Command("git", "init", ".")
+	cmd.Dir = projectName
+	err := cmd.Run()
+	if err != nil {
+		return err
+	}
+	cmd = exec.Command("git", "add", ".")
+	cmd.Dir = projectName
+	err = cmd.Run()
+	if err != nil {
+		return err
+	}
+	cmd = exec.Command("git", "commit", "-m", "Initial commit from Goxygen")
+	cmd.Dir = projectName
+	return cmd.Run()
 }
