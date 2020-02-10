@@ -1,6 +1,6 @@
 // Transforms static content form the 'templates' folder
 // in the root of the repository to Go code in order to
-// include it to the end binary.
+// distribute it as a part of the module.
 package main
 
 import (
@@ -9,21 +9,20 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 )
 
 func main() {
-	templatesDir := "../templates"
-	paths := filePaths(templatesDir)
 	var buffer bytes.Buffer
 	buffer.WriteString(prefix)
-	textFiles, images := collectFiles(paths, templatesDir)
-	for path, content := range textFiles {
-		writeTextFile(content, path, &buffer)
+	textFiles, images := contentFromFiles("../templates")
+	for _, path := range sortedFilePaths(textFiles) {
+		writeTextFile(path, textFiles[path], &buffer)
 	}
 	buffer.WriteString(middle)
-	for path, imgBinary := range images {
-		writeImage(imgBinary, path, &buffer)
+	for _, path := range sortedImagePaths(images) {
+		writeImage(path, images[path], &buffer)
 	}
 	buffer.WriteString(suffix)
 	createSourceFile("../static/generated.go", buffer.Bytes())
@@ -39,10 +38,10 @@ func createSourceFile(path string, content []byte) {
 	}
 }
 
-func collectFiles(paths []string, root string) (map[string]string, map[string][]byte) {
+func contentFromFiles(root string) (map[string]string, map[string][]byte) {
 	textFiles := make(map[string]string)
 	images := make(map[string][]byte)
-	for _, originalPath := range paths {
+	for _, originalPath := range filePaths(root) {
 		path := originalPath[len(root)+1:]
 		ext := filepath.Ext(originalPath)
 		content, err := ioutil.ReadFile(originalPath)
@@ -58,7 +57,7 @@ func collectFiles(paths []string, root string) (map[string]string, map[string][]
 	return textFiles, images
 }
 
-func writeImage(imgBinary []byte, path string, buffer *bytes.Buffer) {
+func writeImage(path string, imgBinary []byte, buffer *bytes.Buffer) {
 	buffer.WriteString(`		"` + path + `": {`)
 	for _, b := range imgBinary {
 		buffer.WriteString(strconv.Itoa(int(b)) + ", ")
@@ -66,7 +65,7 @@ func writeImage(imgBinary []byte, path string, buffer *bytes.Buffer) {
 	buffer.WriteString("}" + separator)
 }
 
-func writeTextFile(content string, path string, buffer *bytes.Buffer) {
+func writeTextFile(path string, content string, buffer *bytes.Buffer) {
 	buffer.WriteString(`		"` + path + `": ` + "`")
 	for _, c := range content {
 		if string(c) == "`" {
@@ -96,12 +95,31 @@ func filePaths(dir string) []string {
 	return templates
 }
 
+func sortedFilePaths(sources map[string]string) []string {
+	var paths []string
+	for path := range sources {
+		paths = append(paths, path)
+	}
+	sort.Strings(paths)
+	return paths
+}
+
+func sortedImagePaths(images map[string][]byte) []string {
+	var paths []string
+	for path := range images {
+		paths = append(paths, path)
+	}
+	sort.Strings(paths)
+	return paths
+}
+
 const prefix = `// THIS CODE IS GENERATED, DO NOT EDIT
 
-// Package 'static' contains static assets generated form
+// Package 'static' contains static assets such as 
+// source code, text files or images generated form
 // the 'templates' folder in the root of the repository.
-// If a change is made in templates regenerate this
-// file by running 'transform/transformer.go'.
+// If a change is made in templates regenerate this file
+// by running 'transform/transformer.go'.
 package static
 
 func Sources() map[string]string {
