@@ -1,14 +1,16 @@
-# goxygen [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Shpota/goxygen/pulls)
+# goxygen [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Shpota/goxygen/pulls) ![](https://github.com/actions/hello-world/workflows/Greet%20Everyone/badge.svg)
 
-<img src="./templates/webapp/src/logo.svg" align="right" height="150px" alt="goxygen logo">
+<img src="./templates/webapp/src/logo.svg" align="right" width="220px" alt="goxygen logo">
 
 **Generate a Full Stack Web project with Go, React, and MongoDB in seconds.**
 
 Goxygen aims at saving your time while setting up a new project. It
 creates a skeleton of an application with all configuration done for
-you: the back end Go code with MongoDB, the front end React components
-that communicate the back end via REST and Docker scripts to glue all
-together.
+you. You can start implementing your business logic strait away.
+Goxygen generates back end Go code, connects it with front end React
+components, provides a Dockerfile for the application and creates
+docker-compose files for convenient run in development and production
+environments.
 
 ## How to use
 ```go
@@ -24,6 +26,36 @@ docker-compose up
 After the build is completed, the application is accessible
 on http://localhost:8080.
 
+## Structure of a generated project
+
+    project-name
+    ├── server                   # Go project files
+    │   ├── db                   # MongoDB communications
+    │   ├── model                # domain objects
+    │   ├── web                  # REST APIs, web server
+    │   ├── server.go            # the starting point of the server
+    │   └── go.mod               # server dependencies
+    ├── webapp                    
+    │   ├── public               # icons, static files, and index.html
+    │   ├── src                       
+    │   │   ├── App.js           # the main React component
+    │   │   ├── App.css          # App component-specific styles
+    │   │   ├── index.js         # the entry point of the application          
+    │   │   └── index.css        # global styles
+    │   ├── package.json         # front end dependencies
+    │   ├── .env.development     # holds API endpoint for dev environment
+    │   └── .env.production      # API endpoint for prod environment
+    ├── Dockerfile               # builds back end and front end together
+    ├── docker-compose.yml       # prod environment deployment descriptor
+    ├── docker-compose-dev.yml   # runs local MongoDB for development needs
+    ├── init-db.js               # creates a Mongo collection with test data
+    ├── .dockerignore            # specifies files ignored in Docker builds
+    ├── .gitignore
+    └── README.md                # guide on how to use the generated repo
+
+Files such as unit tests or sample components are not reflected here
+for simplicity.
+
 ## How to contribute
 
 If you found a bug or have an idea on how to improve the project
@@ -34,5 +66,6 @@ You can also propose your changes via a Pull Request. Fork the
 repository, make changes, send us a pull request and we'll
 review it shortly.
 
-## Logo
+### Logo
 Goxygen's logo was created by [Egon Elbre](https://twitter.com/egonelbre).
+
