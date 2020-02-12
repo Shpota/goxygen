@@ -3,12 +3,13 @@ package cli
 import (
 	"fmt"
 	"github.com/shpota/goxygen/codegen"
+	"io"
 	"regexp"
 )
 
-func Start(commands []string) {
+func Start(w io.Writer, commands []string) {
 	if len(commands) == 1 && commands[0] == "help" {
-		fmt.Println(usage)
+		fmt.Fprintln(w, usage)
 		return
 	}
 	if len(commands) == 2 && commands[0] == "init" {
@@ -18,10 +19,10 @@ func Start(commands []string) {
 			codegen.Generate(projectName)
 			return
 		}
-		fmt.Println(invalidName)
+		fmt.Fprintln(w, invalidName)
 		return
 	}
-	fmt.Println(wrongInput)
+	fmt.Fprintln(w, wrongInput)
 }
 
 const usage = `Usage:
