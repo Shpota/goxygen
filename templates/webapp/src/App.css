@@ -7,8 +7,15 @@ body {
 
 @media screen and (min-width: 800px) {
     body {
-        padding-right: 28%;
-        padding-left: 28%;
+        padding-right: 15%;
+        padding-left: 15%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    body {
+        padding-right: 30%;
+        padding-left: 30%;
     }
 }
 
