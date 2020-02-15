@@ -1,4 +1,4 @@
-# goxygen [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Shpota/goxygen/pulls) ![](https://github.com/actions/hello-world/workflows/Greet%20Everyone/badge.svg)
+# goxygen [![build](https://github.com/Shpota/goxygen/workflows/build/badge.svg)](https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Shpota/goxygen/pulls)
 
 <img src="./templates/webapp/src/logo.svg" align="right" width="220px" alt="goxygen logo">
 
