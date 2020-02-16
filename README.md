@@ -1,6 +1,6 @@
 # goxygen [![build](https://github.com/Shpota/goxygen/workflows/build/badge.svg)](https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Shpota/goxygen/pulls)
 
-<img src="./templates/webapp/src/logo.svg" align="right" width="220px" alt="goxygen logo">
+<img src="./templates/webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
 **Generate a Full Stack Web project with Go, React, and MongoDB in seconds.**
 
@@ -15,20 +15,22 @@ environments.
 ## How to use
 ```go
 go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-dream-app
+go run github.com/shpota/goxygen init my-app
 ```
-This creates a new `my-dream-app` project folder. The generated project
+This creates a new `my-app` project folder. The generated project
 is ready to run with `docker-compose`:
 ```sh
-cd my-dream-app
+cd my-app
 docker-compose up
 ```
 After the build is completed, the application is accessible
 on http://localhost:8080.
 
+![Showcase](.github/showcase.gif)
+
 ## Structure of a generated project
 
-    project-name
+    my-app
     ├── server                   # Go project files
     │   ├── db                   # MongoDB communications
     │   ├── model                # domain objects
@@ -55,6 +57,26 @@ on http://localhost:8080.
 
 Files such as unit tests or sample components are not reflected here
 for simplicity.
+
+## Toolchain
+
+You need to have [Go](https://golang.org/) installed to generate
+a project with Goxygen.
+
+In order to work with the generated project you need to have
+[Go](https://golang.org/), [Node.js](https://nodejs.org/),
+[Docker](https://www.docker.com/),
+and [Docker Compose](https://docs.docker.com/compose/)
+(comes pre-installed with Docker on Mac and Windows).
+
+Verify the toolchain by running the following commands:
+
+```sh
+go version
+npm --version
+docker --version
+docker-compose --version
+```
 
 ## How to contribute
 
