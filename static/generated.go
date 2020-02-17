@@ -237,6 +237,7 @@ func clientOptions() *options.ClientOptions {
 import (
 	"encoding/json"
 	"github.com/gorilla/mux"
+	"log"
 	"net/http"
 	"project-name/db"
 )
@@ -261,6 +262,7 @@ func NewApp(d db.DB, cors bool) App {
 }
 
 func (a *App) Serve() error {
+	log.Println("Web server is available on port 8080")
 	return http.ListenAndServe(":8080", a.r)
 }
 
