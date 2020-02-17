@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -43,6 +44,10 @@ func contentFromFiles(root string) (map[string]string, map[string][]byte) {
 	images := make(map[string][]byte)
 	for _, originalPath := range filePaths(root) {
 		path := originalPath[len(root)+1:]
+		sep := string(os.PathSeparator)
+		if sep != "/" {
+			path = strings.Replace(path, sep, "/", -1)
+		}
 		ext := filepath.Ext(originalPath)
 		content, err := ioutil.ReadFile(originalPath)
 		if err != nil {
@@ -62,7 +67,7 @@ func writeImage(path string, imgBinary []byte, buffer *bytes.Buffer) {
 	for _, b := range imgBinary {
 		buffer.WriteString(strconv.Itoa(int(b)) + ", ")
 	}
-	buffer.WriteString("}" + separator)
+	buffer.WriteString("}" + lineSeparator)
 }
 
 func writeTextFile(path string, content string, buffer *bytes.Buffer) {
@@ -74,7 +79,7 @@ func writeTextFile(path string, content string, buffer *bytes.Buffer) {
 			buffer.WriteString(string(c))
 		}
 	}
-	buffer.WriteString("`" + separator)
+	buffer.WriteString("`" + lineSeparator)
 }
 
 func filePaths(dir string) []string {
@@ -125,7 +130,7 @@ package static
 func Sources() map[string]string {
 	return map[string]string{
 `
-const separator = `,
+const lineSeparator = `,
 `
 const middle = `	}
 }
