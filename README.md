@@ -50,7 +50,7 @@ on http://localhost:8080.
     ├── Dockerfile               # builds back end and front end together
     ├── docker-compose.yml       # prod environment deployment descriptor
     ├── docker-compose-dev.yml   # runs local MongoDB for development needs
-    ├── init-db.js               # creates a Mongo collection with test data
+    ├── init-db.js               # creates a MongoDB collection with test data
     ├── .dockerignore            # specifies files ignored in Docker builds
     ├── .gitignore
     └── README.md                # guide on how to use the generated repo
