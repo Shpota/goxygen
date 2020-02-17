@@ -28,8 +28,8 @@ func Generate(projectName string) {
 }
 
 func generateFile(pjRoot string, path string, content []byte) {
+	pathElements := strings.Split(path, "/")
 	separator := string(os.PathSeparator)
-	pathElements := strings.Split(path, separator)
 	pathElements = append([]string{pjRoot}, pathElements...)
 	_ = os.MkdirAll(
 		strings.Join(pathElements[:len(pathElements)-1], separator),
