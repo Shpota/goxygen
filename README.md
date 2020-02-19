@@ -1,4 +1,4 @@
-# goxygen [![build](https://github.com/Shpota/goxygen/workflows/build/badge.svg)](https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild) [![](https://badges.gitter.im/goxygen/community.svg)](https://gitter.im/goxygen/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Shpota/goxygen/pulls)
+# goxygen [![build](https://github.com/Shpota/goxygen/workflows/build/badge.svg)](https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild) [![version](https://img.shields.io/badge/version-v0.1.0-green)](https://github.com/Shpota/goxygen/releases) [![](https://badges.gitter.im/goxygen/community.svg)](https://gitter.im/goxygen/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Shpota/goxygen/pulls)
 
 <img src="./templates/webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
