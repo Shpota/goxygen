@@ -1,9 +1,9 @@
-FROM node:12.15 AS JS_BUILD
+FROM node:12.16 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build --prod
 
-FROM golang:1.13.7-alpine AS GO_BUILD
+FROM golang:1.13.8-alpine AS GO_BUILD
 RUN apk add build-base
 COPY server /server
 WORKDIR /server

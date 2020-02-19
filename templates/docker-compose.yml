@@ -10,7 +10,7 @@ services:
     environment:
       profile: prod
   db:
-    image: mongo:4.2.2
+    image: mongo:4.2.3
     container_name: db
     environment:
       MONGO_INITDB_DATABASE: tech

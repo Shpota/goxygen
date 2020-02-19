@@ -24,12 +24,12 @@ webapp/node_modules
 webapp/build
 webapp/npm-debug.log*
 `,
-		"Dockerfile": `FROM node:12.15 AS JS_BUILD
+		"Dockerfile": `FROM node:12.16 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build --prod
 
-FROM golang:1.13.7-alpine AS GO_BUILD
+FROM golang:1.13.8-alpine AS GO_BUILD
 RUN apk add build-base
 COPY server /server
 WORKDIR /server
@@ -59,6 +59,10 @@ npm --version
 docker --version
 docker-compose --version
 ` + "`" + `` + "`" + `` + "`" + `
+
+If you are using Windows you will also need
+[gcc](https://gcc.gnu.org/). It comes installed
+on Mac and almost all Linux distributions.
 
 ## Start in development mode
 
@@ -102,7 +106,7 @@ its database. Access the application on http://localhost:8080.
 		"docker-compose-dev.yml": `version: "3.7"
 services:
   dev_db:
-    image: mongo:4.2.2
+    image: mongo:4.2.3
     environment:
       MONGO_INITDB_DATABASE: tech
     ports:
@@ -122,7 +126,7 @@ services:
     environment:
       profile: prod
   db:
-    image: mongo:4.2.2
+    image: mongo:4.2.3
     container_name: db
     environment:
       MONGO_INITDB_DATABASE: tech
@@ -184,10 +188,7 @@ func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
 
 go 1.13
 
-require (
-	github.com/gorilla/mux v1.7.3
-	go.mongodb.org/mongo-driver v1.2.1
-)
+require go.mongodb.org/mongo-driver v1.3.0
 `,
 		"server/model/technology.go": `package model
 
@@ -236,34 +237,36 @@ func clientOptions() *options.ClientOptions {
 
 import (
 	"encoding/json"
-	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 	"project-name/db"
 )
 
 type App struct {
-	d db.DB
-	r *mux.Router
+	d        db.DB
+	handlers map[string]http.HandlerFunc
 }
 
 func NewApp(d db.DB, cors bool) App {
 	app := App{
-		d: d,
-		r: mux.NewRouter(),
+		d:        d,
+		handlers: make(map[string]http.HandlerFunc),
 	}
-	handler := app.GetTechnologies
+	techHandler := app.GetTechnologies
 	if !cors {
-		handler = disableCors(handler)
+		techHandler = disableCors(techHandler)
 	}
-	app.r.HandleFunc("/api/technologies", handler).Methods("GET")
-	app.r.PathPrefix("/").Handler(http.FileServer(http.Dir("/webapp")))
+	app.handlers["/api/technologies"] = techHandler
+	app.handlers["/"] = http.FileServer(http.Dir("/webapp")).ServeHTTP
 	return app
 }
 
 func (a *App) Serve() error {
+	for path, handler := range a.handlers {
+		http.Handle(path, handler)
+	}
 	log.Println("Web server is available on port 8080")
-	return http.ListenAndServe(":8080", a.r)
+	return http.ListenAndServe(":8080", nil)
 }
 
 func (a *App) GetTechnologies(w http.ResponseWriter, r *http.Request) {

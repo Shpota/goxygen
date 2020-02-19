@@ -18,6 +18,10 @@ docker --version
 docker-compose --version
 ```
 
+If you are using Windows you will also need
+[gcc](https://gcc.gnu.org/). It comes installed
+on Mac and almost all Linux distributions.
+
 ## Start in development mode
 
 In the project directory run the command (you might
