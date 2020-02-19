@@ -2,34 +2,36 @@ package web
 
 import (
 	"encoding/json"
-	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 	"project-name/db"
 )
 
 type App struct {
-	d db.DB
-	r *mux.Router
+	d        db.DB
+	handlers map[string]http.HandlerFunc
 }
 
 func NewApp(d db.DB, cors bool) App {
 	app := App{
-		d: d,
-		r: mux.NewRouter(),
+		d:        d,
+		handlers: make(map[string]http.HandlerFunc),
 	}
-	handler := app.GetTechnologies
+	techHandler := app.GetTechnologies
 	if !cors {
-		handler = disableCors(handler)
+		techHandler = disableCors(techHandler)
 	}
-	app.r.HandleFunc("/api/technologies", handler).Methods("GET")
-	app.r.PathPrefix("/").Handler(http.FileServer(http.Dir("/webapp")))
+	app.handlers["/api/technologies"] = techHandler
+	app.handlers["/"] = http.FileServer(http.Dir("/webapp")).ServeHTTP
 	return app
 }
 
 func (a *App) Serve() error {
+	for path, handler := range a.handlers {
+		http.Handle(path, handler)
+	}
 	log.Println("Web server is available on port 8080")
-	return http.ListenAndServe(":8080", a.r)
+	return http.ListenAndServe(":8080", nil)
 }
 
 func (a *App) GetTechnologies(w http.ResponseWriter, r *http.Request) {

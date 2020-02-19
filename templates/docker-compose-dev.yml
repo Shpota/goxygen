@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   dev_db:
-    image: mongo:4.2.2
+    image: mongo:4.2.3
     environment:
       MONGO_INITDB_DATABASE: tech
     ports:
