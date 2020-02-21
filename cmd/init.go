@@ -9,8 +9,10 @@ import (
 	"regexp"
 )
 
+// required name of the project to be generated
 var projectName string
 
+// creates a init command
 var initCmd = &cobra.Command{
 	Use: "init",
 	Short: `Generates a web project with the following structure:
@@ -32,6 +34,7 @@ numbers, underscores, and dashes.`)
 	},
 }
 
+// handles help usage command and presents the user all the different commands available
 func usage (cmd *cobra.Command) error {
 	fmt.Println(`Usage:
 goxygen init -n <project-name>
@@ -49,6 +52,7 @@ Use "goxygen [command] --help" for more information about a command.`)
 }
 
 
+// defines the required flags for the init command
 func init() {
 	rootCmd.AddCommand(initCmd)
 	rootCmd.SetUsageFunc(usage)
