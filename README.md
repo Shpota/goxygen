@@ -15,8 +15,10 @@ environments.
 ## How to use
 You need to have Go 1.11 or newer on your machine.
 ```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
+git clone https://github.com/mattb2401/goxygen.git
+cd goxygen/
+go install
+goxygen init -n my-app
 ```
 This generates a project in `my-app` folder. 
 
