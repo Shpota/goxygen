@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/shpota/goxygen/cli"
-	"os"
+	"github.com/shpota/goxygen/cmd"
 )
 
 func main() {
-	cli.Start(os.Stdout, os.Args[1:])
+	//cli.Start(os.Stdout, os.Args[1:])
+	cmd.Execute()
 }
