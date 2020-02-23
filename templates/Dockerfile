@@ -1,10 +1,10 @@
 FROM node:12.16 AS JS_BUILD
 COPY webapp /webapp
-WORKDIR webapp
+WORKDIR /webapp
 RUN npm install && npm run build --prod
 
 FROM golang:1.13.8-alpine AS GO_BUILD
-RUN apk add build-base
+RUN  apk update && apk add --virtual build-dependencies build-base wget 
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server

@@ -1,6 +1,8 @@
 // Transforms static content form the 'templates' folder
 // in the root of the repository to Go code in order to
 // distribute it as a part of the module.
+// Run this script in the transform dir
+
 package main
 
 import (
@@ -124,7 +126,7 @@ const prefix = `// THIS CODE IS GENERATED, DO NOT EDIT
 // source code, text files or images generated form
 // the 'templates' folder in the root of the repository.
 // If a change is made in templates regenerate this file
-// by running 'transform/transformer.go'.
+// by running 'transformer.go' script in the tranform dir
 package static
 
 func Sources() map[string]string {
