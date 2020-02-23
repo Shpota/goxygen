@@ -1,6 +1,10 @@
 // Transforms static content form the 'templates' folder
 // in the root of the repository to Go code in order to
 // distribute it as a part of the module.
+
+//Noted: run this script in the transform dir after u changed the templates content
+//eg:  cd transform
+//     go run transformer.go
 package main
 
 import (
