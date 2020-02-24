@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+    margin-top: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
+    font-size: larger;
+}
+
+@media screen and (min-width: 800px) {
+    body {
+        padding-right: 15%;
+        padding-left: 15%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    body {
+        padding-right: 30%;
+        padding-left: 30%;
+    }
+}
