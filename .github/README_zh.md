@@ -1,6 +1,26 @@
-# goxygen [![build](https://github.com/Shpota/goxygen/workflows/build/badge.svg)](https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild) [![version](https://img.shields.io/badge/version-v0.1.0-green)](https://github.com/Shpota/goxygen/releases) [![](https://badges.gitter.im/goxygen/community.svg)](https://gitter.im/goxygen/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Shpota/goxygen/pulls)
-
-<img src="./templates/webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
+<h1 align="center">
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_zh.md">
+        <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
+    </a>
+    <br>
+    Goxygen
+    <a href="https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild">
+        <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/releases">
+        <img src="https://img.shields.io/badge/version-v0.1.0-green">
+    </a>
+    <a href="https://gitter.im/goxygen/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
+        <img src="https://badges.gitter.im/goxygen/community.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/pulls">
+        <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
+    </a>
+</h1>
+<img src="../templates/webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
 **分分钟生成一个全栈Web项目(Go，React，MongoDB)。**  
 
@@ -28,7 +48,7 @@ build完成之后，就可以在 http://localhost:8080 查看你
 
 你可以在生成的项目里的README里查看更多细节信息。  
 
-![Showcase](.github/showcase.gif)
+![Showcase](showcase.gif)
 
 
 ## 依赖
