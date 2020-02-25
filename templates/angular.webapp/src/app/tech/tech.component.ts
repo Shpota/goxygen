@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {TechService} from './tech.service';
-import {Technology} from './tech.model';
+import { TechService } from './tech.service';
+import { Technology } from './tech.model';
 
 @Component({
   selector: 'app-tech',
@@ -17,5 +17,4 @@ export class TechComponent implements OnInit {
       this.technologies = value;
     });
   }
-
 }
