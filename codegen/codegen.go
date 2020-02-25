@@ -2,16 +2,17 @@ package codegen
 
 import (
 	"fmt"
-	"github.com/shpota/goxygen/static"
 	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
 	"strings"
+
+	"github.com/shpota/goxygen/static"
 )
 
-func Generate(projectName string) {
-	fmt.Println("Generating", projectName)
+func Generate(projectName string, frontendTech string) {
+	fmt.Printf("Generating project %v with Go, MongoDB and %v\n", projectName, frontendTech)
 	for path, srcText := range static.Sources() {
 		srcText = strings.Replace(srcText, "project-name", projectName, -1)
 		binary := []byte(srcText)
