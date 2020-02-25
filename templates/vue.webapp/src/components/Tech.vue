@@ -19,7 +19,6 @@ export default {
     };
   },
   mounted() {
-    console.log(process.env.ROOT_API)
     axios
       .get(`${process.env.VUE_APP_API_URL}/api/technologies`)
       .then(response => (this.technologies = response.data));
