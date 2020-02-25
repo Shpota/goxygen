@@ -24,7 +24,7 @@
     </a>
 </h1>
 
-<img src="../templates/webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
+<img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
 **Goxygen генерує Full Stack Web проекти з Go, React та MongoDB.**
 
@@ -35,7 +35,7 @@ back end код на Go, зв'язує його з front end компонент�
 `Dockerfile` та `docker-compose` для зручного запуску локально та в
 production середовищі.
 
-## How to use
+## Як користуватися
 Ви повинні мати Go 1.11 або новішу версію на вашому комп'ютері.
 ```go
 go get -u github.com/shpota/goxygen

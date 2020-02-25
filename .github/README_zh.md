@@ -23,7 +23,7 @@
         <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
     </a>
 </h1>
-<img src="../templates/webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
+<img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
 **分分钟生成一个全栈Web项目(Go，React，MongoDB)。**  
 
