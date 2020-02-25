@@ -28,12 +28,12 @@ export default {
   components: {
     Tech
   },
-  data(){
+  data() {
     return {
       logoSVG: require('./assets/logo.svg')
     }
   }
-}
+};
 </script>
 
 <style>
@@ -45,8 +45,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @media screen and (min-width: 800px) {
