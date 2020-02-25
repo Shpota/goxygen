@@ -5,6 +5,9 @@
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_zh.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
     </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ua.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/ua.svg">
+    </a>
     <br>
     Goxygen
     <a href="https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild">
@@ -13,7 +16,7 @@
     <a href="https://github.com/Shpota/goxygen/releases">
         <img src="https://img.shields.io/badge/version-v0.1.0-green">
     </a>
-    <a href="https://gitter.im/goxygen/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
+    <a href="https://gitter.im/goxygen/community">
         <img src="https://badges.gitter.im/goxygen/community.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/pulls">
