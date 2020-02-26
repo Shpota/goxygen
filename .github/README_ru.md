@@ -27,7 +27,7 @@
     </a>
 </h1>
 
-<img src="../templates/webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
+<img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
 **Goxygen генерирует Full Stack Web проекты на Go, React и MongoDB.**
 

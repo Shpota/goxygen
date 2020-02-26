@@ -16,7 +16,8 @@ func Start(w io.Writer, commands []string) {
 		projectName := commands[1]
 		validName, _ := regexp.MatchString("^[a-zA-Z0-9_-]+$", projectName)
 		if validName {
-			codegen.Generate(projectName)
+			// TODO: extension point for more frameworks
+			codegen.Generate(projectName, "react")
 			return
 		}
 		fmt.Fprintln(w, invalidName)
