@@ -4,26 +4,32 @@ import (
 	"testing"
 )
 
-func TestInclude(t *testing.T) {
-	got := include("react.webapp/test.js", "react")
+func TestNeeded(t *testing.T) {
+	g := generator{frontend: "react"}
+
+	got := g.needed("react.webapp/test.js")
 
 	if !got {
-		t.Error("Must include framework specific paths")
+		t.Error("Must needed framework specific paths")
 	}
 }
 
-func TestIncludeGivenGeneralPath(t *testing.T) {
-	got := include("server/server.go", "react")
+func TestNeededGivenGeneralPath(t *testing.T) {
+	g := generator{frontend: "react"}
+
+	got := g.needed("server/server.go")
 
 	if !got {
-		t.Error("Must include general paths")
+		t.Error("Must needed general paths")
 	}
 }
 
-func TestIncludeGivenExcludedPath(t *testing.T) {
-	got := include("angular.webapp/test.js", "vue")
+func TestNeededGivenExcludedPath(t *testing.T) {
+	g := generator{frontend: "vue"}
+
+	got := g.needed("angular.webapp/test.js")
 
 	if got {
-		t.Error("Must not include angular files for vue")
+		t.Error("Must not needed angular files for vue")
 	}
 }

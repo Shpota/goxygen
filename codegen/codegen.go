@@ -10,43 +10,43 @@ import (
 	"strings"
 )
 
-func Generate(projectName, framework string) {
-	fmt.Println("Generating", projectName)
-	processTextFiles(projectName, framework)
-	processImages(projectName, framework)
-	err := initGitRepo(projectName)
+type generator struct {
+	projectName string
+	frontend    string
+}
+
+func Generate(projectName, frontend string) {
+	g := generator{projectName, frontend}
+	g.generate()
+}
+
+func (g generator) generate() {
+	fmt.Println("Generating", g.projectName)
+	for path, srcText := range static.Sources() {
+		srcText = strings.ReplaceAll(srcText, "project-name", g.projectName)
+		binary := []byte(srcText)
+		g.processFile(path, binary)
+	}
+	for path, binary := range static.Images() {
+		g.processFile(path, binary)
+	}
+	err := g.initGitRepo()
 	if err != nil {
 		fmt.Println("Failed to setup a Git repository:", err)
 	}
 	fmt.Println("Generation completed.")
 }
 
-func processImages(projectName string, framework string) {
-	for path, binary := range static.Images() {
-		if !include(path, framework) {
-			continue
-		}
-		path = strings.Replace(path, framework+".", "", 1)
-		generateFile(projectName, path, binary)
+// Checks if a file with the given path has to be generated, creates
+// a directory structure, and a file with the given content.
+func (g generator) processFile(path string, content []byte) {
+	if !g.needed(path) {
+		return
 	}
-}
-
-func processTextFiles(projectName string, framework string) {
-	for path, srcText := range static.Sources() {
-		if !include(path, framework) {
-			continue
-		}
-		path = strings.Replace(path, framework+".", "", 1)
-		srcText = strings.ReplaceAll(srcText, "project-name", projectName)
-		binary := []byte(srcText)
-		generateFile(projectName, path, binary)
-	}
-}
-
-func generateFile(pjRoot string, path string, content []byte) {
+	path = strings.Replace(path, g.frontend+".", "", 1)
 	pathElements := strings.Split(path, "/")
 	separator := string(os.PathSeparator)
-	pathElements = append([]string{pjRoot}, pathElements...)
+	pathElements = append([]string{g.projectName}, pathElements...)
 	_ = os.MkdirAll(
 		strings.Join(pathElements[:len(pathElements)-1], separator),
 		os.ModePerm,
@@ -62,22 +62,22 @@ func generateFile(pjRoot string, path string, content []byte) {
 	}
 }
 
-func initGitRepo(projectName string) error {
+func (g generator) initGitRepo() error {
 	fmt.Println("setting up Git repository")
 	cmd := exec.Command("git", "init", ".")
-	cmd.Dir = projectName
+	cmd.Dir = g.projectName
 	err := cmd.Run()
 	if err != nil {
 		return err
 	}
 	cmd = exec.Command("git", "add", ".")
-	cmd.Dir = projectName
+	cmd.Dir = g.projectName
 	err = cmd.Run()
 	if err != nil {
 		return err
 	}
 	cmd = exec.Command("git", "commit", "-m", "Initial commit from Goxygen")
-	cmd.Dir = projectName
+	cmd.Dir = g.projectName
 	return cmd.Run()
 }
 
@@ -85,9 +85,9 @@ func initGitRepo(projectName string) error {
 // with framework name). Returns true if a path is
 // prefixed with the provided framework followed by dot
 // or if a path has no prefix.
-func include(path, framework string) bool {
+func (g generator) needed(path string) bool {
 	for _, fr := range frameworks {
-		if strings.HasPrefix(path, fr+".") && framework != fr {
+		if strings.HasPrefix(path, fr+".") && g.frontend != fr {
 			return false
 		}
 	}
