@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <ul v-for="technology in technologies" v-bind:key="technology.name" class="technologies">
-      <li>
-        <b>{{technology.name}}</b>: {{technology.details}}
-      </li>
-    </ul>
-  </div>
+  <ul class="technologies">
+    <li v-for="technology in technologies" v-bind:key="technology.name">
+      <b>{{technology.name}}</b>: {{technology.details}}
+    </li>
+  </ul>
 </template>
 
 <script>

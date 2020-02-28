@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "postbuild": "mv dist build"
+    "build": "vue-cli-service build --dest build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "~0.19.2",
