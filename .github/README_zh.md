@@ -28,7 +28,7 @@
 </h1>
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**分分钟生成一个全栈Web项目(Go，React，MongoDB)。**  
+**分分钟生成一个全栈Web项目(Go，Angular/React/Vue，MongoDB)。**  
 
 Goxygen致力于节省你搭建一个项目的时间。它自动生成一个完全  
 配置好的项目骨架，以方便你可以立即着手实现你的业务逻辑。  
@@ -43,6 +43,14 @@ go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
 这会在你的 `my-app` 目录下生成一个项目。  
+
+By default, a React-based project is generated. You can choose  
+from Angular, React and Vue by passing `angular`, `react` and 
+`vue` to the `--frontend` flag. For example:
+
+```go
+go run github.com/shpota/goxygen init --frontend vue my-app
+```
 
 这个项目已经可以用`docker-compose`来运行了：  
 ```sh
@@ -64,7 +72,7 @@ Goxygen只是为你生成一个项目的基本框架，但不强迫你使
 赖，仅有的依赖只有后端的[mongo-go-driver](https://github.com/mongodb/mongo-go-driver)  
 和前端的[axios](https://github.com/axios/axios)
 
-## 生成的项目的结构  
+## 生成的项目的结构 (React-based app)
     my-app
     ├── server                   # Go项目文件
     │   ├── db                   # MongoDB通信 

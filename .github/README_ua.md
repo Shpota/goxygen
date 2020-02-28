@@ -29,7 +29,7 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Goxygen генерує Full Stack Web проекти з Go, React та MongoDB.**
+**Goxygen генерує Web проекти з Go, Angular/React/Vue та MongoDB.**
 
 Goxygen зберігає ваш час при створенні нових проектів. Він
 генерує базову структуру проекту і дозволяє вам відразу ж перейти до
@@ -46,7 +46,15 @@ go run github.com/shpota/goxygen init my-app
 ```
 В результаті буде згенеровано проект в папці `my-app`. 
 
-Проект готовий до запуску з `docker-compose`:
+React використовується за замовчуванням. Ви можете обрати Angular,
+React або Vue, передавши `angular`, `react` або `vue` як значення
+для `--frontend`. Наприклад:
+
+```go
+go run github.com/shpota/goxygen init --frontend vue my-app
+```
+
+Згенерований проект готовий до запуску з `docker-compose`:
 ```sh
 cd my-app
 docker-compose up
@@ -59,7 +67,7 @@ http://localhost:8080.
 
 ![Showcase](showcase.gif)
 
-## Структура згенерованого проекту
+## Структура згенерованого проекту (на пиркладі React)
 
     my-app
     ├── server                   # серверна частина додатку (Go)
