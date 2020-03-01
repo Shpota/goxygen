@@ -43,8 +43,9 @@ func TestStartGivenWrongArguments(t *testing.T) {
 	Start(w, []string{"wrong", "arguments"}, nil)
 
 	got := strings.TrimRight(w.String(), "\n")
-	if got != wrongInput {
-		t.Errorf("Start() = %v, want %v", got, wrongInput)
+	expected := "Wrong input!\n" + usage
+	if got != expected {
+		t.Errorf("Start() = %v, want %v", got, expected)
 	}
 }
 
@@ -133,7 +134,8 @@ func TestParseFlagsGivenWrongFlagValue(t *testing.T) {
 
 	values, err := parseFlags(options, flags)
 
-	if !reflect.DeepEqual(err, errors.New("invalid value")) {
+	expected := errors.New(`invalid value of "--frontend" flag`)
+	if !reflect.DeepEqual(err, expected) {
 		t.Error("parseFlags must return an error")
 	}
 	if values != nil {
