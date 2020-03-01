@@ -44,9 +44,7 @@ go run github.com/shpota/goxygen init my-app
 ```
 这会在你的 `my-app` 目录下生成一个项目。  
 
-By default, a React-based project is generated. You can choose  
-from Angular, React and Vue by passing `angular`, `react` and 
-`vue` to the `--frontend` flag. For example:
+默认会生成一个使用React的项目，如果你需要生成使用其他前端框架（例如Angular、React、Vue）的项目，可通过向`--frontend`参数传入以下值`angular`、`react` 、`vue` 。例如：
 
 ```go
 go run github.com/shpota/goxygen init --frontend vue my-app
