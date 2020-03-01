@@ -427,7 +427,7 @@ module.exports = function (config) {
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 3000",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -1314,17 +1314,14 @@ services:
     "details": "An open source programming language that makes it easy to build simple and efficient software."
 });
 db.tech.insert({
-    "name": "React",
-    "details": "A JavaScript library for building user interfaces."
+    "name": "JavaScript",
+    "details": "A lightweight, interpreted, or just-in-time compiled programming language with first-class functions."
 });
 db.tech.insert({
     "name": "MongoDB",
     "details": "A general purpose, document-based, distributed database."
 });
-db.tech.insert({
-    "name": "Angular",
-    "details": "A single page application framework for building web apps."
-});`,
+`,
 		"react.webapp/.env.development": `REACT_APP_API_URL=http://localhost:8080`,
 		"react.webapp/.env.production":  `REACT_APP_API_URL=`,
 		"react.webapp/package.json": `{
@@ -2057,7 +2054,7 @@ VUE_APP_API_URL=`,
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "vue-cli-service serve",
+    "start": "vue-cli-service serve --port 3000",
     "build": "vue-cli-service build --dest build",
     "lint": "vue-cli-service lint"
   },
