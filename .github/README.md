@@ -29,12 +29,12 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Generate a Full Stack Web project with Go, React, and MongoDB in seconds.**
+**Generate a Web project with Go, Angular/React/Vue, and MongoDB in seconds.**
 
 Goxygen aims at saving your time while setting up a new project. It
 creates a skeleton of an application with all configuration done for
 you. You can start implementing your business logic straight away.
-Goxygen generates back end Go code, connects it with front end React
+Goxygen generates back end Go code, connects it with front end
 components, provides a Dockerfile for the application and creates
 docker-compose files for convenient run in development and production
 environments.
@@ -46,6 +46,14 @@ go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
 This generates a project in `my-app` folder. 
+
+By default, a React-based project is generated. You can choose  
+from Angular, React and Vue by passing `angular`, `react` and 
+`vue` to the `--frontend` flag. For example:
+
+```go
+go run github.com/shpota/goxygen init --frontend vue my-app
+```
 
 The generated project is ready to run with `docker-compose`:
 ```sh
@@ -60,7 +68,7 @@ project in its readme file.
 
 ![Showcase](showcase.gif)
 
-## Structure of a generated project
+## Structure of a generated project (React-based app)
 
     my-app
     ├── server                   # Go project files

@@ -28,43 +28,36 @@
 </h1>
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**分分钟生成一个全栈Web项目(Go，React，MongoDB)。**  
+**分分钟生成一个全栈Web项目(Go，Angular/React/Vue，MongoDB)。**  
 
-Goxygen致力于节省你搭建一个项目的时间。它自动生成一个完全  
-配置好的项目骨架，以方便你可以立即着手实现你的业务逻辑。  
-Goxygen生产后端的Go代码，并将其与前端的React组件相连，    
-并且为生成的项目提供Dockerfile和dock-compose文件，以便   
-项目在开发环境和生产环境快速运行起来。  
+Goxygen致力于节省你搭建一个项目的时间。它自动生成一个完全配置好的项目骨架，以方便你可以立即着手实现你的业务逻辑。Goxygen生产后端的Go代码，并将其与前端组件相连，并且为生成的项目提供Dockerfile和dock-compose文件，以便项目在开发环境和生产环境快速运行起来。  
 
 # 如何使用
-你需要安装Go 1.11或者更新。  
+你需要安装Go 1.11或者更新的版本。  
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
 这会在你的 `my-app` 目录下生成一个项目。  
 
+默认会生成一个使用React的项目，如果你需要生成使用其他前端框架（例如Angular、React、Vue）的项目，可通过向`--frontend`参数传入以下值`angular`、`react` 、`vue` 。例如：
+
+```go
+go run github.com/shpota/goxygen init --frontend vue my-app
+```
+
 这个项目已经可以用`docker-compose`来运行了：  
 ```sh
 cd my-app
 docker-compose up
 ```
-build完成之后，就可以在 http://localhost:8080 查看你  
-的Web项目了。    
+build完成之后，就可以在 http://localhost:8080 查看你的Web项目了。    
 
 你可以在生成的项目里的README里查看更多细节信息。  
 
 ![Showcase](showcase.gif)
 
-
-## 依赖
-
-Goxygen只是为你生成一个项目的基本框架，但不强迫你使  
-用任何特定的工具。它不会为你的项目添加任何不必要的依  
-赖，仅有的依赖只有后端的[mongo-go-driver](https://github.com/mongodb/mongo-go-driver)  
-和前端的[axios](https://github.com/axios/axios)
-
-## 生成的项目的结构  
+## 生成的项目的结构 (基于React的项目)
     my-app
     ├── server                   # Go项目文件
     │   ├── db                   # MongoDB通信 
@@ -91,13 +84,16 @@ Goxygen只是为你生成一个项目的基本框架，但不强迫你使
     └── README.md                # 如何使用生成repo的教程
 
 为了简洁性，诸如单测和样例组件的文件没有显示在这里。   
+
+## 依赖
+
+Goxygen只是为你生成一个项目的基本框架，但不强迫你使用任何特定的工具。它不会为你的项目添加任何不必要的依赖，仅有的依赖只有后端的[mongo-go-driver](https://github.com/mongodb/mongo-go-driver)和前端的[axios](https://github.com/axios/axios)
+
 ## 如何贡献
 
-如果你发现了bug或者对于如果改进项目有新的想法，[请提交一个issue](https://github.com/Shpota/goxygen/issues)，  
-我们会尽快解决。  
+如果你发现了bug或者对于如果改进项目有新的想法，[请提交一个issue](https://github.com/Shpota/goxygen/issues)，我们会尽快解决。  
 
-你也可以直接Pull Request来提交你的修改。Fork这个项目，    
-作出修改之后，发起一个Pull Request，我们会很快review它。    
+你也可以直接Pull Request来提交你的修改。Fork这个项目，作出修改之后，发起一个Pull Request，我们会很快review它。    
 
 ### 感谢
 Goxygen的logo是由[Egon Elbre](https://twitter.com/egonelbre)创作的。  
