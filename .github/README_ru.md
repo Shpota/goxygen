@@ -17,7 +17,7 @@
         <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/releases">
-        <img src="https://img.shields.io/badge/version-v0.1.0-green">
+        <img src="https://img.shields.io/badge/version-v0.2.0-green">
     </a>
     <a href="https://gitter.im/goxygen/community">
         <img src="https://badges.gitter.im/goxygen/community.svg">
@@ -101,9 +101,9 @@ http://localhost:8080.
 
 Goxygen генерирует только базовою структуру проекта и не навязывает
 вам использование специфических библиотек или утилит. Сгенерированный
-проект имеет только две необходимые зависимости: драйвер для базы
+проект имеет только две сторонние зависимости: драйвер для базы
 данных и библиотеку для асинхронных REST запросов,
-[axios](https://github.com/axios/axios), на стороне клиента.
+[axios](https://github.com/axios/axios), в React и Vue проектах.
 
 ## Как поучаствовать в разработке Goxygen
 

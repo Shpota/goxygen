@@ -17,7 +17,7 @@
         <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/releases">
-        <img src="https://img.shields.io/badge/version-v0.1.0-green">
+        <img src="https://img.shields.io/badge/version-v0.2.0-green">
     </a>
     <a href="https://gitter.im/goxygen/community">
         <img src="https://badges.gitter.im/goxygen/community.svg">
@@ -101,9 +101,10 @@ http://localhost:8080.
 
 Goxygen генерує лише базову структуру проекту і не нав'язує вам
 використання специфічних бібліотек чи утиліт. Згенерований проект
-матиме лише дві необхідні залежності: 
+матиме лише дві сторонні залежності: 
 [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) та
-[axios](https://github.com/axios/axios) для асинхронних REST запитів.
+[axios](https://github.com/axios/axios) для асинхронних REST запитів
+(для React i Vue проектів).
 
 ## Як долучитися до проекту
 

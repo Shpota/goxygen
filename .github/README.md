@@ -17,7 +17,7 @@
         <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/releases">
-        <img src="https://img.shields.io/badge/version-v0.1.0-green">
+        <img src="https://img.shields.io/badge/version-v0.2.0-green">
     </a>
     <a href="https://gitter.im/goxygen/community">
         <img src="https://badges.gitter.im/goxygen/community.svg">
@@ -102,20 +102,20 @@ for simplicity.
 
 Goxygen generates a basic structure of a project and doesn't force you
 to use a specific set of tools. That's why it doesn't bring unneeded
-dependencies to your project. The only two dependencies are
+dependencies to your project. It uses only 
 [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) on the
-back end side and [axios](https://github.com/axios/axios) on the front
-end side.
+back end side and [axios](https://github.com/axios/axios) in React
+and Vue projects. Angular projects use only Angular specific libraries.
 
 ## How to contribute
 
 If you found a bug or have an idea on how to improve the project
 [open an issue](https://github.com/Shpota/goxygen/issues)
-and we will fix it as soon as possible.
-
-You can also propose your changes via a Pull Request. Fork the
-repository, make changes, send us a pull request and we'll
-review it shortly.
+and we will fix it as soon as possible. You can also propose your
+changes via a Pull Request. Fork the repository, make changes, send
+us a pull request and we'll review it shortly. We also have a
+[Gitter chat](https://gitter.im/goxygen/community) where we discuss
+all the changes.
 
 ### Credits
 Goxygen's logo was created by [Egon Elbre](https://twitter.com/egonelbre).
