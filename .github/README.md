@@ -32,7 +32,7 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Generate a Web project with Go, Angular/React/Vue, and MongoDB in seconds.**
+**Generate a Web project with Go, Angular/React/Vue, and MongoDB.**
 
 Goxygen aims at saving your time while setting up a new project. It
 creates a skeleton of an application with all configuration done for
