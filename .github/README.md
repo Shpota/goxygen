@@ -11,6 +11,9 @@
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_zh.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
     </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ko.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/kr.svg">
+    </a>
     <br>
     Goxygen
     <a href="https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild">
@@ -64,7 +67,7 @@ After the build is completed, the application is accessible
 on http://localhost:8080.
 
 You can find more details on how to work with the generated
-project in its readme file. 
+project in its README file. 
 
 ![Showcase](showcase.gif)
 

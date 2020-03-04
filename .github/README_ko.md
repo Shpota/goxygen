@@ -1,6 +1,6 @@
 <h1 align="center">
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README.md">
-        <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ua.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/ua.svg">
@@ -11,8 +11,8 @@
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_zh.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_zh.md">
-        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/kr.svg">
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ko.md">
+        <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/kr.svg">
     </a>
     <br>
     Goxygen
@@ -62,7 +62,7 @@ docker-compose up
 빌드가 끝나면, 어플리케이션은 http://localhost:8080에서 연결이 
 가능합니다. 
 
-사용자는 프로젝트의 readme 파일에서 더 자세한 사항을 알아볼 수 있습니다
+사용자는 프로젝트의 README 파일에서 더 자세한 사항을 알아볼 수 있습니다
 
 ![Showcase](showcase.gif)
 
