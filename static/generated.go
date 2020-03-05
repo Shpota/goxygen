@@ -29,7 +29,7 @@ COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.14.0-alpine AS GO_BUILD
+FROM golang:1.13.8-alpine AS GO_BUILD
 RUN apk update && apk add build-base
 COPY server /server
 WORKDIR /server
@@ -1928,7 +1928,7 @@ func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
 `,
 		"server/go.mod": `module project-name
 
-go 1.14
+go 1.13
 
 require go.mongodb.org/mongo-driver v1.3.0
 `,
