@@ -1,0 +1,34 @@
+body {
+  margin-top: 5%;
+  padding-right: 5%;
+  padding-left: 5%;
+  font-size: larger;
+}
+
+@media screen and (min-width: 800px) {
+  body {
+      padding-right: 15%;
+      padding-left: 15%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  body {
+      padding-right: 30%;
+      padding-left: 30%;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+  background-color: #b3e6ff;
+}
+
+.title {
+  text-align: center;
+}
+
+.logo {
+  text-align: center;
+}
