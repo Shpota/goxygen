@@ -2024,7 +2024,7 @@ import '@testing-library/jest-dom/extend-expect';
     margin-top: 5px;
 }
 `,
-		"react-ts.webapp/src/tech/Tech.ts": `import React, {Component} from "react";
+		"react-ts.webapp/src/tech/Tech.tsx": `import React, {Component} from "react";
 import axios from "axios";
 import "./Tech.css"
 
