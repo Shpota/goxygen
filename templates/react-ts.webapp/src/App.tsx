@@ -14,7 +14,7 @@ function App() {
             <p/>The following list of technologies comes from
             a REST API call to the Go-based back end. Find
             and change the corresponding code
-            in <code>webapp/src/tech/Tech.js
+            in <code>webapp/src/tech/Tech.tsx
             </code> and <code>server/web/app.go</code>.
             <Tech/>
         </div>
