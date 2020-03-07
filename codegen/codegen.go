@@ -2,12 +2,13 @@ package codegen
 
 import (
 	"fmt"
-	"github.com/shpota/goxygen/static"
 	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
 	"strings"
+
+	"github.com/shpota/goxygen/static"
 )
 
 type generator struct {
@@ -94,4 +95,4 @@ func (g generator) needed(path string) bool {
 	return true
 }
 
-var frameworks = []string{"angular", "react", "vue"}
+var frameworks = []string{"angular", "react", "react-ts", "vue"}

@@ -79,7 +79,7 @@ func parseFlags(input []string, flags []flag) (map[string]string, error) {
 
 func flags() []flag {
 	return []flag{
-		{"--frontend", []string{"angular", "react", "vue"}, "react"},
+		{"--frontend", []string{"angular", "react", "react-ts", "vue"}, "react"},
 	}
 }
 
@@ -90,7 +90,7 @@ const usage = `Usage:
 Options:
 
   --frontend <framework-name>     Specify the front end framework. Possible ` +
-	`options are "angular", "react" and "vue". If not specified "react" is used.`
+	`options are "angular", "react", "react-ts" and "vue". If not specified "react" is used.`
 
 const invalidName = "Project name is not valid. The allowed symbols are " +
 	"letters, numbers, underscores, and dashes."
