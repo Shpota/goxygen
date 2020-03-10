@@ -23,7 +23,7 @@ func Generate(projectName, frontend string) {
 func (g generator) generate() {
 	fmt.Println("Generating", g.projectName)
 	for path, srcText := range static.Sources() {
-		srcText = strings.ReplaceAll(srcText, "project-name", g.projectName)
+		srcText = strings.Replace(srcText, "project-name", g.projectName, -1)
 		binary := []byte(srcText)
 		g.processFile(path, binary)
 	}
