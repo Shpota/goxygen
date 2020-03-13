@@ -1,0 +1,55 @@
+name: verify-templates
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 14 * * *'
+jobs:
+
+  angular-build:
+    name: Generate and build Angular project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.14
+        id: go
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Generate Angular project
+        run: go run main.go init --frontend angular app
+      - name: Build the Docker image
+        run: cd app && docker build .
+
+  react-build:
+    name: Generate and build React project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.14
+        id: go
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Generate React project
+        run: go run main.go init --frontend react app
+      - name: Build the Docker image
+        run: cd app && docker build .
+
+  vue-build:
+    name: Generate and build Vue project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.14
+        id: go
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Generate Vue project
+        run: go run main.go init --frontend vue app
+      - name: Build the Docker image
+        run: cd app && docker build .
