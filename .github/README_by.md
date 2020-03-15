@@ -1,0 +1,127 @@
+<h1 align="center">
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ua.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/ua.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ru.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/ru.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_zh.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ko.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/kr.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_pt-br.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/br.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_by.md">
+        <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/by.svg">
+    </a>
+    <br>
+    Goxygen
+    <a href="https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild">
+        <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/releases">
+        <img src="https://img.shields.io/badge/version-v0.2.1-green">
+    </a>
+    <a href="https://gitter.im/goxygen/community">
+        <img src="https://badges.gitter.im/goxygen/community.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/pulls">
+        <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
+    </a>
+</h1>
+
+<img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
+
+**Goxygen генеруе Web праекты на Go, Angular/React/Vue і MongoDB.**
+
+Goxygen захавае ваш час пры стварэнні новых дадаткаў. Ён генеруе 
+базавую структуру Web праекта і дазваляе адразу ж перайсці да 
+рэалізацыі бізнес логікі без клопатаў аб канфігурацыі. Goxygen
+стварае back end код на Go, звязвае яго з front end кампанентамі,
+дадае `Dockerfile` і `docker-compose` для зручнага запуску
+лакальна і ў production асяроддзі.
+
+## Выкарыстанне
+
+Вам трэба мець Go 1.11 або навей вэрсію.
+```go
+go get -u github.com/shpota/goxygen
+go run github.com/shpota/goxygen init my-app
+```
+У выніку будзе згенераваны праект у дырэкторыі `my-app`.
+
+React выкарыстоўваецца па змаўчанню. Вы можаце выбраць Angular, React
+або Vue, перадаў `angular`, `react` або `vue` як значэнне для
+сцягу `--frontend`. Напрыклад:
+
+```go
+go run github.com/shpota/goxygen init --frontend vue my-app
+```
+
+Сфарміраваны праект гатовы да запуску з `docker-compose`: 
+```sh
+cd my-app
+docker-compose up
+```
+Пасля завяршэння зборкі, дадатак будзе даступны на
+http://localhost:8080.
+
+Больш дэталяў пра дадатак і як з ім працаваць можна знайсці ў 
+яго README.
+
+![Showcase](showcase.gif)
+
+## Структура генераванага праекта (прыкладанне на аснове React)
+
+    my-app
+    ├── server                   # серверная частка дадатку (Go)
+    │   ├── db                   # камунікацыі з MongoDB
+    │   ├── model                # даменныя аб'екты
+    │   ├── web                  # REST API і Web сервер
+    │   ├── server.go            # ўваходная кропка сервернага кода
+    │   └── go.mod               # апісанне Go модуля і залежнасці
+    ├── webapp                    
+    │   ├── public               # іконкі, статычныя файлы і index.html
+    │   ├── src                       
+    │   │   ├── App.js           # галоўны React кампанент
+    │   │   ├── App.css          # стылі галоўнага кампанента
+    │   │   ├── index.js         # ўходная кропка front end дадатку          
+    │   │   └── index.css        # глабальныя стылі
+    │   ├── package.json         # front end залежнасці
+    │   ├── .env.development     # API URL для запуску ў development асяроддзі
+    │   └── .env.production      # API URL для запуску ў production асяроддзі
+    ├── Dockerfile               # збірае front end і back end разам
+    ├── docker-compose.yml       # настройкі для запуску ў production асяроддзі
+    ├── docker-compose-dev.yml   # настройкі для запуску лакальнай базы даных
+    ├── init-db.js               # напаўняе базу даных пачатковымі данымі
+    ├── .dockerignore            # вызначае файлы, якія ігнаруюцца ў Docker зборцы
+    ├── .gitignore
+    └── README.md                # інструкцыя па выкарыстанні праекта
+
+Юніт тэсты і дэманстрацыйныя кампаненты не ўключаны ў структуру для прастаты.
+
+## Залежнасці
+
+Goxygen генеруе толькі базавая структуру праекта і не навязвае
+вам выкарыстанне спецыфічных бібліятэк або утыліт. Згенераваны
+праект будзе мець толькі два старонніх залежнасці: драйвер для базы
+даных і бібліятэку для асінхронных REST запытаў,
+[axios](https://github.com/axios/axios), для праектаў React і Vue.
+
+## Як далучыцца да праекта
+
+Калі вы знайшлі памылку, ці хочаце прапанаваць паляпшэння,
+[адкрыйце issue](https://github.com/Shpota/goxygen/issues) і мы з гэтым 
+разбярэмся. Таксама можаце прапанаваць свае змены
+[у нашым Gitter чаце](https://gitter.im/goxygen/community), або
+стварыўшы Pull Request. 
+
+### Падзякі
+
+Лагатып Goxygen стварыў [Egon Elbre](https://twitter.com/egonelbre).
