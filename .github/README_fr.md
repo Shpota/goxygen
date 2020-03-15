@@ -1,15 +1,15 @@
 <h1 align="center">
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README.md">
-        <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_zh.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ua.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/ua.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ru.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/ru.svg">
-    </a>
-    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_zh.md">
-        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ko.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/kr.svg">
@@ -18,8 +18,8 @@
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/br.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_fr.md">
-            <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/fr.svg">
-        </a>
+        <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/fr.svg">
+    </a>
     <br>
     Goxygen
     <a href="https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild">
@@ -43,18 +43,22 @@
 Goxygen vise à vous faire gagner du temps lors de la mise en place d'un nouveau projet. Il
 crée un squelette d'application avec une configuration complète par défaut.
 Vous pouvez commencer immédiatement à implémenter votre logique métier.
-Goxygen génère du code Backend en Go, le connecte aux composants Frontend, fournit un Dockerfile pour l'application et crée des fichiers Docker-compose pour une exécution pratique dans des environnements de développement et de production.
+Goxygen génère du code Backend en Go, le connecte aux composants Frontend, fournit un 
+Dockerfile pour l'application et crée des fichiers Docker-compose pour une exécution pratique 
+dans des environnements de développement et de production.
 
 ## Guide d'utilisation
-Vous devez disposer de la version 1.11 ou supérieure de Go sur votre machine
+
+Vous devez disposer de la version 1.11 ou supérieure de Go sur votre machine.
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
-Ces commandes génèrent un projet dans le dossier `my-app`
+Ces commandes génèrent un projet dans le dossier `my-app`.
 
 Par défaut, le projet est généré avec un frontend React. Vous pouvez choisir parmis
-Angular, React ou Vue en passant les arguments `angular`, `react` ou `vue` au flag `--frontend`. Par exemple:
+Angular, React ou Vue en passant les arguments `angular`, `react` ou `vue` au flag `--frontend`. 
+Par exemple:
 
 ```go
 go run github.com/shpota/goxygen init --frontend vue my-app
@@ -104,14 +108,22 @@ pour des raisons de simplicité.
 
 ## Dépendances
 
-Goxygen génére un projet avec une structure basique et ne vous force pas à utiliser des outils spécifiques. C'est pour cela que les seules dépendances utilisées dans le projet sont [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) côté backend et [axios](https://github.com/axios/axios) côté fronted les projets React et Vue. Les projets Angular utilisent leurs propres librairies.
+Goxygen génére un projet avec une structure basique et ne vous force pas à utiliser des 
+outils spécifiques. C'est pour cela que les seules dépendances utilisées dans le projet 
+sont [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) côté backend et 
+[axios](https://github.com/axios/axios) côté fronted les projets React et Vue. Les projets 
+Angular utilisent leurs propres librairies.
 
 ## Comment contribuer
 
 Si vous trouvez un bug ou avez une idée sur comment améliorer le projet
 [créez une issue](https://github.com/Shpota/goxygen/issues)
 et nous corrigerons le problème le plus rapidement possible. Vous pouvez aussi
-proposer vos propres changement avec des Pull Request. Faites un Fork du dépôt, effectuer vos modifications, envoyez-nous un pull request et nous le consulterons dans les plus brefs délais. Nous disposons aussi d'un [chat Gitter](https://gitter.im/goxygen/community) où nous discutons tous les changements.
+proposer vos propres changement avec des Pull Request. Faites un Fork du dépôt, 
+effectuer vos modifications, envoyez-nous un pull request et nous le consulterons dans 
+les plus brefs délais. Nous disposons aussi d'un [chat Gitter](https://gitter.im/goxygen/community) 
+où nous discutons tous les changements.
 
 ### Crédits
+
 Le logo de Goxygen à été crée par [Egon Elbre](https://twitter.com/egonelbre).
