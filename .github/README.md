@@ -2,14 +2,14 @@
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README.md">
         <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
     </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_zh.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
+    </a>
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ua.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/ua.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ru.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/ru.svg">
-    </a>
-    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_zh.md">
-        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_ko.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/kr.svg">
@@ -19,6 +19,9 @@
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_by.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/by.svg">
+    </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_fr.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/fr.svg">
     </a>
     <br>
     Goxygen
