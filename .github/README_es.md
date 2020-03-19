@@ -125,7 +125,7 @@ Proyectos en Angular solo utilizan librerias especificas.
 
 Si encuentras algun bug o tiene ideas para mejorar el proyecto
 [abre una hilo](https://github.com/Shpota/goxygen/issues) y lo
-solucionaremos lo antes posible. tambien puedes proponer cambios
+solucionaremos lo antes posible. Tambien puedes proponer cambios
 a traves de pull request. Haz un fork, realiza cambios y mandanos
 un pull request y lo revisaremos. Tambien tenemos un 
 [Gitter chat](https://gitter.im/goxygen/community) donde discutimos los cambios.
