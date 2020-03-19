@@ -90,7 +90,7 @@ Puedes encontrar más detalles en como trabajar con el proyecto generado en su a
     │   ├── db                   # comunicaciones de MongoDB
     │   ├── model                # objetos de dominio
     │   ├── web                  # REST APIs, web server
-    │   ├── server.go            # l punto de entrada del servidor
+    │   ├── server.go            # el punto de entrada del servidor
     │   └── go.mod               # Dependencias del servidor
     ├── webapp                    
     │   ├── public               # iconos, archivos estaticos e index.html
