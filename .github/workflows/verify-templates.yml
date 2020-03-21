@@ -7,7 +7,7 @@ on:
 jobs:
 
   angular-build:
-    name: Generate and build Angular project
+    name: Build Angular project
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go
@@ -23,7 +23,7 @@ jobs:
         run: cd app && docker build .
 
   react-build:
-    name: Generate and build React project
+    name: Build React project
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go
@@ -39,7 +39,7 @@ jobs:
         run: cd app && docker build .
 
   vue-build:
-    name: Generate and build Vue project
+    name: Build Vue project
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go

@@ -54,5 +54,4 @@ func TestApp_GetTechnologies_WithDBError(t *testing.T) {
 	if w.Code != http.StatusInternalServerError {
 		t.Errorf("handler returned wrong status code: got %v want %v", w.Code, http.StatusOK)
 	}
-
 }
