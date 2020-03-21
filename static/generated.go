@@ -24,18 +24,18 @@ webapp/node_modules
 webapp/build
 webapp/npm-debug.log*
 `,
-		"Dockerfile": `FROM node:12.16 AS JS_BUILD
+		"Dockerfile": `FROM node:12.16.1-alpine3.11 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.13.8-alpine AS GO_BUILD
+FROM golang:1.13.9-alpine AS GO_BUILD
 RUN apk update && apk add build-base
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.11
+FROM alpine:3.11.3
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -435,38 +435,38 @@ module.exports = function (config) {
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~8.2.14",
-    "@angular/common": "~8.2.14",
-    "@angular/compiler": "~8.2.14",
-    "@angular/core": "~8.2.14",
-    "@angular/forms": "~8.2.14",
-    "@angular/platform-browser": "~8.2.14",
-    "@angular/platform-browser-dynamic": "~8.2.14",
-    "@angular/router": "~8.2.14",
-    "rxjs": "~6.4.0",
-    "tslib": "~1.10.0",
-    "zone.js": "~0.9.1"
+    "@angular/animations": "~9.0.7",
+    "@angular/common": "~9.0.7",
+    "@angular/compiler": "~9.0.7",
+    "@angular/core": "~9.0.7",
+    "@angular/forms": "~9.0.7",
+    "@angular/platform-browser": "~9.0.7",
+    "@angular/platform-browser-dynamic": "~9.0.7",
+    "@angular/router": "~9.0.7",
+    "rxjs": "~6.5.4",
+    "tslib": "~1.11.1",
+    "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.23",
-    "@angular/cli": "~8.3.23",
-    "@angular/compiler-cli": "~8.2.14",
-    "@angular/language-service": "~8.2.14",
-    "@types/node": "~8.9.4",
-    "@types/jasmine": "~3.3.8",
+    "@angular-devkit/build-angular": "~0.900.7",
+    "@angular/cli": "~9.0.7",
+    "@angular/compiler-cli": "~9.0.7",
+    "@angular/language-service": "~9.0.7",
+    "@types/node": "~13.9.2",
+    "@types/jasmine": "~3.5.9",
     "@types/jasminewd2": "~2.0.3",
-    "codelyzer": "~5.0.0",
-    "jasmine-core": "~3.4.0",
+    "codelyzer": "~5.2.1",
+    "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~4.1.0",
-    "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "~2.0.1",
-    "karma-jasmine": "~2.0.1",
-    "karma-jasmine-html-reporter": "~1.4.0",
+    "karma": "~4.4.1",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.1",
+    "karma-jasmine": "~3.1.1",
+    "karma-jasmine-html-reporter": "~1.5.2",
     "protractor": "~5.4.0",
-    "ts-node": "~7.0.0",
+    "ts-node": "~8.7.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.7.5"
   }
 }
 `,
@@ -1330,13 +1330,13 @@ db.tech.insert({
   "private": true,
   "dependencies": {
     "axios": "~0.19.2",
-    "react": "~16.12.0",
-    "react-dom": "~16.12.0",
-    "react-scripts": "3.4.0"
+    "react": "~16.13.1",
+    "react-dom": "~16.13.1",
+    "react-scripts": "3.4.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "~4.2.4",
-    "@testing-library/react": "~9.4.0",
+    "@testing-library/react": "~9.5.0",
     "@testing-library/user-event": "~7.2.1"
   },
   "scripts": {
@@ -1930,7 +1930,7 @@ func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
 
 go 1.13
 
-require go.mongodb.org/mongo-driver v1.3.0
+require go.mongodb.org/mongo-driver v1.3.1
 `,
 		"server/model/technology.go": `package model
 
@@ -2036,6 +2036,64 @@ func disableCors(h http.HandlerFunc) http.HandlerFunc {
 		w.Header().Set("Access-Control-Allow-Methods", "*")
 		w.Header().Set("Access-Control-Allow-Headers", "*")
 		h(w, r)
+	}
+}
+`,
+		"server/web/app_test.go": `package web
+
+import (
+	"errors"
+	"net/http"
+	"net/http/httptest"
+	"project-name/model"
+	"testing"
+)
+
+type MockDb struct {
+	tech []*model.Technology
+	err  error
+}
+
+func (m *MockDb) GetTechnologies() ([]*model.Technology, error) {
+	return m.tech, m.err
+}
+
+func TestApp_GetTechnologies(t *testing.T) {
+	app := App{d: &MockDb{
+		tech: []*model.Technology{
+			{"Tech1", "Details1"},
+			{"Tech2", "Details2"},
+		},
+	}}
+
+	r, _ := http.NewRequest("GET", "/api/technologies", nil)
+	w := httptest.NewRecorder()
+
+	app.GetTechnologies(w, r)
+
+	if w.Code != http.StatusOK {
+		t.Errorf("handler returned wrong status code: got %v want %v", w.Code, http.StatusOK)
+	}
+
+	want := ` + "`" + `[{"name":"Tech1","details":"Details1"},{"name":"Tech2","details":"Details2"}]` + "`" + ` + "\n"
+	if got := w.Body.String(); got != want {
+		t.Errorf("handler returned unexpected body: got %v want %v", got, want)
+	}
+}
+
+func TestApp_GetTechnologies_WithDBError(t *testing.T) {
+	app := App{d: &MockDb{
+		tech: nil,
+		err:  errors.New("unknown error"),
+	}}
+
+	r, _ := http.NewRequest("GET", "/api/technologies", nil)
+	w := httptest.NewRecorder()
+
+	app.GetTechnologies(w, r)
+
+	if w.Code != http.StatusInternalServerError {
+		t.Errorf("handler returned wrong status code: got %v want %v", w.Code, http.StatusOK)
 	}
 }
 `,

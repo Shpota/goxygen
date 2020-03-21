@@ -32,13 +32,13 @@
         <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/releases">
-        <img src="https://img.shields.io/badge/version-v0.2.1-green">
+        <img src="https://img.shields.io/badge/version-v0.2.2-green">
     </a>
     <a href="https://gitter.im/goxygen/community">
         <img src="https://badges.gitter.im/goxygen/community.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/pulls">
-        <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
+        <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
     </a>
 </h1>
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
