@@ -44,46 +44,44 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Generate a Web project with Go, Angular/React/Vue, and MongoDB in seconds.**
+**Go、Angular / React / Vue、MongoDB を使用するWebプロジェクトを生成します。**
 
-Goxygen aims at saving your time while setting up a new project. It
-creates a skeleton of an application with all configuration done for
-you. You can start implementing your business logic straight away.
-Goxygen generates back end Go code, connects it with front end
-components, provides a Dockerfile for the application and creates
-docker-compose files for convenient run in development and production
-environments.
+Goxygen は、新しいプロジェクトを始める際の時間の節約を目的としており、すべて
+の設定が行われたアプリケーションの雛形を作成します。ビジネスロジックの実装をす
+ぐに開始できます。Goxygen はバックエンドの Go 言語のコードを生成し、フロントエ
+ンドコンポーネントに接続します。加えて、アプリケーション用の Dockerfile を提供
+し、開発および本番環境での実行に便利な docker-compose ファイルを作成します。
 
-## How to use
-You need to have Go 1.11 or newer on your machine.
+## 使用方法
+Go 1.11 以上が必要です。
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
-This generates a project in `my-app` folder. 
+`my-app` プロジェクトを `my-app` フォルダに生成します。
 
-By default, a React-based project is generated. You can choose  
-from Angular, React and Vue by passing `angular`, `react` and 
-`vue` to the `--frontend` flag. For example:
+デフォルトでは、React ベースのプロジェクトが生成されますが、`--frontend` フラグに
+`angular`、`react`、`vue` を渡すことで、Angular、React、Vue から選択できます。
+例:
 
 ```go
 go run github.com/shpota/goxygen init --frontend vue my-app
 ```
 
-The generated project is ready to run with `docker-compose`:
+生成されたプロジェクトは、`docker-compse` で実行する準備が整っています:
 ```sh
 cd my-app
 docker-compose up
 ```
-After the build is completed, the application is accessible
-on http://localhost:8080.
+ビルドが完了後、アプリケーションは http://localhost:8080 でアクセスできるように
+なります。
 
-You can find more details on how to work with the generated
-project in its README file. 
+生成されたプロジェクトの操作方法の詳細については、READMEファイルを参照してくだ
+さい。
 
 ![Showcase](showcase.gif)
 
-## Structure of a generated project (React-based app)
+## 生成されるプロジェクトの構造 (Reactベースアプリケーション)
 
     my-app
     ├── server                   # Go project files
