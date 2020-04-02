@@ -44,13 +44,14 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Go、Angular / React / Vue、MongoDB を使用するWebプロジェクトを生成します。**
+**Go、Angular / React / Vue、MongoDB を用いた Web プロジェクトを生成します。**
 
-Goxygen は、新しいプロジェクトを始める際の時間の節約を目的としており、すべて
-の設定が行われたアプリケーションの雛形を作成します。ビジネスロジックの実装をす
-ぐに開始できます。Goxygen はバックエンドの Go 言語のコードを生成し、フロントエ
-ンドコンポーネントに接続します。加えて、アプリケーション用の Dockerfile を提供
-し、開発および本番環境での実行に便利な docker-compose ファイルを作成します。
+Goxygen は、新しいプロジェクトを始める際の時間の節約を目的としており、
+すべての設定が済まされたアプリケーションの雛形を作成します。ビジネスロジック
+の実装をすぐに開始できます。Goxygen はバックエンドの Go 言語のコードを
+生成し、それをフロントエンドコンポーネントと関連づけます。加えて、
+アプリケーション用の Dockerfileを提供し、開発および本番環境での実行に
+便利な docker-compose ファイルを作成します。
 
 ## 使用方法
 Go 1.11 以上が必要です。
@@ -60,8 +61,9 @@ go run github.com/shpota/goxygen init my-app
 ```
 `my-app` プロジェクトを `my-app` フォルダに生成します。
 
-デフォルトでは、React ベースのプロジェクトが生成されますが、`--frontend` フラグに
-`angular`、`react`、`vue` を渡すことで、Angular、React、Vue から選択できます。
+デフォルトでは、React ベースのプロジェクトが生成されますが、
+`--frontend` フラグに `angular`、`react`、`vue` を渡すことで、Angular、
+React、Vue から選択できます。
 例:
 
 ```go
@@ -76,8 +78,8 @@ docker-compose up
 ビルドが完了後、アプリケーションは http://localhost:8080 でアクセスできるように
 なります。
 
-生成されたプロジェクトの操作方法の詳細については、READMEファイルを参照してくだ
-さい。
+生成されたプロジェクトの操作方法に関する詳細については、READMEファイルを参照し
+てください。
 
 ![Showcase](showcase.gif)
 
@@ -108,7 +110,7 @@ docker-compose up
     ├── .gitignore
     └── README.md                # 生成したリポジトリの使用方法に関するガイド
 
-簡単にするため、ここには単体テストやサンプルコンポーネントなどの
+単純にするため、ここには単体テストやサンプルコンポーネントなどの
 ファイルは含まれていません。
 
 ## 依存関係
