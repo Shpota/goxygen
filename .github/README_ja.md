@@ -84,41 +84,42 @@ docker-compose up
 ## 生成されるプロジェクトの構造 (Reactベースアプリケーション)
 
     my-app
-    ├── server                   # Go project files
+    ├── server                   # Go プロジェクトファイル
     │   ├── db                   # MongoDB communications
     │   ├── model                # domain objects
-    │   ├── web                  # REST APIs, web server
-    │   ├── server.go            # the starting point of the server
-    │   └── go.mod               # server dependencies
+    │   ├── web                  # REST APIs, web サーバ
+    │   ├── server.go            # サーバの開始点
+    │   └── go.mod               # サーバ依存関係
     ├── webapp                    
-    │   ├── public               # icons, static files, and index.html
+    │   ├── public               # アイコン、静的ファイル、index.html
     │   ├── src                       
-    │   │   ├── App.js           # the main React component
-    │   │   ├── App.css          # App component-specific styles
-    │   │   ├── index.js         # the entry point of the application          
-    │   │   └── index.css        # global styles
-    │   ├── package.json         # front end dependencies
-    │   ├── .env.development     # holds API endpoint for dev environment
-    │   └── .env.production      # API endpoint for prod environment
-    ├── Dockerfile               # builds back end and front end together
-    ├── docker-compose.yml       # prod environment deployment descriptor
-    ├── docker-compose-dev.yml   # runs local MongoDB for development needs
-    ├── init-db.js               # creates a MongoDB collection with test data
-    ├── .dockerignore            # specifies files ignored in Docker builds
+    │   │   ├── App.js           # 主要な React コンポーネント
+    │   │   ├── App.css          # アプリコンポーネント固有のスタイル
+    │   │   ├── index.js         # アプリケーションのエントリポイント
+    │   │   └── index.css        # 全体のスタイル
+    │   ├── package.json         # フロントエンド依存関係
+    │   ├── .env.development     # 開発環境の API エンドポイント保持
+    │   └── .env.production      # プロダクション環境の API エンドポイント
+    ├── Dockerfile               # バックエンド・フロントエンドを共に構築します
+    ├── docker-compose.yml       # プロダクション環境の配置記述
+    ├── docker-compose-dev.yml   # 開発に必要なローカルの MongoDB を実行する
+    ├── init-db.js               # テストデータで MongoDB コレクションを作成します
+    ├── .dockerignore            # Docker のビルドで無視するファイルを指定します
     ├── .gitignore
-    └── README.md                # guide on how to use the generated repo
+    └── README.md                # 生成したリポジトリの使用方法に関するガイド
 
-Files such as unit tests or sample components are not included here
-for simplicity.
+簡単にするため、ここには単体テストやサンプルコンポーネントなどの
+ファイルは含まれていません。
 
-## Dependencies
+## 依存関係
 
-Goxygen generates a basic structure of a project and doesn't force you
-to use a specific set of tools. That's why it doesn't bring unneeded
-dependencies to your project. It uses only 
-[mongo-go-driver](https://github.com/mongodb/mongo-go-driver) on the
-back end side and [axios](https://github.com/axios/axios) in React
-and Vue projects. Angular projects use only Angular specific libraries.
+Goxygen は、プロジェクトの基本的な構造を生成し、特定のツール群を使用する
+ように強制しません。それが、プロジェクトに不要な依存関係をもたらさない
+理由です。バックエンド側では
+[mongo-go-driver](https://github.com/mongodb/mongo-go-driver) を
+React 及び Vue プロジェクトでは、[axios](https://github.com/axios/axios) 
+のみを使用します。Angular プロジェクトでは、Angular 固有のライブラリのみ
+を使用します。
 
 ## How to contribute
 
