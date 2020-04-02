@@ -86,7 +86,7 @@ docker-compose up
 
     my-app
     ├── server                   # Go プロジェクトファイル
-    │   ├── db                   # MongoDB communications
+    │   ├── db                   # MongoDB との通信
     │   ├── model                # domain objects
     │   ├── web                  # REST APIs, web サーバ
     │   ├── server.go            # サーバの開始点
