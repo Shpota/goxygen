@@ -46,12 +46,12 @@
 
 **Go、Angular / React / Vue、MongoDB を用いた Web プロジェクトを生成します。**
 
-Goxygen は、新しいプロジェクトを始める際の時間の節約を目的としており、
-すべての設定が済まされたアプリケーションの雛形を作成します。ビジネスロジック
-の実装をすぐに開始できます。Goxygen はバックエンドの Go 言語のコードを
-生成し、それをフロントエンドコンポーネントと関連づけます。加えて、
-アプリケーション用の Dockerfileを提供し、開発および本番環境での実行に
-便利な docker-compose ファイルを作成します。
+Goxygen は、新しいプロジェクトを始める際の時間の節約を目的としており、すべての
+設定が済まされたアプリケーションの雛形を作成します。ビジネスロジックの実装をす
+ぐに開始できます。Goxygen はバックエンドの Go 言語のコードを生成し、それをフロ
+ントエンドコンポーネントと関連づけます。加えて、アプリケーション用の Dockerfile
+を提供し、開発および本番環境での実行に便利な docker-compose ファイルを作成しま
+す。
 
 ## 使用方法
 Go 1.11 以上が必要です。
@@ -61,9 +61,8 @@ go run github.com/shpota/goxygen init my-app
 ```
 `my-app` プロジェクトを `my-app` フォルダに生成します。
 
-デフォルトでは、React ベースのプロジェクトが生成されますが、
-`--frontend` フラグに `angular`、`react`、`vue` を渡すことで、Angular、
-React、Vue から選択できます。
+デフォルトでは、React ベースのプロジェクトが生成されますが、`--frontend` フラグ
+に `angular`、`react`、`vue` を渡すことで、Angular、React、Vue から選択できます。
 例:
 
 ```go
@@ -110,28 +109,26 @@ docker-compose up
     ├── .gitignore
     └── README.md                # 生成したリポジトリの使用方法に関するガイド
 
-単純にするため、ここには単体テストやサンプルコンポーネントなどの
-ファイルは含まれていません。
+単純にするため、ここには単体テストやサンプルコンポーネントなどのファイルは含ま
+れていません。
 
 ## 依存関係
 
-Goxygen は、プロジェクトの基本的な構造を生成し、特定のツール群を使用する
-ように強制しません。それが、プロジェクトに不要な依存関係をもたらさない
-理由です。バックエンド側では
-[mongo-go-driver](https://github.com/mongodb/mongo-go-driver) を
-React 及び Vue プロジェクトでは、[axios](https://github.com/axios/axios) 
-のみを使用します。Angular プロジェクトでは、Angular 固有のライブラリのみ
-を使用します。
+Goxygen は、プロジェクトの基本的な構造を生成し、特定のツール群を使用するように
+強制しません。それが、プロジェクトに不要な依存関係をもたらさない理由です。バッ
+クエンド側では [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) を、
+React 及び Vue プロジェクトでは、[axios](https://github.com/axios/axios) のみを
+使用します。Angular プロジェクトでは、Angular 固有のライブラリのみを使用します。
 
-## How to contribute
+## どのようにコントリビュートするか
 
-If you found a bug or have an idea on how to improve the project
-[open an issue](https://github.com/Shpota/goxygen/issues)
-and we will fix it as soon as possible. You can also propose your
-changes via a Pull Request. Fork the repository, make changes, send
-us a pull request and we'll review it shortly. We also have a
-[Gitter chat](https://gitter.im/goxygen/community) where we discuss
-all the changes.
+バグを発見した場合、またはプロジェクトを改善する方法についてアイディアがある場
+合 [open an issue](https://github.com/Shpota/goxygen/issues)、できるだけ早く修
+正します。Pull Request を通して変更を提案することもできます。リポジトリを Fork
+し、変更を加え、Pull Request を送信してください。すぐに確認をします。また、あら
+ゆる変更点について話し合う [Gitter chat](https://gitter.im/goxygen/community)
+もあります。
 
-### Credits
-Goxygen's logo was created by [Egon Elbre](https://twitter.com/egonelbre).
+### クレジット
+Goxygen のロゴは、[Egon Elbre](https://twitter.com/egonelbre) によって作成され
+ました。
