@@ -50,7 +50,7 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Goxygen генерує Web проекти з Go, Angular/React/Vue та MongoDB.**
+**Згенеруйте Web проект з використанням Go та сучасних SPA фреймворків.**
 
 Goxygen зберігає ваш час при створенні нових проектів. Він
 генерує базову структуру проекту і дозволяє вам відразу ж перейти до
@@ -58,6 +58,32 @@ Goxygen зберігає ваш час при створенні нових пр
 back end код на Go, зв'язує його з front end компонентами, додає
 `Dockerfile` та `docker-compose` для зручного запуску локально та в
 production середовищі.
+
+<table>
+    <thead>
+    <tr align="center">
+        <td colspan=4><b>Доступні технології</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center">
+        <td align="center">Front End</td>
+        <td>Angular</td>
+        <td>React</td>
+        <td>Vue</td>
+    </tr>
+    <tr align="center">
+        <td>Back End</td>
+        <td colspan=3>Go</td>
+    </tr>
+    <tr align="center">
+        <td>База даних</td>
+        <td>MongoDB</td>
+        <td>MySQL</td>
+        <td>PostgreSQL</td>
+    </tr>
+    </tbody>
+</table>
 
 ## Як користуватися
 Ви повинні мати Go 1.11 або новішу версію на вашому комп'ютері.
@@ -67,13 +93,17 @@ go run github.com/shpota/goxygen init my-app
 ```
 В результаті буде згенеровано проект в папці `my-app`. 
 
-React використовується за замовчуванням. Ви можете обрати Angular,
-React або Vue, передавши `angular`, `react` або `vue` як значення
-для `--frontend`. Наприклад:
+React і MongoDB використовуються за замовчанням. Ви можете
+обрати інший front end фреймворк та іншу базу даних
+використовуючи параметри `--frontend` та `--db` вфдповідно. 
+Наступна команда генерує проект з Vue та PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue my-app
+go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
+
+Параметер `--frontend` може бути встановленим в `angular`, `react` та `vue`.
+Параметер `--db` може бути встановленим в  `mongo`, `mysql` та `postgres`.
 
 Згенерований проект готовий до запуску з `docker-compose`:
 ```sh
@@ -88,10 +118,10 @@ http://localhost:8080.
 
 ![Showcase](showcase.gif)
 
-## Структура згенерованого проекту (на пиркладі React)
+## Структура згенерованого проекту (на пиркладі React/MongoDB)
 
     my-app
-    ├── server                   # серверна частина додатку (Go)
+    ├── server                   # серверна частина застосунку (Go)
     │   ├── db                   # комунікації MongoDB
     │   ├── model                # доменні об'єкти
     │   ├── web                  # REST API та Web сервер
@@ -102,7 +132,7 @@ http://localhost:8080.
     │   ├── src                       
     │   │   ├── App.js           # головний React компонент
     │   │   ├── App.css          # стилі головного компоненту
-    │   │   ├── index.js         # вхідна точка front end додатку          
+    │   │   ├── index.js         # вхідна точка front end застосунку          
     │   │   └── index.css        # глобальні стилі
     │   ├── package.json         # front end залежності
     │   ├── .env.development     # API URL для запуску в development середовищі
@@ -122,8 +152,7 @@ http://localhost:8080.
 
 Goxygen генерує лише базову структуру проекту і не нав'язує вам
 використання специфічних бібліотек чи утиліт. Згенерований проект
-матиме лише дві сторонні залежності: 
-[mongo-go-driver](https://github.com/mongodb/mongo-go-driver) та
+використовує лише драйвер бази даних в back end частині та
 [axios](https://github.com/axios/axios) для асинхронних REST запитів
 (для React i Vue проектів).
 

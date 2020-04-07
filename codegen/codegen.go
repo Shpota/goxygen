@@ -12,11 +12,11 @@ import (
 
 type generator struct {
 	projectName string
-	frontend    string
+	techStack   []string
 }
 
-func Generate(projectName, frontend string) {
-	g := generator{projectName, frontend}
+func Generate(projectName string, techStack []string) {
+	g := generator{projectName, techStack}
 	g.generate()
 }
 
@@ -43,7 +43,9 @@ func (g generator) processFile(path string, content []byte) {
 	if !g.needed(path) {
 		return
 	}
-	path = strings.Replace(path, g.frontend+".", "", 1)
+	for _, tech := range g.techStack {
+		path = strings.Replace(path, tech+".", "", 1)
+	}
 	pathElements := strings.Split(path, "/")
 	separator := string(os.PathSeparator)
 	pathElements = append([]string{g.projectName}, pathElements...)
@@ -86,12 +88,24 @@ func (g generator) initGitRepo() error {
 // prefixed with the provided framework followed by dot
 // or if a path has no prefix.
 func (g generator) needed(path string) bool {
-	for _, fr := range frameworks {
-		if strings.HasPrefix(path, fr+".") && g.frontend != fr {
-			return false
+	if !hasTechPrefix(path) {
+		return true
+	}
+	for _, tech := range g.techStack {
+		if strings.HasPrefix(path, tech+".") {
+			return true
 		}
 	}
-	return true
+	return false
 }
 
-var frameworks = []string{"angular", "react", "vue"}
+func hasTechPrefix(path string) bool {
+	for _, tech := range []string{
+		"angular", "react", "vue", "mongo", "mysql", "postgres",
+	} {
+		if strings.HasPrefix(path, tech+".") {
+			return true
+		}
+	}
+	return false
+}

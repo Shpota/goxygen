@@ -18,10 +18,6 @@ docker --version
 docker-compose --version
 ```
 
-If you are using Windows you will also need
-[gcc](https://gcc.gnu.org/). It comes installed
-on Mac and almost all Linux distributions.
-
 ## Start in development mode
 
 In the project directory run the command (you might
@@ -30,9 +26,9 @@ need to prepend it with `sudo` depending on your setup):
 docker-compose -f docker-compose-dev.yml up
 ```
 
-This starts a local MongoDB on `localhost:27017`.
-The DB will be populated with test records from the
-[init-db.js](init-db.js) file.
+This starts a local PostgreSQL database on `localhost:5432`.
+The database will be populated with test records from the
+[init-db.sql](init-db.sql) file.
 
 Navigate to the `server` folder and start the back end:
 

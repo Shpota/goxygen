@@ -3,7 +3,7 @@ on: [push, pull_request]
 jobs:
 
   test:
-    name: Test & Lint
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go 1.14
@@ -13,13 +13,19 @@ jobs:
         id: go
       - name: Check out
         uses: actions/checkout@v2
+      - name: Build
+        run: go build .
       - name: Test
-        run: go test -v ./...
+        run: go test -v . ./cli ./codegen
+      - name: Test Transformer
+        run: cd transform && go test ./...
       - name: Lint
-        run: docker run -v $(pwd):/app -w /app golangci/golangci-lint:v1.24.0 golangci-lint run --config .github/.golangci.yml ./...
+        run: |
+          docker run -v $(pwd):/app -w /app golangci/golangci-lint:v1.24.0 \
+          golangci-lint run --config .github/.golangci.yml cli codegen static .
 
   build-1-13:
-    name: Build on Go 1.13
+    name: Go 1.13 build
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go 1.13
@@ -33,7 +39,7 @@ jobs:
         run: go build .
 
   build-1-12:
-    name: Build on Go 1.12
+    name: Go 1.12 build
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go 1.12
@@ -47,7 +53,7 @@ jobs:
         run: go build .
 
   build-1-11:
-    name: Build on Go 1.11
+    name: Go 1.11 build
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go 1.11

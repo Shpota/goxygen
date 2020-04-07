@@ -10,15 +10,16 @@ import (
 
 func TestStart(t *testing.T) {
 	w := &bytes.Buffer{}
-	var pjName, frontend string
-	generate := func(pj, fr string) {
+	var pjName string
+	var techStack []string
+	generate := func(pj string, tech []string) {
 		pjName = pj
-		frontend = fr
+		techStack = tech
 	}
 
 	Start(w, []string{"init", "--frontend", "vue", "my-app"}, generate)
 
-	if pjName != "my-app" || frontend != "vue" {
+	if pjName != "my-app" || techStack[0] != "vue" {
 		t.Error("Generation function function received wrong arguments")
 	}
 	if w.String() != "" {
@@ -71,7 +72,7 @@ func TestParseFlags(t *testing.T) {
 	if err != nil {
 		t.Error("parseFlags must not return an error")
 	}
-	if len(values) != 1 && values["--frontend"] != "vue" {
+	if len(values) != 1 && values[0] != "vue" {
 		t.Error(`parseFlags must return ["vue"]`)
 	}
 }
@@ -88,7 +89,7 @@ func TestParseFlagsGivenSeveralFlags(t *testing.T) {
 	if err != nil {
 		t.Error("parseFlags must not return an error")
 	}
-	exp := map[string]string{"--frontend": "vue", "--db": "mysql"}
+	exp := []string{"vue", "mysql"}
 	if !reflect.DeepEqual(got, exp) {
 		t.Error(`parseFlags must return "vue" and "mysql"`)
 	}
@@ -104,7 +105,7 @@ func TestParseFlagsGivenDefaultValues(t *testing.T) {
 	if err != nil {
 		t.Error("parseFlags must not return an error")
 	}
-	exp := map[string]string{"--frontend": "react"}
+	exp := []string{"react"}
 	if !reflect.DeepEqual(got, exp) {
 		t.Error(`parseFlags must return "react"`)
 	}

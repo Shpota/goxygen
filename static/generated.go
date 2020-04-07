@@ -24,85 +24,6 @@ webapp/node_modules
 webapp/build
 webapp/npm-debug.log*
 `,
-		"Dockerfile": `FROM node:12.16.1-alpine3.11 AS JS_BUILD
-COPY webapp /webapp
-WORKDIR webapp
-RUN npm install && npm run build
-
-FROM golang:1.13.9-alpine AS GO_BUILD
-RUN apk update && apk add build-base
-COPY server /server
-WORKDIR /server
-RUN go build -o /go/bin/server
-
-FROM alpine:3.11.3
-COPY --from=JS_BUILD /webapp/build* ./webapp/
-COPY --from=GO_BUILD /go/bin/server ./
-CMD ./server
-`,
-		"README.md": `# project-name
-
-## Environment setup
-
-You need to have [Go](https://golang.org/),
-[Node.js](https://nodejs.org/),
-[Docker](https://www.docker.com/), and
-[Docker Compose](https://docs.docker.com/compose/)
-(comes pre-installed with Docker on Mac and Windows)
-installed on your computer.
-
-Verify the tools by running the following commands:
-
-` + "`" + `` + "`" + `` + "`" + `sh
-go version
-npm --version
-docker --version
-docker-compose --version
-` + "`" + `` + "`" + `` + "`" + `
-
-If you are using Windows you will also need
-[gcc](https://gcc.gnu.org/). It comes installed
-on Mac and almost all Linux distributions.
-
-## Start in development mode
-
-In the project directory run the command (you might
-need to prepend it with ` + "`" + `sudo` + "`" + ` depending on your setup):
-` + "`" + `` + "`" + `` + "`" + `sh
-docker-compose -f docker-compose-dev.yml up
-` + "`" + `` + "`" + `` + "`" + `
-
-This starts a local MongoDB on ` + "`" + `localhost:27017` + "`" + `.
-The DB will be populated with test records from the
-[init-db.js](init-db.js) file.
-
-Navigate to the ` + "`" + `server` + "`" + ` folder and start the back end:
-
-` + "`" + `` + "`" + `` + "`" + `sh
-cd server
-go run server.go
-` + "`" + `` + "`" + `` + "`" + `
-The back end will serve on http://localhost:8080.
-
-Navigate to the ` + "`" + `webapp` + "`" + ` folder, install dependencies,
-and start the front end development server by running:
-
-` + "`" + `` + "`" + `` + "`" + `sh
-cd webapp
-npm install
-npm start
-` + "`" + `` + "`" + `` + "`" + `
-The application will be available on http://localhost:3000.
- 
-## Start in production mode
-
-Perform:
-` + "`" + `` + "`" + `` + "`" + `sh
-docker-compose up
-` + "`" + `` + "`" + `` + "`" + `
-This will build the application and start it together with
-its database. Access the application on http://localhost:8080.
-`,
 		"angular.webapp/.editorconfig": `# Editor configuration, see https://editorconfig.org
 root = true
 
@@ -1279,7 +1200,86 @@ context.keys().map(context);
     "codelyzer"
   ]
 }`,
-		"docker-compose-dev.yml": `version: "3.7"
+		"mongo.Dockerfile": `FROM node:12.16.1-alpine3.11 AS JS_BUILD
+COPY webapp /webapp
+WORKDIR webapp
+RUN npm install && npm run build
+
+FROM golang:1.13.9-alpine AS GO_BUILD
+RUN apk update && apk add build-base
+COPY server /server
+WORKDIR /server
+RUN go build -o /go/bin/server
+
+FROM alpine:3.11.3
+COPY --from=JS_BUILD /webapp/build* ./webapp/
+COPY --from=GO_BUILD /go/bin/server ./
+CMD ./server
+`,
+		"mongo.README.md": `# project-name
+
+## Environment setup
+
+You need to have [Go](https://golang.org/),
+[Node.js](https://nodejs.org/),
+[Docker](https://www.docker.com/), and
+[Docker Compose](https://docs.docker.com/compose/)
+(comes pre-installed with Docker on Mac and Windows)
+installed on your computer.
+
+Verify the tools by running the following commands:
+
+` + "`" + `` + "`" + `` + "`" + `sh
+go version
+npm --version
+docker --version
+docker-compose --version
+` + "`" + `` + "`" + `` + "`" + `
+
+If you are using Windows you will also need
+[gcc](https://gcc.gnu.org/). It comes installed
+on Mac and almost all Linux distributions.
+
+## Start in development mode
+
+In the project directory run the command (you might
+need to prepend it with ` + "`" + `sudo` + "`" + ` depending on your setup):
+` + "`" + `` + "`" + `` + "`" + `sh
+docker-compose -f docker-compose-dev.yml up
+` + "`" + `` + "`" + `` + "`" + `
+
+This starts a local MongoDB on ` + "`" + `localhost:27017` + "`" + `.
+The database will be populated with test records
+from the [init-db.js](init-db.js) file.
+
+Navigate to the ` + "`" + `server` + "`" + ` folder and start the back end:
+
+` + "`" + `` + "`" + `` + "`" + `sh
+cd server
+go run server.go
+` + "`" + `` + "`" + `` + "`" + `
+The back end will serve on http://localhost:8080.
+
+Navigate to the ` + "`" + `webapp` + "`" + ` folder, install dependencies,
+and start the front end development server by running:
+
+` + "`" + `` + "`" + `` + "`" + `sh
+cd webapp
+npm install
+npm start
+` + "`" + `` + "`" + `` + "`" + `
+The application will be available on http://localhost:3000.
+ 
+## Start in production mode
+
+Perform:
+` + "`" + `` + "`" + `` + "`" + `sh
+docker-compose up
+` + "`" + `` + "`" + `` + "`" + `
+This will build the application and start it together with
+its database. Access the application on http://localhost:8080.
+`,
+		"mongo.docker-compose-dev.yml": `version: "3.7"
 services:
   dev_db:
     image: mongo:4.2.3
@@ -1290,7 +1290,7 @@ services:
     volumes:
       - ./init-db.js:/docker-entrypoint-initdb.d/init.js
 `,
-		"docker-compose.yml": `version: "3.7"
+		"mongo.docker-compose.yml": `version: "3.7"
 services:
   app:
     build: .
@@ -1309,7 +1309,7 @@ services:
     volumes:
       - ./init-db.js:/docker-entrypoint-initdb.d/init.js
 `,
-		"init-db.js": `db.tech.insert({
+		"mongo.init-db.js": `db.tech.insert({
     "name": "Go",
     "details": "An open source programming language that makes it easy to build simple and efficient software."
 });
@@ -1321,6 +1321,485 @@ db.tech.insert({
     "name": "MongoDB",
     "details": "A general purpose, document-based, distributed database."
 });
+`,
+		"mongo.server/db/db.go": `package db
+
+import (
+	"context"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
+	"log"
+	"project-name/model"
+)
+
+type DB interface {
+	GetTechnologies() ([]*model.Technology, error)
+}
+
+type MongoDB struct {
+	collection *mongo.Collection
+}
+
+func NewMongo(client *mongo.Client) DB {
+	tech := client.Database("tech").Collection("tech")
+	return MongoDB{collection: tech}
+}
+
+func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
+	res, err := m.collection.Find(context.TODO(), bson.M{})
+	if err != nil {
+		log.Println("Error while fetching technologies:", err.Error())
+		return nil, err
+	}
+	var tech []*model.Technology
+	err = res.All(context.TODO(), &tech)
+	if err != nil {
+		log.Println("Error while decoding technologies:", err.Error())
+		return nil, err
+	}
+	return tech, nil
+}
+`,
+		"mongo.server/go.mod": `module project-name
+
+go 1.13
+
+require go.mongodb.org/mongo-driver v1.3.1
+`,
+		"mongo.server/server.go": `package main
+
+import (
+	"context"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+	"log"
+	"os"
+	"project-name/db"
+	"project-name/web"
+)
+
+func main() {
+	client, err := mongo.Connect(context.TODO(), clientOptions())
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer client.Disconnect(context.TODO())
+	mongoDB := db.NewMongo(client)
+	// CORS is enabled only in prod profile
+	cors := os.Getenv("profile") == "prod"
+	app := web.NewApp(mongoDB, cors)
+	err = app.Serve()
+	log.Println("Error", err)
+}
+
+func clientOptions() *options.ClientOptions {
+	host := "db"
+	if os.Getenv("profile") != "prod" {
+		host = "localhost"
+	}
+	return options.Client().ApplyURI(
+		"mongodb://" + host + ":27017",
+	)
+}
+`,
+		"mysql.Dockerfile": `FROM node:12.16.1-alpine3.11 AS JS_BUILD
+COPY webapp /webapp
+WORKDIR webapp
+RUN npm install && npm run build
+
+FROM golang:1.13.9-alpine AS GO_BUILD
+COPY server /server
+WORKDIR /server
+RUN go build -o /go/bin/server
+
+FROM alpine:3.11.3
+COPY --from=JS_BUILD /webapp/build* ./webapp/
+COPY --from=GO_BUILD /go/bin/server ./
+CMD ./server
+`,
+		"mysql.README.md": `# project-name
+
+## Environment setup
+
+You need to have [Go](https://golang.org/),
+[Node.js](https://nodejs.org/),
+[Docker](https://www.docker.com/), and
+[Docker Compose](https://docs.docker.com/compose/)
+(comes pre-installed with Docker on Mac and Windows)
+installed on your computer.
+
+Verify the tools by running the following commands:
+
+` + "`" + `` + "`" + `` + "`" + `sh
+go version
+npm --version
+docker --version
+docker-compose --version
+` + "`" + `` + "`" + `` + "`" + `
+
+## Start in development mode
+
+In the project directory run the command (you might
+need to prepend it with ` + "`" + `sudo` + "`" + ` depending on your setup):
+` + "`" + `` + "`" + `` + "`" + `sh
+docker-compose -f docker-compose-dev.yml up
+` + "`" + `` + "`" + `` + "`" + `
+
+This starts a local MySQL database on ` + "`" + `localhost:3306` + "`" + `.
+The database will be populated with test records from
+the [init-db.sql](init-db.sql) file.
+
+Navigate to the ` + "`" + `server` + "`" + ` folder and start the back end:
+
+` + "`" + `` + "`" + `` + "`" + `sh
+cd server
+go run server.go
+` + "`" + `` + "`" + `` + "`" + `
+The back end will serve on http://localhost:8080.
+
+Navigate to the ` + "`" + `webapp` + "`" + ` folder, install dependencies,
+and start the front end development server by running:
+
+` + "`" + `` + "`" + `` + "`" + `sh
+cd webapp
+npm install
+npm start
+` + "`" + `` + "`" + `` + "`" + `
+The application will be available on http://localhost:3000.
+ 
+## Start in production mode
+
+Perform:
+` + "`" + `` + "`" + `` + "`" + `sh
+docker-compose up
+` + "`" + `` + "`" + `` + "`" + `
+This will build the application and start it together with
+its database. Access the application on http://localhost:8080.
+`,
+		"mysql.docker-compose-dev.yml": `version: "3.7"
+services:
+  dev_db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: goxygen
+      MYSQL_USER: goxygen
+      MYSQL_PASSWORD: pass
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    ports:
+      - 3306:3306
+    volumes:
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+`,
+		"mysql.docker-compose.yml": `version: "3.7"
+services:
+  app:
+    build: .
+    container_name: app
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      profile: prod
+      db_pass: pass
+  db:
+    image: mysql:8.0
+    container_name: db
+    environment:
+      MYSQL_DATABASE: goxygen
+      MYSQL_USER: goxygen
+      MYSQL_PASSWORD: pass
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    volumes:
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql`,
+		"mysql.init-db.sql": `CREATE TABLE technologies (
+  name    VARCHAR(255),
+  details VARCHAR(255)
+);
+insert into technologies values (
+  'Go', 'An open source programming language that makes it easy to build simple and efficient software.'
+);
+insert into technologies values (
+  'JavaScript', 'A lightweight, interpreted, or just-in-time compiled programming language with first-class functions.'
+);
+insert into technologies values (
+  'MySQL', 'A powerful, open source object-relational database'
+);
+`,
+		"mysql.server/db/db.go": `package db
+
+import (
+	"database/sql"
+	"project-name/model"
+)
+
+type DB interface {
+	GetTechnologies() ([]*model.Technology, error)
+}
+
+type MySQLDB struct {
+	db *sql.DB
+}
+
+func NewDB(db *sql.DB) DB {
+	return MySQLDB{db: db}
+}
+
+func (d MySQLDB) GetTechnologies() ([]*model.Technology, error) {
+	rows, err := d.db.Query("select name, details from technologies")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var tech []*model.Technology
+	for rows.Next() {
+		t := new(model.Technology)
+		err = rows.Scan(&t.Name, &t.Details)
+		if err != nil {
+			return nil, err
+		}
+		tech = append(tech, t)
+	}
+	return tech, nil
+}
+`,
+		"mysql.server/go.mod": `module project-name
+
+go 1.13
+
+require github.com/go-sql-driver/mysql v1.5.0
+`,
+		"mysql.server/server.go": `package main
+
+import (
+	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
+	"log"
+	"os"
+	"project-name/db"
+	"project-name/web"
+)
+
+func main() {
+	d, err := sql.Open("mysql", dataSource())
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer d.Close()
+	// CORS is enabled only in prod profile
+	cors := os.Getenv("profile") == "prod"
+	app := web.NewApp(db.NewDB(d), cors)
+	err = app.Serve()
+	log.Println("Error", err)
+}
+
+func dataSource() string {
+	host := "localhost"
+	pass := "pass"
+	if os.Getenv("profile") == "prod" {
+		host = "db"
+		pass = os.Getenv("db_pass")
+	}
+	return "goxygen:" + pass + "@tcp(" + host + ":3306)/goxygen"
+}
+`,
+		"postgres.Dockerfile": `FROM node:12.16.1-alpine3.11 AS JS_BUILD
+COPY webapp /webapp
+WORKDIR webapp
+RUN npm install && npm run build
+
+FROM golang:1.13.9-alpine AS GO_BUILD
+COPY server /server
+WORKDIR /server
+RUN go build -o /go/bin/server
+
+FROM alpine:3.11.3
+COPY --from=JS_BUILD /webapp/build* ./webapp/
+COPY --from=GO_BUILD /go/bin/server ./
+CMD ./server
+`,
+		"postgres.README.md": `# project-name
+
+## Environment setup
+
+You need to have [Go](https://golang.org/),
+[Node.js](https://nodejs.org/),
+[Docker](https://www.docker.com/), and
+[Docker Compose](https://docs.docker.com/compose/)
+(comes pre-installed with Docker on Mac and Windows)
+installed on your computer.
+
+Verify the tools by running the following commands:
+
+` + "`" + `` + "`" + `` + "`" + `sh
+go version
+npm --version
+docker --version
+docker-compose --version
+` + "`" + `` + "`" + `` + "`" + `
+
+## Start in development mode
+
+In the project directory run the command (you might
+need to prepend it with ` + "`" + `sudo` + "`" + ` depending on your setup):
+` + "`" + `` + "`" + `` + "`" + `sh
+docker-compose -f docker-compose-dev.yml up
+` + "`" + `` + "`" + `` + "`" + `
+
+This starts a local PostgreSQL database on ` + "`" + `localhost:5432` + "`" + `.
+The database will be populated with test records from the
+[init-db.sql](init-db.sql) file.
+
+Navigate to the ` + "`" + `server` + "`" + ` folder and start the back end:
+
+` + "`" + `` + "`" + `` + "`" + `sh
+cd server
+go run server.go
+` + "`" + `` + "`" + `` + "`" + `
+The back end will serve on http://localhost:8080.
+
+Navigate to the ` + "`" + `webapp` + "`" + ` folder, install dependencies,
+and start the front end development server by running:
+
+` + "`" + `` + "`" + `` + "`" + `sh
+cd webapp
+npm install
+npm start
+` + "`" + `` + "`" + `` + "`" + `
+The application will be available on http://localhost:3000.
+ 
+## Start in production mode
+
+Perform:
+` + "`" + `` + "`" + `` + "`" + `sh
+docker-compose up
+` + "`" + `` + "`" + `` + "`" + `
+This will build the application and start it together with
+its database. Access the application on http://localhost:8080.
+`,
+		"postgres.docker-compose-dev.yml": `version: "3.7"
+services:
+  dev_db:
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: goxygen
+      POSTGRES_DB: goxygen
+    ports:
+      - 5432:5432
+    volumes:
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+`,
+		"postgres.docker-compose.yml": `version: "3.7"
+services:
+  app:
+    build: .
+    container_name: app
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      profile: prod
+      db_pass: pass
+  db:
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: goxygen
+      POSTGRES_DB: goxygen
+    volumes:
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql`,
+		"postgres.init-db.sql": `CREATE TABLE technologies (
+  name    VARCHAR(255),
+  details VARCHAR(255)
+);
+insert into technologies values (
+  'Go', 'An open source programming language that makes it easy to build simple and efficient software.'
+);
+insert into technologies values (
+  'JavaScript', 'A lightweight, interpreted, or just-in-time compiled programming language with first-class functions.'
+);
+insert into technologies values (
+  'PostgreSQL', 'A powerful, open source object-relational database system'
+);
+`,
+		"postgres.server/db/db.go": `package db
+
+import (
+	"project-name/model"
+	"database/sql"
+)
+
+type DB interface {
+	GetTechnologies() ([]*model.Technology, error)
+}
+
+type PostgresDB struct {
+	db *sql.DB
+}
+
+func NewDB(db *sql.DB) DB {
+	return PostgresDB{db: db}
+}
+
+func (d PostgresDB) GetTechnologies() ([]*model.Technology, error) {
+	rows, err := d.db.Query("select name, details from technologies")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var tech []*model.Technology
+	for rows.Next() {
+		t := new(model.Technology)
+		err = rows.Scan(&t.Name, &t.Details)
+		if err != nil {
+			return nil, err
+		}
+		tech = append(tech, t)
+	}
+	return tech, nil
+}
+`,
+		"postgres.server/go.mod": `module project-name
+
+go 1.13
+
+require github.com/lib/pq v1.3.0`,
+		"postgres.server/server.go": `package main
+
+import (
+	"project-name/db"
+	"project-name/web"
+	"database/sql"
+	_ "github.com/lib/pq"
+	"log"
+	"os"
+)
+
+func main() {
+	d, err := sql.Open("postgres", dataSource())
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer d.Close()
+	// CORS is enabled only in prod profile
+	cors := os.Getenv("profile") == "prod"
+	app := web.NewApp(db.NewDB(d), cors)
+	err = app.Serve()
+	log.Println("Error", err)
+}
+
+func dataSource() string {
+	host := "localhost"
+	pass := "pass"
+	if os.Getenv("profile") == "prod" {
+		host = "db"
+		pass = os.Getenv("db_pass")
+	}
+	return "postgresql://" + host + ":5432/goxygen" +
+		"?user=goxygen&sslmode=disable&password=" + pass
+}
 `,
 		"react.webapp/.env.development": `REACT_APP_API_URL=http://localhost:8080`,
 		"react.webapp/.env.production":  `REACT_APP_API_URL=`,
@@ -1888,91 +2367,11 @@ export class Tech extends Component {
     }
 }
 `,
-		"server/db/db.go": `package db
-
-import (
-	"context"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
-	"log"
-	"project-name/model"
-)
-
-type DB interface {
-	GetTechnologies() ([]*model.Technology, error)
-}
-
-type MongoDB struct {
-	collection *mongo.Collection
-}
-
-func NewMongo(client *mongo.Client) DB {
-	tech := client.Database("tech").Collection("tech")
-	return MongoDB{collection: tech}
-}
-
-func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
-	res, err := m.collection.Find(context.TODO(), bson.M{})
-	if err != nil {
-		log.Println("Error while fetching technologies:", err.Error())
-		return nil, err
-	}
-	var tech []*model.Technology
-	err = res.All(context.TODO(), &tech)
-	if err != nil {
-		log.Println("Error while decoding technologies:", err.Error())
-		return nil, err
-	}
-	return tech, nil
-}
-`,
-		"server/go.mod": `module project-name
-
-go 1.13
-
-require go.mongodb.org/mongo-driver v1.3.1
-`,
 		"server/model/technology.go": `package model
 
 type Technology struct {
 	Name    string ` + "`" + `json:"name"` + "`" + `
 	Details string ` + "`" + `json:"details"` + "`" + `
-}
-`,
-		"server/server.go": `package main
-
-import (
-	"context"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
-	"log"
-	"os"
-	"project-name/db"
-	"project-name/web"
-)
-
-func main() {
-	client, err := mongo.Connect(context.TODO(), clientOptions())
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer client.Disconnect(context.TODO())
-	mongoDB := db.NewMongo(client)
-	// CORS is enabled only in prod profile
-	cors := os.Getenv("profile") == "prod"
-	app := web.NewApp(mongoDB, cors)
-	err = app.Serve()
-	log.Println("Error", err)
-}
-
-func clientOptions() *options.ClientOptions {
-	host := "db"
-	if os.Getenv("profile") != "prod" {
-		host = "localhost"
-	}
-	return options.Client().ApplyURI(
-		"mongodb://" + host + ":27017",
-	)
 }
 `,
 		"server/web/app.go": `package web

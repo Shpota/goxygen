@@ -50,7 +50,7 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Crie um projeto Web com Go, Angular/React/Vue, e MongoDB em segundos.**
+**Crie um projeto Web com Go e Angular/React/Vue em segundos.**
 
 Goxygen visa poupar seu tempo ao montar um novo projeto. Ele 
 cria o esqueleto de uma aplicação com todas as configurações 
@@ -60,7 +60,31 @@ conecta ele com os componentes front end, fornece o Dockerfile
 para a aplicação e cria o arquivo docker-compose para rapidamente
 executar em ambientes de desenvolvimento e produção.
 
-
+<table>
+    <thead>
+    <tr align="center">
+        <td colspan=4><b>Supported Technologies</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center">
+        <td align="center">Front End</td>
+        <td>Angular</td>
+        <td>React</td>
+        <td>Vue</td>
+    </tr>
+    <tr align="center">
+        <td>Back End</td>
+        <td colspan=3>Go</td>
+    </tr>
+    <tr align="center">
+        <td>Database</td>
+        <td>MongoDB</td>
+        <td>MySQL</td>
+        <td>PostgreSQL</td>
+    </tr>
+    </tbody>
+</table>
 
 ## Como utilizar
 Você precisa ter Go 1.11 ou mais recente na sua máquina.
@@ -70,13 +94,17 @@ go run github.com/shpota/goxygen init my-app
 ```
 Isso gera um projeto no diretório `my-app`.
 
-Por padrão, um React-based project é gerado. Você pode escolher 
-entre Angular, React e Vue passando `angular`, `react` e `vue` 
-para a flag `--frontend`. Por exemplo:
+By default, it will use React and MongoDB. You can select
+a different front end framework and a database using
+`--frontend` and `--db` flags. For instance, this command
+will create a project with Vue and PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue my-app
+go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
+
+The `--frontend` flag accepts `angular`, `react` and `vue`.
+The `--db` flag accepts `mongo`, `mysql` and `postgres`.
 
 O projeto gerado está pronto para ser executado com `docker-compose`:
 ```sh
@@ -92,7 +120,7 @@ gerado em seu arquivo README.
 
 ![Showcase](showcase.gif)
 
-## Estrutura do projeto gerado (React-based app)
+## Estrutura do projeto gerado (React/MongoDB example)
 
     my-app
     ├── server                   # Go project files
@@ -126,9 +154,9 @@ aqui pela simplicidade.
 
 Goxygen gera uma estrutura básica de um projeto e não o força usar um 
 conjunto específico de ferramentas. E por isso não traz dependências 
-desnecessárias para o seu projeto. Ele usa apenas 
-[mongo-go-driver](https://github.com/mongodb/mongo-go-driver) no back end 
-e [axios](https://github.com/axios/axios) nos projetos React e Vue. 
+desnecessárias para o seu projeto. Ele usa apenas
+database driver no back end
+e [axios](https://github.com/axios/axios) nos projetos React e Vue.
 Projetos Angular usam apenas bibliotecas específicas do Angular.
 
 ## Como contribuir

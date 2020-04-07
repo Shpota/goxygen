@@ -12,6 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        db: [mongo, mysql, postgres]
         frontend: [angular, vue, react]
     steps:
       - name: Set up Go
@@ -21,15 +22,15 @@ jobs:
       - name: Checkout project
         uses: actions/checkout@v2
       - name: Generate application
-        run: go run main.go init --frontend ${{ matrix.frontend }} app
+        run: go run main.go init --db ${{ matrix.db }} --frontend ${{ matrix.frontend }} app
       - name: Start the application
         run: cd app && docker-compose up -d
       - name: Check availability of backend
-        run: timeout 10 bash -c 'until curl -s localhost:8080/api/technologies | grep Go > /dev/null; do sleep 1; done'
+        run: timeout 60 bash -c 'until curl -s localhost:8080/api/technologies | grep Go > /dev/null; do sleep 1; done'
       - name: Check availability of frontend
         run: |
           npm i domcurl
-          timeout 10 bash -c 'until ./node_modules/domcurl/index.js http://localhost:8080 | grep Go > /dev/null; do sleep 1; done'
+          timeout 60 bash -c 'until ./node_modules/domcurl/index.js http://localhost:8080 | grep Go > /dev/null; do sleep 1; done'
       - name: Stop application
         run: cd app && docker-compose down
         if: always()

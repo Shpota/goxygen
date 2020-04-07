@@ -50,7 +50,7 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Générer un projet web avec Go, Angular/React/Vue, et MongoDB en quelques secondes.**
+**Générer un projet web avec Go et Angular/React/Vue en quelques secondes.**
 
 Goxygen vise à vous faire gagner du temps lors de la mise en place d'un nouveau projet. Il
 crée un squelette d'application avec une configuration complète par défaut.
@@ -58,6 +58,32 @@ Vous pouvez commencer immédiatement à implémenter votre logique métier.
 Goxygen génère du code Backend en Go, le connecte aux composants Frontend, fournit un 
 Dockerfile pour l'application et crée des fichiers Docker-compose pour une exécution pratique 
 dans des environnements de développement et de production.
+
+<table>
+    <thead>
+    <tr align="center">
+        <td colspan=4><b>Supported Technologies</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center">
+        <td align="center">Front End</td>
+        <td>Angular</td>
+        <td>React</td>
+        <td>Vue</td>
+    </tr>
+    <tr align="center">
+        <td>Back End</td>
+        <td colspan=3>Go</td>
+    </tr>
+    <tr align="center">
+        <td>Database</td>
+        <td>MongoDB</td>
+        <td>MySQL</td>
+        <td>PostgreSQL</td>
+    </tr>
+    </tbody>
+</table>
 
 ## Guide d'utilisation
 
@@ -68,13 +94,17 @@ go run github.com/shpota/goxygen init my-app
 ```
 Ces commandes génèrent un projet dans le dossier `my-app`.
 
-Par défaut, le projet est généré avec un frontend React. Vous pouvez choisir parmis
-Angular, React ou Vue en passant les arguments `angular`, `react` ou `vue` au flag `--frontend`. 
-Par exemple:
+By default, it will use React and MongoDB. You can select
+a different front end framework and a database using
+`--frontend` and `--db` flags. For instance, this command
+will create a project with Vue and PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue my-app
+go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
+
+The `--frontend` flag accepts `angular`, `react` and `vue`.
+The `--db` flag accepts `mongo`, `mysql` and `postgres`.
 
 Le projet généré est prêt à l'utilisation avec `docker-compose`:
 ```sh
@@ -88,7 +118,7 @@ Vous trouverez plus de détails sur l'utilisation du projet généré dans son f
 
 ![Présentation](showcase.gif)
 
-## Structure d'un projet généré (application React)
+## Structure d'un projet généré (application React/MongoDB)
 
     my-app
     ├── server                   # fichier du projet Go
@@ -122,9 +152,8 @@ pour des raisons de simplicité.
 
 Goxygen génére un projet avec une structure basique et ne vous force pas à utiliser des 
 outils spécifiques. C'est pour cela que les seules dépendances utilisées dans le projet 
-sont [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) côté backend et 
-[axios](https://github.com/axios/axios) côté fronted les projets React et Vue. Les projets 
-Angular utilisent leurs propres librairies.
+sont database driver côté backend et [axios](https://github.com/axios/axios) côté 
+frontend les projets React et Vue. Les projets Angular utilisent leurs propres librairies.
 
 ## Comment contribuer
 
