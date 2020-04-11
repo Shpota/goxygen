@@ -128,7 +128,7 @@ Jika Anda menemukan bug atau punya ide tentang cara meningkatkan proyek
 [open an issue](https://github.com/Shpota/goxygen/issues)
 dan kami akan memperbaikinya sesegera mungkin. Anda juga dapat mengusulkan
 perubahan melalui Pull Request. Fork repositori, buat perubahan, dan kirim
-kami pull requiurest dan kami akan segera memeriksanya. Kami juga punya
+kami pull request dan kami akan segera memeriksanya. Kami juga punya
 [Gitter chat](https://gitter.im/goxygen/community) dimana kita bahas
 semua perubahan.
 
