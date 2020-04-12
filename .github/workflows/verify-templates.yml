@@ -6,50 +6,30 @@ on:
     - cron: '0 14 * * *'
 jobs:
 
-  angular-build:
-    name: Build Angular project
+  build:
+    name: Test generated project
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        frontend: [angular, vue, react]
     steps:
       - name: Set up Go
         uses: actions/setup-go@v1
         with:
           go-version: 1.14
-        id: go
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Generate Angular project
-        run: go run main.go init --frontend angular app
-      - name: Build the Docker image
-        run: cd app && docker build .
-
-  react-build:
-    name: Build React project
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Go
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.14
-        id: go
-      - name: Checkout project
-        uses: actions/checkout@v2
-      - name: Generate React project
-        run: go run main.go init --frontend react app
-      - name: Build the Docker image
-        run: cd app && docker build .
-
-  vue-build:
-    name: Build Vue project
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Go
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.14
-        id: go
-      - name: Checkout project
-        uses: actions/checkout@v2
-      - name: Generate Vue project
-        run: go run main.go init --frontend vue app
-      - name: Build the Docker image
-        run: cd app && docker build .
+      - name: Generate application
+        run: go run main.go init --frontend ${{ matrix.frontend }} app
+      - name: Start the application
+        run: cd app && docker-compose up -d
+      - name: Check availability of backend
+        run: timeout 10 bash -c 'until curl -s localhost:8080/api/technologies | grep Go > /dev/null; do sleep 1; done'
+      - name: Check availability of frontend
+        run: |
+          npm i domcurl
+          timeout 10 bash -c 'until ./node_modules/domcurl/index.js http://localhost:8080 | grep Go > /dev/null; do sleep 1; done'
+      - name: Stop application
+        run: cd app && docker-compose down
+        if: always()
