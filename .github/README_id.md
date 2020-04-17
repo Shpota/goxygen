@@ -65,7 +65,7 @@ go run github.com/shpota/goxygen init my-app
 ```
 Ini akan meng-generate sebuah projek di dalam `my-app` folder. 
 
-Secara default, proyek dengan React-based akan di dihasiklan. Anda juga dapat menggunakan framework lain mulai dari Angular, React dan Vue dengan mengambahkan `angular`, `react` dan 
+Secara default, proyek dengan React-based akan di dihasilkan. Anda juga dapat menggunakan framework lain mulai dari Angular, React dan Vue dengan mengambahkan `angular`, `react` dan 
 `vue` pada parameter `--frontend`. Misalnya:
 
 ```go
