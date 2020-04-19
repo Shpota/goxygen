@@ -51,7 +51,7 @@
 
 **分分钟生成一个全栈Web项目(Go，Angular/React/Vue，MongoDB)。**  
 
-Goxygen致力于节省你搭建一个项目的时间。它自动生成一个完全配置好的项目骨架，以方便你可以立即着手实现你的业务逻辑。Goxygen生产后端的Go代码，并将其与前端组件相连，并且为生成的项目提供Dockerfile和dock-compose文件，以便项目在开发环境和生产环境快速运行起来。  
+Goxygen致力于节省你搭建一个项目的时间。它自动生成一个完全配置好的项目骨架，以方便你可以立即着手实现你的业务逻辑。Goxygen生产后端的Go代码，并将其与前端组件相连，并且为生成的项目提供Dockerfile和docker-compose文件，以便项目在开发环境和生产环境快速运行起来。  
 
 # 如何使用
 你需要安装Go 1.11或者更新的版本。  
@@ -97,7 +97,7 @@ build完成之后，就可以在 http://localhost:8080 查看你的Web项目了�
     │   ├── .env.development     # 包含开发环境的API endpoint  
     │   └── .env.production      # 包含生产环境的API endpoint  
     ├── Dockerfile               # 前后端build Dockerfile
-    ├── docker-compose.yml       # 生产环境的dock-compose
+    ├── docker-compose.yml       # 生产环境的docker-compose
     ├── docker-compose-dev.yml   # 开发使用的docker-compose
     ├── init-db.js               # 创建一个 MongoDB collection，并写入测试数据
     ├── .dockerignore            # 指明Docker build的时候要忽略的文件
