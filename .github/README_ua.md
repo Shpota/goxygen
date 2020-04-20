@@ -38,7 +38,7 @@
         <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/releases">
-        <img src="https://img.shields.io/badge/version-v0.2.2-green">
+        <img src="https://img.shields.io/badge/version-v0.3.0-green">
     </a>
     <a href="https://gitter.im/goxygen/community">
         <img src="https://badges.gitter.im/goxygen/community.svg">
@@ -95,7 +95,7 @@ go run github.com/shpota/goxygen init my-app
 
 React і MongoDB використовуються за замовчанням. Ви можете
 обрати інший front end фреймворк та іншу базу даних
-використовуючи параметри `--frontend` та `--db` вфдповідно. 
+використовуючи параметри `--frontend` та `--db` відповідно. 
 Наступна команда генерує проект з Vue та PostgreSQL:
 
 ```go

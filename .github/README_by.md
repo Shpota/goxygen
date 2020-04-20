@@ -38,7 +38,7 @@
         <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/releases">
-        <img src="https://img.shields.io/badge/version-v0.2.2-green">
+        <img src="https://img.shields.io/badge/version-v0.3.0-green">
     </a>
     <a href="https://gitter.im/goxygen/community">
         <img src="https://badges.gitter.im/goxygen/community.svg">
@@ -62,7 +62,7 @@ Goxygen захавае ваш час пры стварэнні новых дад
 <table>
     <thead>
     <tr align="center">
-        <td colspan=4><b>Supported Technologies</b></td>
+        <td colspan=4><b>Падтрымліваюцца тэхналогіі</b></td>
     </tr>
     </thead>
     <tbody>
