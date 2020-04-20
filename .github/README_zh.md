@@ -49,9 +49,35 @@
 </h1>
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**分分钟生成一个全栈Web项目(Go，Angular/React/Vue，MongoDB)。**  
+**分分钟生成一个全栈Web项目(Go，Angular/React/Vue)。**  
 
 Goxygen致力于节省你搭建一个项目的时间。它自动生成一个完全配置好的项目骨架，以方便你可以立即着手实现你的业务逻辑。Goxygen生产后端的Go代码，并将其与前端组件相连，并且为生成的项目提供Dockerfile和docker-compose文件，以便项目在开发环境和生产环境快速运行起来。  
+
+<table>
+    <thead>
+    <tr align="center">
+        <td colspan=4><b>Supported Technologies</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center">
+        <td align="center">Front End</td>
+        <td>Angular</td>
+        <td>React</td>
+        <td>Vue</td>
+    </tr>
+    <tr align="center">
+        <td>Back End</td>
+        <td colspan=3>Go</td>
+    </tr>
+    <tr align="center">
+        <td>Database</td>
+        <td>MongoDB</td>
+        <td>MySQL</td>
+        <td>PostgreSQL</td>
+    </tr>
+    </tbody>
+</table>
 
 # 如何使用
 你需要安装Go 1.11或者更新的版本。  
@@ -61,11 +87,18 @@ go run github.com/shpota/goxygen init my-app
 ```
 这会在你的 `my-app` 目录下生成一个项目。  
 
-默认会生成一个使用React的项目，如果你需要生成使用其他前端框架（例如Angular、React、Vue）的项目，可通过向`--frontend`参数传入以下值`angular`、`react` 、`vue` 。例如：
+By default, it will use React and MongoDB. You can select
+a different front end framework and a database using
+`--frontend` and `--db` flags. For instance, this command
+will create a project with Vue and PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue my-app
+go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
+
+The `--frontend` flag accepts `angular`, `react` and `vue`.
+The `--db` flag accepts `mongo`, `mysql` and `postgres`.
+
 
 这个项目已经可以用`docker-compose`来运行了：  
 ```sh
@@ -78,7 +111,7 @@ build完成之后，就可以在 http://localhost:8080 查看你的Web项目了�
 
 ![Showcase](showcase.gif)
 
-## 生成的项目的结构 (基于React的项目)
+## 生成的项目的结构 (基于React/MongoDB的项目)
     my-app
     ├── server                   # Go项目文件
     │   ├── db                   # MongoDB通信 
@@ -108,7 +141,7 @@ build完成之后，就可以在 http://localhost:8080 查看你的Web项目了�
 
 ## 依赖
 
-Goxygen只是为你生成一个项目的基本框架，但不强迫你使用任何特定的工具。它不会为你的项目添加任何不必要的依赖，仅有的依赖只有后端的[mongo-go-driver](https://github.com/mongodb/mongo-go-driver)和前端的[axios](https://github.com/axios/axios)
+Goxygen只是为你生成一个项目的基本框架，但不强迫你使用任何特定的工具。它不会为你的项目添加任何不必要的依赖，仅有的依赖只有后端的database driver和前端的[axios](https://github.com/axios/axios)
 
 ## 如何贡献
 

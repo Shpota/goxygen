@@ -50,11 +50,43 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Menyiapkan web projek menggunakan Go, Angular/React/Vue, dan MongoDB dalam hitungan detik.**
+**Menyiapkan web projek menggunakan Go dan Angular/React/Vue.**
 
-Goxygen bertujuan untuk menghemat waktu Anda dalam menyiapkan sebuah proyek web baru. Goxygen menciptakan kerangka aplikasi dengan semua konfigurasi yang telah disiapkan untuk Anda. Jadi Anda dapat langsung segera memulai menerapkan logika bisnis pada proyek Anda.
-Goxygen menghasilkan kode Go yang berfungsi sebagai back-end, menghubungkannya dengan komponen front-end
-, menyediakan Dockerfile untuk aplikasi docker dan membuat file docker-compose agar mudah dijalankan dalam fase pengembangan dan fase produksi.
+Goxygen bertujuan untuk menghemat waktu Anda dalam menyiapkan
+sebuah proyek web baru.Goxygen menciptakan kerangka aplikasi
+dengan semua konfigurasi yang telah disiapkan untuk Anda. Jadi
+Anda dapat langsung segera memulai menerapkan logika bisnis
+pada proyek Anda. Goxygen menghasilkan kode Go yang berfungsi
+sebagai back-end, menghubungkannya dengan komponen front-end,
+menyediakan Dockerfile untuk aplikasi docker dan membuat file
+docker-compose agar mudah dijalankan dalam fase pengembangan
+dan fase produksi.
+
+<table>
+    <thead>
+    <tr align="center">
+        <td colspan=4><b>Supported Technologies</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center">
+        <td align="center">Front End</td>
+        <td>Angular</td>
+        <td>React</td>
+        <td>Vue</td>
+    </tr>
+    <tr align="center">
+        <td>Back End</td>
+        <td colspan=3>Go</td>
+    </tr>
+    <tr align="center">
+        <td>Database</td>
+        <td>MongoDB</td>
+        <td>MySQL</td>
+        <td>PostgreSQL</td>
+    </tr>
+    </tbody>
+</table>
 
 ## Cara penggunaan
 Anda harus mempunyai Go versi 1.11 atau yang lebih pada mesin Anda.
@@ -65,12 +97,17 @@ go run github.com/shpota/goxygen init my-app
 ```
 Ini akan meng-generate sebuah projek di dalam `my-app` folder. 
 
-Secara default, proyek dengan React-based akan di dihasilkan. Anda juga dapat menggunakan framework lain mulai dari Angular, React dan Vue dengan mengambahkan `angular`, `react` dan 
-`vue` pada parameter `--frontend`. Misalnya:
+By default, it will use React and MongoDB. You can select
+a different front end framework and a database using
+`--frontend` and `--db` flags. For instance, this command
+will create a project with Vue and PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue my-app
+go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
+
+The `--frontend` flag accepts `angular`, `react` and `vue`.
+The `--db` flag accepts `mongo`, `mysql` and `postgres`.
 
 Proyek yang telah di generate dapat dijalankan dengan perintah `docker-compose`:
 ```sh
@@ -80,7 +117,8 @@ docker-compose up
 Setelah proses build selesai, aplikasi dapat diakses
 pada http://localhost:8080.
 
-Anda dapat menemukan detail lebih lanjut tentang bagaimana cara bekerja dengan proyek dengan membuka file README.
+Anda dapat menemukan detail lebih lanjut tentang bagaimana cara bekerja
+dengan proyek dengan membuka file README.
 
 ![Showcase](showcase.gif)
 
@@ -103,7 +141,7 @@ Anda dapat menemukan detail lebih lanjut tentang bagaimana cara bekerja dengan p
     │   ├── package.json         # front end dependensi
     │   ├── .env.development     # memegang API endpoint untuk fase pengembangan
     │   └── .env.production      # API endpoint untuk fase produksi
-    ├── Dockerfile               # membangun back end dan front-end secara bersamaan.
+    ├── Dockerfile               # membangun back end dan front-end secara bersamaan
     ├── docker-compose.yml       # prod environemnt deployment deskriptor
     ├── docker-compose-dev.yml   # menjalankan local MongoDB untuk kepentingan pengembangan
     ├── init-db.js               # membuat koleksi MongoDB dengan data uji
@@ -117,10 +155,11 @@ untuk kesederhanaan.
 ## Dependensi
 
 Goxygen menghasilkan struktur dasar suatu proyek dan tidak memaksa Anda
-untuk menggunakan seperangkat alat tertentu. Itu sebabnya Goxygen tidak membawa dependensi yang tidak dibutuhkan pada proyek Anda. Hanya menggunakan
-[mongo-go-driver](https://github.com/mongodb/mongo-go-driver) pada
-back end side dan [axios](https://github.com/axios/axios) pada projek React
-dan Vue. Angular proyek hanya menggunakan Angular library tertentu.
+untuk menggunakan seperangkat alat tertentu. Itu sebabnya Goxygen tidak
+membawa dependensi yang tidak dibutuhkan pada proyek Anda. Hanya menggunakan
+database driver pada back end side dan [axios](https://github.com/axios/axios)
+pada projek React dan Vue. Angular proyek hanya menggunakan Angular library
+tertentu.
 
 ## Bagaimana cara berkontribusi
 

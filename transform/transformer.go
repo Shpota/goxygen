@@ -120,7 +120,7 @@ func sortedImagePaths(images map[string][]byte) []string {
 
 const prefix = `// THIS CODE IS GENERATED, DO NOT EDIT
 
-// Package 'static' contains static assets such as 
+// Package 'static' contains static assets such as
 // source code, text files or images generated form
 // the 'templates' folder in the root of the repository.
 // If a change is made in templates regenerate this file

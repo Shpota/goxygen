@@ -50,7 +50,7 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Goxygen генерирует Web проекты на Go, Angular/React/Vue и MongoDB.**
+**Сгенерируйте Web проект с использованием Go и современных SPA фреймворков.**
 
 Goxygen сохранит ваше время при создании новых приложений. Он
 генерирует базовую структуру Web проекта и позволяет сразу же перейти
@@ -58,6 +58,32 @@ Goxygen сохранит ваше время при создании новых 
 создает back end код на Go, связывает его с front end компонентами,
 добавляет `Dockerfile` и `docker-compose` для удобного запуска
 локально и в production среде.
+
+<table>
+    <thead>
+    <tr align="center">
+        <td colspan=4><b>Поддерживаемые технологии</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center">
+        <td align="center">Front End</td>
+        <td>Angular</td>
+        <td>React</td>
+        <td>Vue</td>
+    </tr>
+    <tr align="center">
+        <td>Back End</td>
+        <td colspan=3>Go</td>
+    </tr>
+    <tr align="center">
+        <td>База данных</td>
+        <td>MongoDB</td>
+        <td>MySQL</td>
+        <td>PostgreSQL</td>
+    </tr>
+    </tbody>
+</table>
 
 ## Использование
 Вам нужно иметь Go 1.11 или новее.
@@ -67,13 +93,17 @@ go run github.com/shpota/goxygen init my-app
 ```
 В результате будет сгенерирован проект в директории `my-app`.
 
-React используется по умолчанию. Вы можете выбрать Angular, React
-или Vue, передав `angular`, `react` или `vue` как значение для 
-флага `--frontend`. Например:
+React и MongoDB используются по умолчанию. Вы можете выбрать другой
+front end фреймворк или другую базу данных используюя флаги `--frontend`
+и `--db` соответственно. Следующая команда генерирует проект с
+Vue и PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue my-app
+go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
+
+Флаг `--frontend` принимает `angular`, `react` или `vue`.
+Флаг `--db` принимает `mongo`, `mysql` или `postgres`.
 
 Сгенерированный проект готов к запуску через `docker-compose`:
 ```sh
@@ -88,7 +118,7 @@ http://localhost:8080.
 
 ![Showcase](showcase.gif)
 
-## Структура сгенерированного проекта (на примере React)
+## Структура сгенерированного проекта (на примере React/MongoDB)
 
     my-app
     ├── server                   # серверная часть приложения (Go)

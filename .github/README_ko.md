@@ -50,12 +50,38 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**순식간에 GO, Angular/React/Vue, 그리고 MongoDB 를 활용한 웹 프로젝트를 생성해보세요**
+**순식간에 GO 그리고 Angular/React/Vue 를 활용한 웹 프로젝트를 생성해보세요**
 Goxygen은 사용자가 새로운 프로젝트를 설정하는데 필요한 시간을 아끼는데 중점을 두고있습니다.
 사용자를 위한 모든 설정을 포함한 어플리케이션의 뼈대를 생성합니다. 사용자는 생각했던
 비지니스 로직을 즉시 행동으로 옮길 수 있습니다. Goxygen 은 Go 코드로 벡엔드를 생성하고, 
 그것을 프론트엔드 요소들에 연결 시킨 후, 어플리케이션을 위한 Dockerfile 을 제공하면서
 개발과 제작 환경에서 간단한 실행을 위한 docker-compose 파일을 만듭니다.
+
+<table>
+    <thead>
+    <tr align="center">
+        <td colspan=4><b>Supported Technologies</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center">
+        <td align="center">Front End</td>
+        <td>Angular</td>
+        <td>React</td>
+        <td>Vue</td>
+    </tr>
+    <tr align="center">
+        <td>Back End</td>
+        <td colspan=3>Go</td>
+    </tr>
+    <tr align="center">
+        <td>Database</td>
+        <td>MongoDB</td>
+        <td>MySQL</td>
+        <td>PostgreSQL</td>
+    </tr>
+    </tbody>
+</table>
 
 ## 사용하는 방법
 사용자는 Go 1.11 또는 그 이상의 버젼이 필요합니다.
@@ -65,12 +91,17 @@ go run github.com/shpota/goxygen init my-app
 ```
 `my-app` 폴더에 프로젝트를 생성합니다.
 
-React를 기반으로 한 프로젝트가 기본으로 생성됩니다. 사용자는 `angular`, `react`,
-그리고 `vue` 명령을 `--frontend` flag에 추가하면 Angular, React, 그리고 Vue 
-중에서 선택할 수 있습니다. 예를 들어서:
+By default, it will use React and MongoDB. You can select
+a different front end framework and a database using
+`--frontend` and `--db` flags. For instance, this command
+will create a project with Vue and PostgreSQL:
+
 ```go
-go run github.com/shpota/goxygen init --frontend vue my-app
+go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
+
+The `--frontend` flag accepts `angular`, `react` and `vue`.
+The `--db` flag accepts `mongo`, `mysql` and `postgres`.
 
 생성된 프로젝트는 `docker-compose`를 통해 실행 될 수 있습니다.
 ```sh
@@ -84,7 +115,7 @@ docker-compose up
 
 ![Showcase](showcase.gif)
 
-## 생성된 프로젝트의 구조 (React 기반 앱)
+## 생성된 프로젝트의 구조 (React/MongoDB 기반 앱)
 
     my-app
     ├── server                   # Go 프로젝트 파일
@@ -117,7 +148,7 @@ docker-compose up
 Goxygen 프로젝트의 기본적인 구조만을 생성하며 사용자가 구체적인 도구(tool)를 
 사용하라고 강요하지 않습니다. 프로젝트에 필요없는 필수요소(dependency)를 
 가져오지 않는 이유가 여기에 있습니다. 벡엔드에는 오직
-[mongo-go-driver](https://github.com/mongodb/mongo-go-driver)을 사용하며
+database driver을 사용하며
 React나 Vue 프로젝트에선 [axios](https://github.com/axios/axios) 만을 사용합니다.
 Angular 프로젝트는 오직 Angular 특화된 라이브러리만을 사용합니다.
 

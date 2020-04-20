@@ -50,7 +50,7 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Goxygen генеруе Web праекты на Go, Angular/React/Vue і MongoDB.**
+**Goxygen генеруе Web праекты на Go і Angular/React/Vue.**
 
 Goxygen захавае ваш час пры стварэнні новых дадаткаў. Ён генеруе 
 базавую структуру Web праекта і дазваляе адразу ж перайсці да 
@@ -58,6 +58,32 @@ Goxygen захавае ваш час пры стварэнні новых дад
 стварае back end код на Go, звязвае яго з front end кампанентамі,
 дадае `Dockerfile` і `docker-compose` для зручнага запуску
 лакальна і ў production асяроддзі.
+
+<table>
+    <thead>
+    <tr align="center">
+        <td colspan=4><b>Supported Technologies</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center">
+        <td align="center">Front End</td>
+        <td>Angular</td>
+        <td>React</td>
+        <td>Vue</td>
+    </tr>
+    <tr align="center">
+        <td>Back End</td>
+        <td colspan=3>Go</td>
+    </tr>
+    <tr align="center">
+        <td>Database</td>
+        <td>MongoDB</td>
+        <td>MySQL</td>
+        <td>PostgreSQL</td>
+    </tr>
+    </tbody>
+</table>
 
 ## Выкарыстанне
 
@@ -68,13 +94,18 @@ go run github.com/shpota/goxygen init my-app
 ```
 У выніку будзе згенераваны праект у дырэкторыі `my-app`.
 
-React выкарыстоўваецца па змаўчанню. Вы можаце выбраць Angular, React
-або Vue, перадаў `angular`, `react` або `vue` як значэнне для
-сцягу `--frontend`. Напрыклад:
+By default, it will use React and MongoDB. You can select
+a different front end framework a database using `--frontend`
+and `--db` flags. For instance, this command will create a 
+project with Vue and PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue my-app
+go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
+
+The `--frontend` flag accepts `angular`, `react` and `vue`.
+The `--db` flag accepts `mongo`, `mysql` and `postgres`.
+
 
 Сфарміраваны праект гатовы да запуску з `docker-compose`: 
 ```sh
@@ -89,7 +120,7 @@ http://localhost:8080.
 
 ![Showcase](showcase.gif)
 
-## Структура генераванага праекта (прыкладанне на аснове React)
+## Структура генераванага праекта (прыкладанне на аснове React/MongoDB)
 
     my-app
     ├── server                   # серверная частка дадатку (Go)

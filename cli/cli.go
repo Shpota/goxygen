@@ -22,7 +22,7 @@ func (f flag) valid(input string) bool {
 	return false
 }
 
-func Start(w io.Writer, commands []string, generate func(string, string)) {
+func Start(w io.Writer, commands []string, generate func(string, []string)) {
 	if len(commands) == 1 && commands[0] == "help" {
 		fmt.Fprintln(w, usage)
 		return
@@ -41,7 +41,7 @@ func Start(w io.Writer, commands []string, generate func(string, string)) {
 			fmt.Fprintln(w, invalidName)
 			return
 		}
-		generate(projectName, values["--frontend"])
+		generate(projectName, values)
 		return
 	}
 	fmt.Fprintln(w, "Wrong input!")
@@ -51,9 +51,9 @@ func Start(w io.Writer, commands []string, generate func(string, string)) {
 // Retrieves flag values from user input matching them
 // against the flags. Returns a map of flags with
 // their values or error in case of invalid input.
-func parseFlags(input []string, flags []flag) (map[string]string, error) {
+func parseFlags(input []string, flags []flag) ([]string, error) {
 	paramCount := 0
-	values := make(map[string]string)
+	values := make([]string, 0, len(flags))
 	for _, fl := range flags {
 		var value string
 		for index, val := range input {
@@ -69,7 +69,7 @@ func parseFlags(input []string, flags []flag) (map[string]string, error) {
 		} else {
 			paramCount += 2
 		}
-		values[fl.name] = value
+		values = append(values, value)
 	}
 	if paramCount != len(input) {
 		return nil, errors.New("flag mismatch")
@@ -80,6 +80,7 @@ func parseFlags(input []string, flags []flag) (map[string]string, error) {
 func flags() []flag {
 	return []flag{
 		{"--frontend", []string{"angular", "react", "vue"}, "react"},
+		{"--db", []string{"mongo", "mysql", "postgres"}, "mongo"},
 	}
 }
 
@@ -90,7 +91,9 @@ const usage = `Usage:
 Options:
 
   --frontend <framework-name>     Specify the front end framework. Possible ` +
-	`options are "angular", "react" and "vue". If not specified "react" is used.`
+	`options are "angular", "react" and "vue". If not specified "react" is used.
+  --db <db-name>                  Specify the database. Possible options are ` +
+	`"mongo" "mysql" and "postgres". If not specified "mongo" is used.`
 
 const invalidName = "Project name is not valid. The allowed symbols are " +
 	"letters, numbers, underscores, and dashes."

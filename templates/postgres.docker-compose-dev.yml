@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  dev_db:
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: goxygen
+      POSTGRES_DB: goxygen
+    ports:
+      - 5432:5432
+    volumes:
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
