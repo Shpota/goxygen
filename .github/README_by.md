@@ -50,7 +50,7 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Goxygen генеруе Web праекты на Go і Angular/React/Vue.**
+**Goxygen генеруе Web праекты на Go і сучасных SPA фреймворках.**
 
 Goxygen захавае ваш час пры стварэнні новых дадаткаў. Ён генеруе 
 базавую структуру Web праекта і дазваляе адразу ж перайсці да 
@@ -77,7 +77,7 @@ Goxygen захавае ваш час пры стварэнні новых дад
         <td colspan=3>Go</td>
     </tr>
     <tr align="center">
-        <td>Database</td>
+        <td>База даных</td>
         <td>MongoDB</td>
         <td>MySQL</td>
         <td>PostgreSQL</td>
@@ -94,18 +94,17 @@ go run github.com/shpota/goxygen init my-app
 ```
 У выніку будзе згенераваны праект у дырэкторыі `my-app`.
 
-By default, it will use React and MongoDB. You can select
-a different front end framework a database using `--frontend`
-and `--db` flags. For instance, this command will create a 
-project with Vue and PostgreSQL:
+React і MongoDB  выкарыстоўваецца па змаўчанню. Вы 
+можаце выбраць розныя front end фреймворк і розныя 
+базу даных з дапамогай `--frontend` і `--db` сцягі. 
+Напрыклад, гэтая каманда створыць праект з Vue і PostgreSQL:
 
 ```go
 go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
 
-The `--frontend` flag accepts `angular`, `react` and `vue`.
-The `--db` flag accepts `mongo`, `mysql` and `postgres`.
-
+Сцяг `--frontend` прымае `angular`, `react` або ` vue`.
+Сцяг `--db` прымае `mongo`, `mysql` або `postgres`.
 
 Сфарміраваны праект гатовы да запуску з `docker-compose`: 
 ```sh
