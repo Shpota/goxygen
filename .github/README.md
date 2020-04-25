@@ -32,6 +32,9 @@
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_id.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/id.svg">
     </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_he.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/il.svg">
+    </a>
     <br>
     Goxygen
     <a href="https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild">
