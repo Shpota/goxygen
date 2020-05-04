@@ -70,7 +70,7 @@ dans des environnements de développement et de production.
     </thead>
     <tbody>
     <tr align="center">
-        <td align="center">FrontEnd</td>
+        <td align="center">Front End</td>
         <td>Angular</td>
         <td>React</td>
         <td>Vue</td>
