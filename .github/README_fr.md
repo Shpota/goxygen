@@ -76,7 +76,7 @@ dans des environnements de développement et de production.
         <td>Vue</td>
     </tr>
     <tr align="center">
-        <td>BackEnd</td>
+        <td>Back End</td>
         <td colspan=3>Go</td>
     </tr>
     <tr align="center">
