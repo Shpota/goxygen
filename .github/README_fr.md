@@ -58,14 +58,14 @@
 Goxygen vise à vous faire gagner du temps lors de la mise en place d'un nouveau projet. Il
 crée un squelette d'application avec une configuration complète par défaut.
 Vous pouvez commencer immédiatement à implémenter votre logique métier.
-Goxygen génère du code Backend en Go, le connecte aux composants Frontend, fournit un 
-Dockerfile pour l'application et crée des fichiers Docker-compose pour une exécution pratique 
+Goxygen génère du code Backend en Go, le connecte aux composants Frontend, fournit un
+Dockerfile pour l'application et crée des fichiers Docker-compose pour une exécution pratique
 dans des environnements de développement et de production.
 
 <table>
     <thead>
     <tr align="center">
-        <td colspan=4><b>Supported Technologies</b></td>
+        <td colspan=4><b>Technoligies supportées</b></td>
     </tr>
     </thead>
     <tbody>
@@ -80,7 +80,7 @@ dans des environnements de développement et de production.
         <td colspan=3>Go</td>
     </tr>
     <tr align="center">
-        <td>Database</td>
+        <td>Base de données</td>
         <td>MongoDB</td>
         <td>MySQL</td>
         <td>PostgreSQL</td>
@@ -91,33 +91,38 @@ dans des environnements de développement et de production.
 ## Guide d'utilisation
 
 Vous devez disposer de la version 1.11 ou supérieure de Go sur votre machine.
+
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
+
 Ces commandes génèrent un projet dans le dossier `my-app`.
 
-By default, it will use React and MongoDB. You can select
-a different front end framework and a database using
-`--frontend` and `--db` flags. For instance, this command
-will create a project with Vue and PostgreSQL:
+Par défaut, React et MongoDB seront utilisés. Vous pouvez
+choisir divers frameworks frontend ou bases de données en
+utilisant les flags `--frontend` et `--db`. Par exemple, cette
+commande va créer un projet avec Vue et PostreSQL:
 
 ```go
 go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
 
-The `--frontend` flag accepts `angular`, `react` and `vue`.
-The `--db` flag accepts `mongo`, `mysql` and `postgres`.
+Le flag `--frontend` accepte les valeurs `angular`, `react` and `vue`.
+Le flag `--db` accepte les valeurs `mongo`, `mysql` and `postgres`.
 
 Le projet généré est prêt à l'utilisation avec `docker-compose`:
+
 ```sh
 cd my-app
 docker-compose up
 ```
 
-Aprés la fin du build, l'application est accessible sur http://localhost:8080.
+Aprés la fin du build, l'application est
+accessible sur http://localhost:8080.
 
-Vous trouverez plus de détails sur l'utilisation du projet généré dans son fichier README.
+Vous trouverez plus de détails sur l'utilisation
+du projet généré dans son fichier README.
 
 ![Présentation](showcase.gif)
 
@@ -130,12 +135,12 @@ Vous trouverez plus de détails sur l'utilisation du projet généré dans son f
     │   ├── web                  # REST APIs, serveur web
     │   ├── server.go            # point d'entrée du serveur
     │   └── go.mod               # dépendances du serveur
-    ├── webapp                    
+    ├── webapp
     │   ├── public               # icones, fichiers statiques, et index.html
-    │   ├── src                       
+    │   ├── src
     │   │   ├── App.js           # le composant React principale
     │   │   ├── App.css          # style spécifiques au composant App
-    │   │   ├── index.js         # le point d'entrée de l'application          
+    │   │   ├── index.js         # le point d'entrée de l'application
     │   │   └── index.css        # styles globaux
     │   ├── package.json         # dépendances du frontend
     │   ├── .env.development     # endpoint de l'API pour l'environnement de développement
@@ -153,9 +158,9 @@ pour des raisons de simplicité.
 
 ## Dépendances
 
-Goxygen génére un projet avec une structure basique et ne vous force pas à utiliser des 
-outils spécifiques. C'est pour cela que les seules dépendances utilisées dans le projet 
-sont database driver côté backend et [axios](https://github.com/axios/axios) côté 
+Goxygen génére un projet avec une structure basique et ne vous force pas à utiliser des
+outils spécifiques. C'est pour cela que les seules dépendances utilisées dans le projet
+sont database driver côté backend et [axios](https://github.com/axios/axios) côté
 frontend les projets React et Vue. Les projets Angular utilisent leurs propres librairies.
 
 ## Comment contribuer
@@ -163,9 +168,9 @@ frontend les projets React et Vue. Les projets Angular utilisent leurs propres l
 Si vous trouvez un bug ou avez une idée sur comment améliorer le projet
 [créez une issue](https://github.com/Shpota/goxygen/issues)
 et nous corrigerons le problème le plus rapidement possible. Vous pouvez aussi
-proposer vos propres changement avec des Pull Request. Faites un Fork du dépôt, 
-effectuer vos modifications, envoyez-nous un pull request et nous le consulterons dans 
-les plus brefs délais. Nous disposons aussi d'un [chat Gitter](https://gitter.im/goxygen/community) 
+proposer vos propres changement avec des Pull Request. Faites un Fork du dépôt,
+effectuer vos modifications, envoyez-nous un pull request et nous le consulterons dans
+les plus brefs délais. Nous disposons aussi d'un [chat Gitter](https://gitter.im/goxygen/community)
 où nous discutons tous les changements.
 
 ### Crédits
