@@ -356,38 +356,37 @@ module.exports = function (config) {
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~9.0.7",
-    "@angular/common": "~9.0.7",
-    "@angular/compiler": "~9.0.7",
-    "@angular/core": "~9.0.7",
-    "@angular/forms": "~9.0.7",
-    "@angular/platform-browser": "~9.0.7",
-    "@angular/platform-browser-dynamic": "~9.0.7",
-    "@angular/router": "~9.0.7",
+    "@angular/animations": "~9.1.7",
+    "@angular/common": "~9.1.7",
+    "@angular/compiler": "~9.1.7",
+    "@angular/core": "~9.1.7",
+    "@angular/forms": "~9.1.7",
+    "@angular/platform-browser": "~9.1.7",
+    "@angular/platform-browser-dynamic": "~9.1.7",
+    "@angular/router": "~9.1.7",
     "rxjs": "~6.5.4",
-    "tslib": "~1.11.1",
-    "zone.js": "~0.10.3"
+    "tslib": "~1.10.0",
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.900.7",
-    "@angular/cli": "~9.0.7",
-    "@angular/compiler-cli": "~9.0.7",
-    "@angular/language-service": "~9.0.7",
-    "@types/node": "~13.9.2",
-    "@types/jasmine": "~3.5.9",
+    "@angular-devkit/build-angular": "~0.901.6",
+    "@angular/cli": "~9.1.6",
+    "@angular/compiler-cli": "~9.1.7",
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
-    "codelyzer": "~5.2.1",
+    "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~4.4.1",
+    "karma": "~5.0.0",
     "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~2.1.1",
-    "karma-jasmine": "~3.1.1",
-    "karma-jasmine-html-reporter": "~1.5.2",
-    "protractor": "~5.4.0",
-    "ts-node": "~8.7.0",
-    "tslint": "~5.15.0",
-    "typescript": "~3.7.5"
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-jasmine": "~3.0.1",
+    "karma-jasmine-html-reporter": "~1.4.2",
+    "protractor": "~5.4.3",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~3.8.3"
   }
 }
 `,
@@ -1364,7 +1363,7 @@ func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
 
 go 1.13
 
-require go.mongodb.org/mongo-driver v1.3.1
+require go.mongodb.org/mongo-driver v1.3.3
 `,
 		"mongo.server/server.go": `package main
 
@@ -1765,7 +1764,7 @@ func (d PostgresDB) GetTechnologies() ([]*model.Technology, error) {
 
 go 1.13
 
-require github.com/lib/pq v1.3.0`,
+require github.com/lib/pq v1.5.2`,
 		"postgres.server/server.go": `package main
 
 import (
@@ -1815,8 +1814,8 @@ func dataSource() string {
   },
   "devDependencies": {
     "@testing-library/jest-dom": "~4.2.4",
-    "@testing-library/react": "~9.5.0",
-    "@testing-library/user-event": "~7.2.1"
+    "@testing-library/react": "~9.3.2",
+    "@testing-library/user-event": "~7.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -2521,12 +2520,12 @@ VUE_APP_API_URL=`,
     "vue": "~2.6.11"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.2.0",
-    "@vue/cli-plugin-eslint": "~4.2.0",
-    "@vue/cli-service": "~4.2.0",
-    "babel-eslint": "~10.0.3",
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "babel-eslint": "~10.1.0",
     "eslint": "~6.7.2",
-    "eslint-plugin-vue": "~6.1.2",
+    "eslint-plugin-vue": "~6.2.2",
     "vue-template-compiler": "~2.6.11"
   },
   "eslintConfig": {
