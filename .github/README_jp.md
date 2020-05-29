@@ -65,22 +65,22 @@ Goxygen は、新しいプロジェクトを始める際の時間の節約を目
 <table>
     <thead>
     <tr align="center">
-        <td colspan=4><b>Supported Technologies</b></td>
+        <td colspan=4><b>対応技術</b></td>
     </tr>
     </thead>
     <tbody>
     <tr align="center">
-        <td align="center">Front End</td>
+        <td align="center">フロントエンド</td>
         <td>Angular</td>
         <td>React</td>
         <td>Vue</td>
     </tr>
     <tr align="center">
-        <td>Back End</td>
+        <td>バックエンド</td>
         <td colspan=3>Go</td>
     </tr>
     <tr align="center">
-        <td>Database</td>
+        <td>データベース</td>
         <td>MongoDB</td>
         <td>MySQL</td>
         <td>PostgreSQL</td>
@@ -96,17 +96,17 @@ go run github.com/shpota/goxygen init my-app
 ```
 `my-app` プロジェクトを `my-app` フォルダに生成します。
 
-By default, it will use React and MongoDB. You can select
-a different front end framework and a database using
-`--frontend` and `--db` flags. For instance, this command
-will create a project with Vue and PostgreSQL:
+デフォルトでは、React 及び MongoDB を使用します。
+`--frontend` と `--db` フラグを使って異なる
+フロントエンドフレームワークとデータベースを選べます。
+例えば、次のコマンドは Vue と PostgreSQL を含むプロジェクト作成します:
 
 ```go
 go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
 
-The `--frontend` flag accepts `angular`, `react` and `vue`.
-The `--db` flag accepts `mongo`, `mysql` and `postgres`.
+`--frontend` フラグは、`angular` や `react`、`vue` を受け取ります。
+`--db` フラグは、`mongo` や `mysql`、`postgres` を受け取ります。
 
 生成されたプロジェクトは、`docker-compse` で実行する準備が整っています:
 ```sh
@@ -126,7 +126,7 @@ docker-compose up
     my-app
     ├── server                   # Go プロジェクトファイル
     │   ├── db                   # MongoDB との通信
-    │   ├── model                # domain objects
+    │   ├── model                # ドメインオブジェクト
     │   ├── web                  # REST APIs, web サーバ
     │   ├── server.go            # サーバの開始点
     │   └── go.mod               # サーバ依存関係
@@ -159,7 +159,7 @@ Goxygen は、プロジェクトの基本的な構造を生成し、特定のツ
 React 及び Vue プロジェクトでは、[axios](https://github.com/axios/axios) のみを
 使用します。Angular プロジェクトでは、Angular 固有のライブラリのみを使用します。
 
-## どのようにコントリビュートするか
+## 貢献の仕方
 
 バグを発見した場合、またはプロジェクトを改善する方法についてアイディアがある場
 合 [open an issue](https://github.com/Shpota/goxygen/issues)、できるだけ早く修
