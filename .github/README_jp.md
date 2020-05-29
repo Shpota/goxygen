@@ -126,7 +126,7 @@ docker-compose up
     my-app
     ├── server                   # Go プロジェクトファイル
     │   ├── db                   # MongoDB との通信
-    │   ├── model                # domain objects
+    │   ├── model                # ドメインオブジェクト
     │   ├── web                  # REST APIs, web サーバ
     │   ├── server.go            # サーバの開始点
     │   └── go.mod               # サーバ依存関係
@@ -159,7 +159,7 @@ Goxygen は、プロジェクトの基本的な構造を生成し、特定のツ
 React 及び Vue プロジェクトでは、[axios](https://github.com/axios/axios) のみを
 使用します。Angular プロジェクトでは、Angular 固有のライブラリのみを使用します。
 
-## どのようにコントリビュートするか
+## 貢献の仕方
 
 バグを発見した場合、またはプロジェクトを改善する方法についてアイディアがある場
 合 [open an issue](https://github.com/Shpota/goxygen/issues)、できるだけ早く修
