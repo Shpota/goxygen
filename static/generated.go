@@ -1199,18 +1199,18 @@ context.keys().map(context);
     "codelyzer"
   ]
 }`,
-		"mongo.Dockerfile": `FROM node:12.16.1-alpine3.11 AS JS_BUILD
+		"mongo.Dockerfile": `FROM node:12.18.3-alpine3.12 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.13.9-alpine AS GO_BUILD
+FROM golang:1.15.1-alpine3.12 AS GO_BUILD
 RUN apk update && apk add build-base
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.11.3
+FROM alpine:3.12.0
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1363,7 +1363,7 @@ func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
 
 go 1.13
 
-require go.mongodb.org/mongo-driver v1.3.3
+require go.mongodb.org/mongo-driver v1.4.1
 `,
 		"mongo.server/server.go": `package main
 
@@ -1401,17 +1401,17 @@ func clientOptions() *options.ClientOptions {
 	)
 }
 `,
-		"mysql.Dockerfile": `FROM node:12.16.1-alpine3.11 AS JS_BUILD
+		"mysql.Dockerfile": `FROM node:12.18.3-alpine3.12 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.13.9-alpine AS GO_BUILD
+FROM golang:1.15.1-alpine3.12 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.11.3
+FROM alpine:3.12.0
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1602,17 +1602,17 @@ func dataSource() string {
 	return "goxygen:" + pass + "@tcp(" + host + ":3306)/goxygen"
 }
 `,
-		"postgres.Dockerfile": `FROM node:12.16.1-alpine3.11 AS JS_BUILD
+		"postgres.Dockerfile": `FROM node:12.18.3-alpine3.12 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.13.9-alpine AS GO_BUILD
+FROM golang:1.15.1-alpine3.12 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.11.3
+FROM alpine:3.12.0
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1764,7 +1764,8 @@ func (d PostgresDB) GetTechnologies() ([]*model.Technology, error) {
 
 go 1.13
 
-require github.com/lib/pq v1.5.2`,
+require github.com/lib/pq v1.8.0
+`,
 		"postgres.server/server.go": `package main
 
 import (
@@ -1807,10 +1808,10 @@ func dataSource() string {
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "~0.19.2",
+    "axios": "~0.20.0",
     "react": "~16.13.1",
     "react-dom": "~16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "~4.2.4",
@@ -2515,14 +2516,14 @@ VUE_APP_API_URL=`,
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "~0.19.2",
-    "core-js": "~3.6.4",
+    "axios": "~0.20.0",
+    "core-js": "~3.6.5",
     "vue": "~2.6.11"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-plugin-eslint": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
     "babel-eslint": "~10.1.0",
     "eslint": "~6.7.2",
     "eslint-plugin-vue": "~6.2.2",
@@ -2544,7 +2545,8 @@ VUE_APP_API_URL=`,
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions"
+    "last 2 versions",
+    "not dead"
   ]
 }
 `,
