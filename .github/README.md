@@ -41,7 +41,7 @@
         <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/releases">
-        <img src="https://img.shields.io/badge/version-v0.3.1-green">
+        <img src="https://img.shields.io/github/v/tag/shpota/goxygen?color=green&label=version">
     </a>
     <a href="https://gitter.im/goxygen/community">
         <img src="https://badges.gitter.im/goxygen/community.svg">
