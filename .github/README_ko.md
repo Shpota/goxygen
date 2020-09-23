@@ -94,10 +94,8 @@ go run github.com/shpota/goxygen init my-app
 ```
 `my-app` 폴더에 프로젝트를 생성합니다.
 
-By default, it will use React and MongoDB. You can select
-a different front end framework and a database using
-`--frontend` and `--db` flags. For instance, this command
-will create a project with Vue and PostgreSQL:
+기본설정으로 React 와 MongoDB를 사용합니다.
+다른 프런트엔드 프레임워크와 데이터베이스를 선택하고 싶다면 `--frontend`와 `--db` 플래그를 사용합니다. 예를 들어 아래의 명령은 Vue와 PostgreSQL을 사용하여 프로젝트를 생성합니다:
 
 ```go
 go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
