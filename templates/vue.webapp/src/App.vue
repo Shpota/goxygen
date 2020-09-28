@@ -2,7 +2,7 @@
   <div id="app">
     <h2 class="title">project-name</h2>
     <div class="logo">
-      <img :src="logoSVG" height="150px" alt="logo" />
+      <img :src="logoSVG" height="150" alt="logo" />
     </div>
     <div>
       This project is generated with
