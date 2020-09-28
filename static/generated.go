@@ -2518,16 +2518,16 @@ VUE_APP_API_URL=`,
   "dependencies": {
     "axios": "~0.20.0",
     "core-js": "~3.6.5",
-    "vue": "~2.6.11"
+    "vue": "~3.0.0-0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "~3.0.0-0",
     "babel-eslint": "~10.1.0",
     "eslint": "~6.7.2",
-    "eslint-plugin-vue": "~6.2.2",
-    "vue-template-compiler": "~2.6.11"
+    "eslint-plugin-vue": "~7.0.0-0"
   },
   "eslintConfig": {
     "root": true,
@@ -2535,7 +2535,7 @@ VUE_APP_API_URL=`,
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/vue3-essential",
       "eslint:recommended"
     ],
     "parserOptions": {
@@ -2571,7 +2571,7 @@ VUE_APP_API_URL=`,
   <div id="app">
     <h2 class="title">project-name</h2>
     <div class="logo">
-      <img :src="logoSVG" height="150px" alt="logo" />
+      <img :src="logoSVG" height="150" alt="logo" />
     </div>
     <div>
       This project is generated with
@@ -3006,14 +3006,10 @@ export default {
 }
 </style>
 `,
-		"vue.webapp/src/main.js": `import Vue from 'vue'
+		"vue.webapp/src/main.js": `import { createApp } from 'vue'
 import App from './App.vue'
 
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+createApp(App).mount('#app')
 `,
 	}
 }
