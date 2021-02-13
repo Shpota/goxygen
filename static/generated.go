@@ -1872,7 +1872,7 @@ func dataSource() string {
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "~0.20.0",
+    "axios": "~0.21.1",
     "react": "~16.13.1",
     "react-dom": "~16.13.1",
     "react-scripts": "3.4.3"
@@ -2580,7 +2580,7 @@ VUE_APP_API_URL=`,
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "~0.20.0",
+    "axios": "~0.21.1",
     "core-js": "~3.6.5",
     "vue": "~3.0.0-0"
   },
