@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   dev_db:
-    image: postgres:9.6-alpine
+    image: postgres:9.6.21-alpine
     environment:
       POSTGRES_PASSWORD: pass
       POSTGRES_USER: goxygen

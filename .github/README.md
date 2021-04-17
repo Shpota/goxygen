@@ -89,8 +89,19 @@ environments.
     </tbody>
 </table>
 
-## How to use
+## Requirements
+
 You need to have Go 1.11 or newer on your machine.
+
+The `GO111MODULE` environment variable has to be set to `auto` for the
+generation logic to work. It is a default for Go versions up to 1.15,
+for Go 1.16, you need to set it explicitly:
+```
+export GO111MODULE=auto
+```
+
+## How to use
+Run:
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
@@ -169,19 +180,6 @@ changes via a Pull Request. Fork the repository, make changes, send
 us a pull request and we'll review it shortly. We also have a
 [Gitter chat](https://gitter.im/goxygen/community) where we discuss
 all the changes.
-
-## Troubleshooting
-
-### I'm getting an error
-If when running the `init` command you are getting the following error:
-```
-$ go run github.com/shpota/goxygen init my-app
-no required module provides package github.com/shpota/goxygen: working directory is not part of a module
-```
-This means you are using Go version 1.13 or later. To make this command work you need to set your `GO111MODULE` environment variable to `auto`, like this:
-```
-export GO111MODULE=auto
-```
 
 ## Credits
 Goxygen's logo was created by [Egon Elbre](https://twitter.com/egonelbre).

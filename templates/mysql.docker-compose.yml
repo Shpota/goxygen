@@ -11,7 +11,7 @@ services:
       profile: prod
       db_pass: pass
   db:
-    image: mysql:8.0
+    image: mysql:8.0.23
     container_name: db
     environment:
       MYSQL_DATABASE: goxygen
