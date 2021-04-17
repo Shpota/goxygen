@@ -88,9 +88,18 @@ Goxygen захавае ваш час пры стварэнні новых дад
     </tbody>
 </table>
 
+## Requirements
+Вам трэба мець Go 1.11 або навей вэрсію.
+
+The `GO111MODULE` environment variable has to be set to `auto`
+for the generation logic to work. It is a default for Go
+versions up to 1.15. For Go 1.16, you need to set it explicitly:
+```
+export GO111MODULE=auto
+```
+
 ## Выкарыстанне
 
-Вам трэба мець Go 1.11 або навей вэрсію.
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app

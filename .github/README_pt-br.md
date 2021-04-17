@@ -89,8 +89,17 @@ executar em ambientes de desenvolvimento e produção.
     </tbody>
 </table>
 
-## Como utilizar
+## Requirements
 Você precisa ter Go 1.11 ou mais recente na sua máquina.
+
+The `GO111MODULE` environment variable has to be set to `auto`
+for the generation logic to work. It is a default for Go
+versions up to 1.15. For Go 1.16, you need to set it explicitly:
+```
+export GO111MODULE=auto
+```
+
+## Como utilizar
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app

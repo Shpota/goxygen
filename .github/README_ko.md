@@ -86,8 +86,17 @@ Goxygen은 사용자가 새로운 프로젝트를 설정하는데 필요한 시�
     </tbody>
 </table>
 
-## 사용하는 방법
+## Requirements
 사용자는 Go 1.11 또는 그 이상의 버젼이 필요합니다.
+
+The `GO111MODULE` environment variable has to be set to `auto`
+for the generation logic to work. It is a default for Go
+versions up to 1.15. For Go 1.16, you need to set it explicitly:
+```
+export GO111MODULE=auto
+```
+
+## 사용하는 방법
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
