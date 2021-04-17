@@ -143,7 +143,6 @@ Thumbs.db
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -356,29 +355,29 @@ module.exports = function (config) {
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~10.1.4",
-    "@angular/common": "~10.1.4",
-    "@angular/compiler": "~10.1.4",
-    "@angular/core": "~10.1.4",
-    "@angular/forms": "~10.1.4",
-    "@angular/platform-browser": "~10.1.4",
-    "@angular/platform-browser-dynamic": "~10.1.4",
-    "@angular/router": "~10.1.4",
+    "@angular/animations": "~11.2.10",
+    "@angular/common": "~11.2.10",
+    "@angular/compiler": "~11.2.10",
+    "@angular/core": "~11.2.10",
+    "@angular/forms": "~11.2.10",
+    "@angular/platform-browser": "~11.2.10",
+    "@angular/platform-browser-dynamic": "~11.2.10",
+    "@angular/router": "~11.2.10",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1001.4",
-    "@angular/cli": "~10.1.4",
-    "@angular/compiler-cli": "~10.1.4",
+    "@angular-devkit/build-angular": "~0.1102.9",
+    "@angular/cli": "~11.2.9",
+    "@angular/compiler-cli": "~11.2.10",
     "@types/node": "^12.11.1",
-    "@types/jasmine": "~3.5.0",
+    "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
-    "codelyzer": "^5.1.2",
-    "jasmine-core": "~3.5.0",
+    "codelyzer": "^6.0.0",
+    "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~5.0.0",
+    "karma": "~6.3.2",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
@@ -420,13 +419,13 @@ module.exports = function (config) {
     text-align: center;
 }
 `,
-		"angular.webapp/src/app/app.component.spec.ts": `import { TestBed, async } from '@angular/core/testing';
+		"angular.webapp/src/app/app.component.spec.ts": `import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { TechComponent } from './tech/tech.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -1263,18 +1262,18 @@ context.keys().map(context);
     "codelyzer"
   ]
 }`,
-		"mongo.Dockerfile": `FROM node:12.18.3-alpine3.12 AS JS_BUILD
+		"mongo.Dockerfile": `FROM node:14.16.1-alpine3.13 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.15.1-alpine3.12 AS GO_BUILD
+FROM golang:1.16.3-alpine3.13 AS GO_BUILD
 RUN apk update && apk add build-base
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.12.0
+FROM alpine:3.13.5
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1345,7 +1344,7 @@ its database. Access the application on http://localhost:8080.
 		"mongo.docker-compose-dev.yml": `version: "3.7"
 services:
   dev_db:
-    image: mongo:4.2.3
+    image: mongo:4.4.5
     environment:
       MONGO_INITDB_DATABASE: tech
     ports:
@@ -1365,7 +1364,7 @@ services:
     environment:
       profile: prod
   db:
-    image: mongo:4.2.3
+    image: mongo:4.4.5
     container_name: db
     environment:
       MONGO_INITDB_DATABASE: tech
@@ -1425,9 +1424,9 @@ func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
 `,
 		"mongo.server/go.mod": `module project-name
 
-go 1.13
+go 1.16
 
-require go.mongodb.org/mongo-driver v1.4.1
+require go.mongodb.org/mongo-driver v1.5.1
 `,
 		"mongo.server/server.go": `package main
 
@@ -1465,17 +1464,17 @@ func clientOptions() *options.ClientOptions {
 	)
 }
 `,
-		"mysql.Dockerfile": `FROM node:12.18.3-alpine3.12 AS JS_BUILD
+		"mysql.Dockerfile": `FROM node:14.16.1-alpine3.13 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.15.1-alpine3.12 AS GO_BUILD
+FROM golang:1.16.3-alpine3.13 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.12.0
+FROM alpine:3.13.5
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1542,7 +1541,7 @@ its database. Access the application on http://localhost:8080.
 		"mysql.docker-compose-dev.yml": `version: "3.7"
 services:
   dev_db:
-    image: mysql:8.0
+    image: mysql:8.0.23
     environment:
       MYSQL_DATABASE: goxygen
       MYSQL_USER: goxygen
@@ -1566,7 +1565,7 @@ services:
       profile: prod
       db_pass: pass
   db:
-    image: mysql:8.0
+    image: mysql:8.0.23
     container_name: db
     environment:
       MYSQL_DATABASE: goxygen
@@ -1628,9 +1627,9 @@ func (d MySQLDB) GetTechnologies() ([]*model.Technology, error) {
 `,
 		"mysql.server/go.mod": `module project-name
 
-go 1.13
+go 1.16
 
-require github.com/go-sql-driver/mysql v1.5.0
+require github.com/go-sql-driver/mysql v1.6.0
 `,
 		"mysql.server/server.go": `package main
 
@@ -1666,17 +1665,17 @@ func dataSource() string {
 	return "goxygen:" + pass + "@tcp(" + host + ":3306)/goxygen"
 }
 `,
-		"postgres.Dockerfile": `FROM node:12.18.3-alpine3.12 AS JS_BUILD
+		"postgres.Dockerfile": `FROM node:14.16.1-alpine3.13 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.15.1-alpine3.12 AS GO_BUILD
+FROM golang:1.16.3-alpine3.13 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.12.0
+FROM alpine:3.13.5
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1743,7 +1742,7 @@ its database. Access the application on http://localhost:8080.
 		"postgres.docker-compose-dev.yml": `version: "3.7"
 services:
   dev_db:
-    image: postgres:9.6-alpine
+    image: postgres:9.6.21-alpine
     environment:
       POSTGRES_PASSWORD: pass
       POSTGRES_USER: goxygen
@@ -1766,7 +1765,7 @@ services:
       profile: prod
       db_pass: pass
   db:
-    image: postgres:9.6-alpine
+    image: postgres:9.6.21-alpine
     environment:
       POSTGRES_PASSWORD: pass
       POSTGRES_USER: goxygen
@@ -1826,9 +1825,9 @@ func (d PostgresDB) GetTechnologies() ([]*model.Technology, error) {
 `,
 		"postgres.server/go.mod": `module project-name
 
-go 1.13
+go 1.16
 
-require github.com/lib/pq v1.8.0
+require github.com/lib/pq v1.10.0
 `,
 		"postgres.server/server.go": `package main
 
