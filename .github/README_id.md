@@ -91,8 +91,17 @@ dan fase produksi.
     </tbody>
 </table>
 
-## Cara penggunaan
+## Requirements
 Anda harus mempunyai Go versi 1.11 atau yang lebih pada mesin Anda.
+
+The `GO111MODULE` environment variable has to be set to `auto`
+for the generation logic to work. It is a default for Go
+versions up to 1.15. For Go 1.16, you need to set it explicitly:
+```
+export GO111MODULE=auto
+```
+
+## Cara penggunaan
 
 ```go
 go get -u github.com/shpota/goxygen

@@ -87,8 +87,17 @@ y te ofrece los archivos necesarios para que docker componga los entornos de des
     </tbody>
 </table>
 
-## Como se usa
+## Requirements
 Necesitas tener instalado Go 1.11 o posterior en tu equipo.
+
+The `GO111MODULE` environment variable has to be set to `auto`
+for the generation logic to work. It is a default for Go
+versions up to 1.15. For Go 1.16, you need to set it explicitly:
+```
+export GO111MODULE=auto
+```
+
+## Como se usa
 
 ```go
 go get -u github.com/shpota/goxygen

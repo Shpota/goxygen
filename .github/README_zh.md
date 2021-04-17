@@ -82,8 +82,17 @@ Goxygen致力于节省你搭建一个项目的时间。它自动生成一个完�
     </tbody>
 </table>
 
+## Requirements
+你需要安装Go 1.11或者更新的版本。
+
+The `GO111MODULE` environment variable has to be set to `auto`
+for the generation logic to work. It is a default for Go
+versions up to 1.15. For Go 1.16, you need to set it explicitly:
+```
+export GO111MODULE=auto
+```
+
 # 如何使用
-你需要安装Go 1.11或者更新的版本。  
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app

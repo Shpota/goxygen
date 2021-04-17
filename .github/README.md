@@ -90,12 +90,11 @@ environments.
 </table>
 
 ## Requirements
-
 You need to have Go 1.11 or newer on your machine.
 
-The `GO111MODULE` environment variable has to be set to `auto` for the
-generation logic to work. It is a default for Go versions up to 1.15,
-for Go 1.16, you need to set it explicitly:
+The `GO111MODULE` environment variable has to be set to `auto`
+for the generation logic to work. It is a default for Go
+versions up to 1.15. For Go 1.16, you need to set it explicitly:
 ```
 export GO111MODULE=auto
 ```
