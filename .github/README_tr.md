@@ -89,7 +89,6 @@ Goxygen, yeni bir proje oluştururken sizin zamandan tasarruf etmenize odaklanı
 ## Gereksinimler
 
 Makinenizde Go 1.11 veya daha yenisine sahip olmanız gerekmektedir.
-You need to have Go 1.11 or newer on your machine.
 
 `GO111MODULE` ortam değişkeni üretim mantığının çalışması için `auto` olarak ayarlanmalıdır. Bu ayar, Go 1.15'e kadar olan sürümlerde varsayılan ayardır. Ancak, Go 1.16 için, bunu açıkça ayarlamanız gerekmektedir:
 
