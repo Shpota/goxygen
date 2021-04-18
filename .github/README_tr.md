@@ -1,6 +1,6 @@
 <h1 align="center">
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README.md">
-        <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_zh.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
@@ -36,7 +36,7 @@
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/il.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_tr.md">
-        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/tr.svg">
+        <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/tr.svg">
     </a>
     <br>
     Goxygen
@@ -99,7 +99,7 @@ export GO111MODULE=auto
 
 ## Nasıl Kullanılır
 
-Run:
+Çalıştır:
 
 ```go
 go get -u github.com/shpota/goxygen
