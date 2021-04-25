@@ -1995,14 +1995,14 @@ func dataSource() string {
   "private": true,
   "dependencies": {
     "axios": "~0.21.1",
-    "react": "~16.13.1",
-    "react-dom": "~16.13.1",
-    "react-scripts": "3.4.3"
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2",
+    "react-scripts": "~4.0.3"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "~4.2.4",
-    "@testing-library/react": "~9.3.2",
-    "@testing-library/user-event": "~7.1.2"
+    "@testing-library/jest-dom": "~5.11.10",
+    "@testing-library/react": "~11.2.6",
+    "@testing-library/user-event": "~13.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
