@@ -66,7 +66,7 @@ func (g generator) processFile(path string, content []byte) {
 
 func (g generator) initGitRepo() error {
 	fmt.Println("setting up Git repository")
-	cmd := exec.Command("git", "init", ".")
+	cmd := exec.Command("git", "init", "-b", "main", ".")
 	cmd.Dir = g.projectName
 	err := cmd.Run()
 	if err != nil {
