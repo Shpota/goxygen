@@ -96,22 +96,37 @@ environments.
 
 You need to have Go 1.11 or newer on your machine.
 
-The `GO111MODULE` environment variable has to be set to `auto`
-for the generation logic to work. It is a default for Go
-versions up to 1.15. For Go 1.16, you need to set it explicitly:
+## How to use
 
+Go 1.17 and later:
+
+```go
+go run github.com/shpota/goxygen@latest init my-app
+```
+
+<details>
+  <summary>Older versions of Go</summary>
+
+### Go 1.16
+
+Set the `GO111MODULE` environment variable to `auto`.
 ```
 export GO111MODULE=auto
 ```
-
-## How to use
-
-Run:
-
+Run 
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
+
+### Go 1.11 - 1.15
+
+Run
+```go
+go get -u github.com/shpota/goxygen
+go run github.com/shpota/goxygen init my-app
+```
+</details>
 
 This generates a project in `my-app` folder.
 
@@ -121,7 +136,7 @@ a different front end framework and a database using
 will create a project with Vue and PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
+go run github.com/shpota/goxygen@latest init --frontend vue --db postgres my-app
 ```
 
 The `--frontend` flag accepts `angular`, `react` and `vue`.
