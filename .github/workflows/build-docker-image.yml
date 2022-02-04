@@ -23,6 +23,7 @@ jobs:
     permissions:
       packages: write
       contents: read
+    needs: cleanup
     steps:
       - uses: actions/checkout@v2
 
