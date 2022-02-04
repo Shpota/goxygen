@@ -11,6 +11,7 @@ jobs:
   push:
     runs-on: ubuntu-latest
     container:
+      image: ubuntu:latest
       options: --user 1000
     permissions:
       packages: write
