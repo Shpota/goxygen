@@ -8,8 +8,6 @@ USER goxygenuser
 
 WORKDIR /goxygen
 
-RUN mkdir generated 
-
 COPY . .
 
 # Without this line, the docker image will not be able to run and produce error: 

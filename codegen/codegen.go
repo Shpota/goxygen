@@ -21,6 +21,11 @@ func Generate(projectName string, techStack []string) {
 
 	// This code required to be able to run docker container so we could export generated files
 	if os.Getenv("GOXYGEN_DOCKER") == "true" {
+		_ = os.MkdirAll(
+			"generated",
+			os.ModePerm,
+		)
+
 		g.projectName = "generated/" + g.projectName
 	}
 
