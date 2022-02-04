@@ -1,14 +1,16 @@
 FROM golang:1.17.6-bullseye
 
-# RUN groupadd -g 1000 -o goxygenuser
+RUN groupadd -g 1000 -o goxygenuser
 
-# RUN useradd -m -u 1000 -g 1000 -o -s /bin/bash goxygenuser
+RUN useradd -m -u 1000 -g 1000 -o -s /bin/bash goxygenuser
 
-# USER goxygenuser
+USER goxygenuser
 
 WORKDIR /goxygen
 
 COPY . .
+
+RUN chown -R goxygenuser:goxygenuser .
 
 # Without this line, the docker image will not be able to run and produce error: 
 # `Failed to setup a Git repository: exit status 128`
