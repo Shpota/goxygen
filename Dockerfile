@@ -10,8 +10,6 @@ WORKDIR /goxygen
 
 COPY . .
 
-RUN chown -R goxygenuser:goxygenuser .
-
 # Without this line, the docker image will not be able to run and produce error: 
 # `Failed to setup a Git repository: exit status 128`
 # Because there is a line of code that stage files to the git repository and commit on
