@@ -10,15 +10,13 @@ env:
 jobs:
   push:
     runs-on: ubuntu-latest
-    # container:
-    #   image: ubuntu:latest
-    #   options: --user 1000
+    container:
+      image: ubuntu:latest
+      options: --user 1000
     permissions:
       packages: write
       contents: read
     steps:
-      - name: Chown
-        run: chown -R 1000:1000 /__w/goxygen/goxygen
       - uses: actions/checkout@v2
 
       - name: Build image
