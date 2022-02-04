@@ -18,7 +18,7 @@ jobs:
       contents: read
     steps:
       - name: Chown
-        run: sudo chown -R $USER:$USER /home/github/actions-runner/_work/orgmatileg/goxygen
+        run: sudo chown -R $USER:$USER /home/github/actions-runner/_work/goxygen
       - uses: actions/checkout@v2
 
       - name: Build image
