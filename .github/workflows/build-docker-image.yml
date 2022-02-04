@@ -10,7 +10,8 @@ env:
 jobs:
   push:
     runs-on: ubuntu-latest
-    options: --user 1000
+    container:
+      options: --user 1000
     permissions:
       packages: write
       contents: read
