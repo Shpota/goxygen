@@ -17,6 +17,8 @@ jobs:
       packages: write
       contents: read
     steps:
+      - name: Chown
+        run: chown -R 1000:1000 /github/home/.cache && echo "pwn dat cache"
       - uses: actions/checkout@v2
 
       - name: Build image
