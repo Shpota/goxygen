@@ -19,8 +19,7 @@ jobs:
     steps:
       - name: Cleaning up the $GITHUB_WORKSPACE as root from a Docker image
         # Volume auto mounted by gh actions pointing to the current working-directory
-        run: find /__w/${{ github.event.repository.name }}/${{ github.event.repository.name }}/. -name . -o -prune -exec rm -rf -- {} + || true
-      - run: chown -R 1000:1000 /tmp/go-build*
+        run: find /__w/orgmatileg/${{ github.event.repository.name }}/. -name . -o -prune -exec rm -rf -- {} + || true
 
       - uses: actions/checkout@v2
 
