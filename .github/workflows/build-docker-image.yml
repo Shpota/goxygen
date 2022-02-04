@@ -2,6 +2,7 @@ name: build docker image and push
 
 on:
   workflow_dispatch:
+  push:
 
 env:
   IMAGE_NAME: goxygen
