@@ -18,6 +18,7 @@ jobs:
       contents: read
     steps:
       - run: rm -rf $GITHUB_WORKSPACE/*
+      - run: cd /__w/ && ls
       - uses: actions/checkout@v2
 
       - name: Build image
