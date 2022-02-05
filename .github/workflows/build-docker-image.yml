@@ -17,7 +17,7 @@ jobs:
       packages: write
       contents: read
     steps:
-      - run: chown -R 1000:1000 ${{ github.workspace }}
+      - run: rm -rf $GITHUB_WORKSPACE/*
       - uses: actions/checkout@v2
 
       - name: Build image
