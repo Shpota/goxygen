@@ -72,7 +72,7 @@ func (g generator) processFile(path string, content []byte) {
 	err := ioutil.WriteFile(
 		pathFile,
 		content,
-		0644,
+		0777,
 	)
 	if err != nil {
 		log.Fatal(err)

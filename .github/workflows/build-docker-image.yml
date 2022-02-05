@@ -10,15 +10,10 @@ env:
 jobs:
   push:
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:latest
-      options: --user 1000
     permissions:
       packages: write
       contents: read
     steps:
-      - run: sudo rm -rf /__w/goxygen
-      - run: cd /__w/ && ls
       - uses: actions/checkout@v2
 
       - name: Build image
