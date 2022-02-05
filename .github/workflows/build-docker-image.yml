@@ -8,23 +8,17 @@ env:
   IMAGE_NAME: goxygen
 
 jobs:
-  cleanup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cleaning up the $GITHUB_WORKSPACE as root from a Docker image
-        # Volume auto mounted by gh actions pointing to the current working-directory
-        run: find /__w/orgmatileg/${{ github.event.repository.name }}/. -name . -o -prune -exec rm -rf -- {} + || true
-
   push:
     runs-on: ubuntu-latest
-    # container:
-    # image: ubuntu:latest
-    # options: --user 1000
+    container:
+      image: ubuntu:latest
+      options: --user 1000
     permissions:
       packages: write
       contents: read
     needs: cleanup
     steps:
+      - run: chown -R 1000:1000 ${{ github.workspace }}
       - uses: actions/checkout@v2
 
       - name: Build image
