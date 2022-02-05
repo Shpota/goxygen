@@ -17,7 +17,7 @@ jobs:
       packages: write
       contents: read
     steps:
-      - run: rm -rf /__w/goxygen
+      - run: sudo rm -rf /__w/goxygen
       - run: cd /__w/ && ls
       - uses: actions/checkout@v2
 
