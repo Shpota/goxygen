@@ -16,7 +16,6 @@ jobs:
     permissions:
       packages: write
       contents: read
-    needs: cleanup
     steps:
       - run: chown -R 1000:1000 ${{ github.workspace }}
       - uses: actions/checkout@v2
