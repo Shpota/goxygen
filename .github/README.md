@@ -98,6 +98,12 @@ You need to have Go 1.11 or newer on your machine.
 
 ## How to use
 
+Docker latest release:
+
+```bash
+docker run -e UID=$(echo $UID) -e GID=$(echo $GID) -v $(pwd):/app/generated ghcr.io/Shpota/goxygen:latest init my-app
+```
+
 Go 1.17 and later:
 
 ```go
@@ -110,10 +116,13 @@ go run github.com/shpota/goxygen@latest init my-app
 ### Go 1.16
 
 Set the `GO111MODULE` environment variable to `auto`.
+
 ```
 export GO111MODULE=auto
 ```
-Run 
+
+Run
+
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
@@ -122,10 +131,12 @@ go run github.com/shpota/goxygen init my-app
 ### Go 1.11 - 1.15
 
 Run
+
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
+
 </details>
 
 This generates a project in `my-app` folder.
