@@ -1,11 +1,5 @@
 FROM golang:1.17.6-bullseye
 
-# RUN groupadd -g 1000 -o goxygenuser
-
-# RUN useradd -m -u 1000 -g 1000 -o -s /bin/bash goxygenuser
-
-# USER goxygenuser
-
 WORKDIR /goxygen
 
 COPY . .
