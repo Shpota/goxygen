@@ -3,6 +3,11 @@ name: build docker image and push
 on:
   workflow_dispatch:
   push:
+    branches:
+      - master
+      - staging
+    tags:
+      - "*"
 
 env:
   IMAGE_NAME: goxygen
