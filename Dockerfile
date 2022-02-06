@@ -1,7 +1,10 @@
 FROM golang:1.17.6-bullseye
 
-WORKDIR /goxygen
+ENV UID=1000
+ENV GID=1000
+ENV GOXYGEN_DOCKER=true
 
+WORKDIR /app
 COPY . .
 
 # Without this line, the docker image will not be able to run and produce error: 
@@ -12,6 +15,6 @@ RUN git config --global user.email "arlhba@gmail.com" && git config --global use
 
 RUN go build -o goxygen
 
-ENV GOXYGEN_DOCKER=true
 
-ENTRYPOINT [ "/goxygen/goxygen" ]
+
+ENTRYPOINT ["/bin/sh", "-C", "/app/docker-entrypoint.sh" ]

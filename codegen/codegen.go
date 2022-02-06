@@ -61,13 +61,13 @@ func (g generator) processFile(path string, content []byte) {
 	pathElements := strings.Split(path, "/")
 	separator := string(os.PathSeparator)
 	pathElements = append([]string{g.projectName}, pathElements...)
-	pathFile := strings.Join(pathElements, separator)
 
 	_ = os.MkdirAll(
 		strings.Join(pathElements[:len(pathElements)-1], separator),
 		os.ModePerm,
 	)
 
+	pathFile := strings.Join(pathElements, separator)
 	fmt.Println("creating: " + pathFile)
 	err := ioutil.WriteFile(
 		pathFile,
