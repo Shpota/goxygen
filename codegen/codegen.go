@@ -2,12 +2,13 @@ package codegen
 
 import (
 	"fmt"
-	"github.com/shpota/goxygen/static"
 	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
 	"strings"
+
+	"github.com/shpota/goxygen/static"
 )
 
 type generator struct {
@@ -17,6 +18,17 @@ type generator struct {
 
 func Generate(projectName string, techStack []string) {
 	g := generator{projectName, techStack}
+
+	// This code required to be able to run docker container so we could export generated files
+	if os.Getenv("GOXYGEN_DOCKER") == "true" {
+		_ = os.MkdirAll(
+			"generated",
+			os.ModePerm,
+		)
+
+		g.projectName = "generated/" + g.projectName
+	}
+
 	g.generate()
 }
 
@@ -53,9 +65,11 @@ func (g generator) processFile(path string, content []byte) {
 		strings.Join(pathElements[:len(pathElements)-1], separator),
 		os.ModePerm,
 	)
-	fmt.Println("creating: " + strings.Join(pathElements, separator))
+
+	pathFile := strings.Join(pathElements, separator)
+	fmt.Println("creating: " + pathFile)
 	err := ioutil.WriteFile(
-		strings.Join(pathElements, separator),
+		pathFile,
 		content,
 		0644,
 	)
