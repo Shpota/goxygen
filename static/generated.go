@@ -1262,12 +1262,12 @@ context.keys().map(context);
     "codelyzer"
   ]
 }`,
-		"mongo.Dockerfile": `FROM node:14.16.1-alpine3.13 AS JS_BUILD
+		"mongo.Dockerfile": `FROM node:16.14.2-alpine3.15 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.16.3-alpine3.13 AS GO_BUILD
+FROM 1.18.1-alpine3.15 AS GO_BUILD
 RUN apk update && apk add build-base
 COPY server /server
 WORKDIR /server
@@ -1424,9 +1424,9 @@ func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
 `,
 		"mongo.server/go.mod": `module project-name
 
-go 1.16
+go 1.18
 
-require go.mongodb.org/mongo-driver v1.5.1
+require go.mongodb.org/mongo-driver v1.7.6
 `,
 		"mongo.server/go.sum": `github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/aws/aws-sdk-go v1.34.28 h1:sscPpn/Ns3i0F4HPEWAVcwdIRaZZCuL7llJ2/60yPIk=
@@ -1581,12 +1581,12 @@ func clientOptions() *options.ClientOptions {
 	)
 }
 `,
-		"mysql.Dockerfile": `FROM node:14.16.1-alpine3.13 AS JS_BUILD
+		"mysql.Dockerfile": `FROM node:16.14.2-alpine3.15 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.16.3-alpine3.13 AS GO_BUILD
+FROM 1.18.1-alpine3.15 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
@@ -1744,7 +1744,7 @@ func (d MySQLDB) GetTechnologies() ([]*model.Technology, error) {
 `,
 		"mysql.server/go.mod": `module project-name
 
-go 1.16
+go 1.18
 
 require github.com/go-sql-driver/mysql v1.6.0
 `,
@@ -1785,12 +1785,12 @@ func dataSource() string {
 	return "goxygen:" + pass + "@tcp(" + host + ":3306)/goxygen"
 }
 `,
-		"postgres.Dockerfile": `FROM node:14.16.1-alpine3.13 AS JS_BUILD
+		"postgres.Dockerfile": `FROM node:16.14.2-alpine3.15 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.16.3-alpine3.13 AS GO_BUILD
+FROM 1.18.1-alpine3.15 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
@@ -1945,9 +1945,9 @@ func (d PostgresDB) GetTechnologies() ([]*model.Technology, error) {
 `,
 		"postgres.server/go.mod": `module project-name
 
-go 1.16
+go 1.18
 
-require github.com/lib/pq v1.10.0
+require github.com/lib/pq v1.10.4
 `,
 		"postgres.server/go.sum": `github.com/lib/pq v1.10.0 h1:Zx5DJFEYQXio93kgXnQ09fXNiUKsqv4OUEu2UtGcB1E=
 github.com/lib/pq v1.10.0/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=
@@ -1994,15 +1994,15 @@ func dataSource() string {
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "~0.21.1",
-    "react": "~17.0.2",
-    "react-dom": "~17.0.2",
-    "react-scripts": "~4.0.3"
+    "axios": "~0.26.1",
+    "react": "~18.0.0",
+    "react-dom": "~18.0.0",
+    "react-scripts": "~5.0.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "~5.11.10",
-    "@testing-library/react": "~11.2.6",
-    "@testing-library/user-event": "~13.1.5"
+    "@testing-library/jest-dom": "~5.16.4",
+    "@testing-library/react": "~13.1.1",
+    "@testing-library/user-event": "~14.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
