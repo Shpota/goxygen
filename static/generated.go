@@ -1267,7 +1267,7 @@ COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM 1.18.1-alpine3.15 AS GO_BUILD
+FROM golang:1.18.1-alpine3.15 AS GO_BUILD
 RUN apk update && apk add build-base
 COPY server /server
 WORKDIR /server
@@ -1586,7 +1586,7 @@ COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM 1.18.1-alpine3.15 AS GO_BUILD
+FROM golang:1.18.1-alpine3.15 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
@@ -1790,7 +1790,7 @@ COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM 1.18.1-alpine3.15 AS GO_BUILD
+FROM golang:1.18.1-alpine3.15 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
