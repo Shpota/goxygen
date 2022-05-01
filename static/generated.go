@@ -372,10 +372,10 @@ module.exports = function (config) {
     "@angular/cli": "~11.2.9",
     "@angular/compiler-cli": "~11.2.10",
     "@types/node": "^12.11.1",
-    "@types/jasmine": "~3.6.0",
+    "@types/jasmine": "~3.10.1",
     "@types/jasminewd2": "~2.0.3",
     "codelyzer": "^6.0.0",
-    "jasmine-core": "~3.6.0",
+    "jasmine-core": "~3.10.1",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.3.2",
     "karma-chrome-launcher": "~3.1.0",
@@ -1898,7 +1898,8 @@ go 1.18
 require github.com/lib/pq v1.10.4
 `,
 		"postgres.server/go.sum": `github.com/lib/pq v1.10.4 h1:SO9z7FRPzA03QhHKJrH5BXA6HU1rS4V2nIVrrNC1iYk=
-github.com/lib/pq v1.10.4/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=`,
+github.com/lib/pq v1.10.4/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=
+`,
 		"postgres.server/server.go": `package main
 
 import (
