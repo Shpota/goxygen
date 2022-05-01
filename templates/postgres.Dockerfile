@@ -1,9 +1,9 @@
-FROM node:14.16.1-alpine3.13 AS JS_BUILD
+FROM node:16.14.2-alpine3.15 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.16.3-alpine3.13 AS GO_BUILD
+FROM golang:1.18.1-alpine3.15 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
