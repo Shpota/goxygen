@@ -2640,6 +2640,25 @@ VUE_APP_API_URL=`,
   ]
 }
 `,
+		"vue.webapp/jsconfig.json": `{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  }
+}`,
 		"vue.webapp/package.json": `{
   "name": "project-name",
   "version": "0.1.0",
@@ -2650,18 +2669,18 @@ VUE_APP_API_URL=`,
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "~0.21.1",
-    "core-js": "~3.6.5",
-    "vue": "~3.0.0-0"
+    "axios": "~0.27.2",
+    "core-js": "^3.8.3",
+    "vue": "^3.2.13"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "~3.0.0-0",
-    "babel-eslint": "~10.1.0",
-    "eslint": "~6.7.2",
-    "eslint-plugin-vue": "~7.0.0-0"
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3"
   },
   "eslintConfig": {
     "root": true,
@@ -2673,17 +2692,17 @@ VUE_APP_API_URL=`,
       "eslint:recommended"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@babel/eslint-parser"
     },
     "rules": {}
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not dead"
+    "not dead",
+    "not ie 11"
   ]
-}
-`,
+}`,
 		"vue.webapp/public/index.html": `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -2715,20 +2734,20 @@ VUE_APP_API_URL=`,
       <p />The following list of technologies comes from
       a REST API call to the Go-based back end. Find
       and change the corresponding code in
-      <code>webapp/src/components/Tech.vue</code>
+      <code>webapp/src/components/TechItems.vue</code>
       and <code>server/web/app.go</code>.
-      <Tech />
+      <TechItems />
     </div>
   </div>
 </template>
 
 <script>
-import Tech from './components/Tech.vue'
+import TechItems from './components/TechItems.vue'
 
 export default {
   name: 'App',
   components: {
-    Tech
+    TechItems
   },
   data() {
     return {
@@ -3108,7 +3127,7 @@ code {
                 inkscape:export-ydpi="67.080002" />
     </g>
 </svg>`,
-		"vue.webapp/src/components/Tech.vue": `<template>
+		"vue.webapp/src/components/TechItems.vue": `<template>
   <ul class="technologies">
     <li v-for="technology in technologies" v-bind:key="technology.name">
       <b>{{technology.name}}</b>: {{technology.details}}
@@ -3120,7 +3139,7 @@ code {
 import axios from 'axios'
 
 export default {
-  name: 'Tech',
+  name: 'TechItems',
   data() {
     return {
       technologies: []
@@ -3144,6 +3163,11 @@ export default {
 import App from './App.vue'
 
 createApp(App).mount('#app')
+`,
+		"vue.webapp/vue.config.js": `const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+    transpileDependencies: true
+})
 `,
 	}
 }

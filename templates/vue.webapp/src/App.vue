@@ -12,20 +12,20 @@
       <p />The following list of technologies comes from
       a REST API call to the Go-based back end. Find
       and change the corresponding code in
-      <code>webapp/src/components/Tech.vue</code>
+      <code>webapp/src/components/TechItems.vue</code>
       and <code>server/web/app.go</code>.
-      <Tech />
+      <TechItems />
     </div>
   </div>
 </template>
 
 <script>
-import Tech from './components/Tech.vue'
+import TechItems from './components/TechItems.vue'
 
 export default {
   name: 'App',
   components: {
-    Tech
+    TechItems
   },
   data() {
     return {
