@@ -10,7 +10,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'Tech',
+  name: 'TechItems',
   data() {
     return {
       technologies: []
