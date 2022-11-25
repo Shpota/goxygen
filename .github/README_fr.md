@@ -15,7 +15,7 @@
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/br.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_by.md">
-        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/by.svg">
+        <img height="20px" src="https://raw.githubusercontent.com/Shpota/goxygen/main/.github/flag-by.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_fr.md">
         <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/fr.svg">
