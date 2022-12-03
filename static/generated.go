@@ -1262,18 +1262,18 @@ context.keys().map(context);
     "codelyzer"
   ]
 }`,
-		"mongo.Dockerfile": `FROM node:16.14.2-alpine3.15 AS JS_BUILD
+		"mongo.Dockerfile": `FROM node:16.18.1-alpine3.16 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.18.1-alpine3.15 AS GO_BUILD
+FROM golang:1.19.0-alpine3.16 AS GO_BUILD
 RUN apk update && apk add build-base
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.13.5
+FROM alpine:3.16.3
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1341,10 +1341,10 @@ docker-compose up
 This will build the application and start it together with
 its database. Access the application on http://localhost:8080.
 `,
-		"mongo.docker-compose-dev.yml": `version: "3.7"
+		"mongo.docker-compose-dev.yml": `version: "3.8"
 services:
   dev_db:
-    image: mongo:4.4.5
+    image: mongo:6.0.3
     environment:
       MONGO_INITDB_DATABASE: tech
     ports:
@@ -1352,7 +1352,7 @@ services:
     volumes:
       - ./init-db.js:/docker-entrypoint-initdb.d/init.js
 `,
-		"mongo.docker-compose.yml": `version: "3.7"
+		"mongo.docker-compose.yml": `version: "3.8"
 services:
   app:
     build: .
@@ -1364,7 +1364,7 @@ services:
     environment:
       profile: prod
   db:
-    image: mongo:4.4.5
+    image: mongo:6.0.3
     container_name: db
     environment:
       MONGO_INITDB_DATABASE: tech
@@ -1529,17 +1529,17 @@ func clientOptions() *options.ClientOptions {
 	)
 }
 `,
-		"mysql.Dockerfile": `FROM node:16.14.2-alpine3.15 AS JS_BUILD
+		"mysql.Dockerfile": `FROM node:16.18.1-alpine3.16 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.18.1-alpine3.15 AS GO_BUILD
+FROM golang:1.19.0-alpine3.16 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.13.5
+FROM alpine:3.16.3
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1603,10 +1603,10 @@ docker-compose up
 This will build the application and start it together with
 its database. Access the application on http://localhost:8080.
 `,
-		"mysql.docker-compose-dev.yml": `version: "3.7"
+		"mysql.docker-compose-dev.yml": `version: "3.8"
 services:
   dev_db:
-    image: mysql:8.0.23
+    image: mysql:8.0.31
     environment:
       MYSQL_DATABASE: goxygen
       MYSQL_USER: goxygen
@@ -1617,7 +1617,7 @@ services:
     volumes:
       - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
 `,
-		"mysql.docker-compose.yml": `version: "3.7"
+		"mysql.docker-compose.yml": `version: "3.8"
 services:
   app:
     build: .
@@ -1630,7 +1630,7 @@ services:
       profile: prod
       db_pass: pass
   db:
-    image: mysql:8.0.23
+    image: mysql:8.0.31
     container_name: db
     environment:
       MYSQL_DATABASE: goxygen
@@ -1733,17 +1733,17 @@ func dataSource() string {
 	return "goxygen:" + pass + "@tcp(" + host + ":3306)/goxygen"
 }
 `,
-		"postgres.Dockerfile": `FROM node:16.14.2-alpine3.15 AS JS_BUILD
+		"postgres.Dockerfile": `FROM node:16.18.1-alpine3.16 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.18.1-alpine3.15 AS GO_BUILD
+FROM golang:1.19.0-alpine3.16 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.13.5
+FROM alpine:3.16.3
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1807,10 +1807,10 @@ docker-compose up
 This will build the application and start it together with
 its database. Access the application on http://localhost:8080.
 `,
-		"postgres.docker-compose-dev.yml": `version: "3.7"
+		"postgres.docker-compose-dev.yml": `version: "3.8"
 services:
   dev_db:
-    image: postgres:9.6.21-alpine
+    image: postgres:15.1-alpine3.17
     environment:
       POSTGRES_PASSWORD: pass
       POSTGRES_USER: goxygen
@@ -1820,7 +1820,7 @@ services:
     volumes:
       - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
 `,
-		"postgres.docker-compose.yml": `version: "3.7"
+		"postgres.docker-compose.yml": `version: "3.8"
 services:
   app:
     build: .
@@ -1833,7 +1833,7 @@ services:
       profile: prod
       db_pass: pass
   db:
-    image: postgres:9.6.21-alpine
+    image: postgres:15.1-alpine3.17
     environment:
       POSTGRES_PASSWORD: pass
       POSTGRES_USER: goxygen

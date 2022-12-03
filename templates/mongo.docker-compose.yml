@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 services:
   app:
     build: .
@@ -10,7 +10,7 @@ services:
     environment:
       profile: prod
   db:
-    image: mongo:4.4.5
+    image: mongo:6.0.3
     container_name: db
     environment:
       MONGO_INITDB_DATABASE: tech
