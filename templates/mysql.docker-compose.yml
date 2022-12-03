@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 services:
   app:
     build: .
@@ -11,7 +11,7 @@ services:
       profile: prod
       db_pass: pass
   db:
-    image: mysql:8.0.23
+    image: mysql:8.0.31
     container_name: db
     environment:
       MYSQL_DATABASE: goxygen
