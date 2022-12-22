@@ -54,7 +54,7 @@
 </h1>
 
 
-<img src="../templates/react.webapp/src/logo.svg" align="left" width="230px" alt="goxygen logo">
+<img src="../templates/vue.webapp/src/assets/logo.svg" align="left" width="230px" alt="goxygen logo">
 
 
 <div dir="rtl">

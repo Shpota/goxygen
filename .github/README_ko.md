@@ -51,7 +51,7 @@
     </a>
 </h1>
 
-<img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
+<img src="../templates/vue.webapp/src/assets/logo.svg" align="right" width="230px" alt="goxygen logo">
 
 **순식간에 GO 그리고 Angular/React/Vue 를 활용한 웹 프로젝트를 생성해보세요**
 Goxygen은 사용자가 새로운 프로젝트를 설정하는데 필요한 시간을 아끼는데 중점을 두고있습니다.
