@@ -51,7 +51,7 @@
     </a>
 </h1>
 
-<img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
+<img src="../templates/vue.webapp/src/assets/logo.svg" align="right" width="230px" alt="goxygen logo">
 
 **Згенеруйте Web проєкт з використанням Go та сучасних SPA фреймворків.**
 
