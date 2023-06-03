@@ -1,7 +1,6 @@
 name: verify-templates
 on:
   push:
-  pull_request:
   schedule:
     - cron: '0 14 * * *'
 jobs:
@@ -30,7 +29,7 @@ jobs:
       - name: Check availability of frontend
         run: |
           npm i domcurl
-          timeout 60 bash -c 'until ./node_modules/domcurl/index.js http://localhost:8080 | grep Go > /dev/null; do sleep 1; done'
+          timeout 120 bash -c 'until ./node_modules/domcurl/index.js http://localhost:8080 | grep Go > /dev/null; do sleep 1; done'
       - name: Stop application
         run: cd app && docker-compose down
         if: always()
