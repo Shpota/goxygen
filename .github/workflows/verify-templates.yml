@@ -17,7 +17,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v1
         with:
-          go-version: 1.18
+          go-version: 1.20
       - name: Checkout project
         uses: actions/checkout@v2
       - name: Generate application
@@ -36,7 +36,10 @@ jobs:
               const browser = await puppeteer.launch({headless: "new"});
               const page = await browser.newPage();
               await page.goto('http://localhost:8080');
-              await page.waitForSelector('.technologies', { timeout: 120000 });
+              page.on('console', (message) => { 
+                console.log('Console ' + message.type().toUpperCase() + ': ' + message.text());
+              });
+              await page.waitForSelector('.technologies', { timeout: 60000 });
               const content = await page.content();
               console.log(content);
               await browser.close();

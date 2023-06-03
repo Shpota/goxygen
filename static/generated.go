@@ -496,7 +496,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppModule { }
 `,
-		"angular.webapp/src/app/tech/tech.component.html": `<ul>
+		"angular.webapp/src/app/tech/tech.component.html": `<ul class="technologies">
   <li *ngFor="let tech of technologies">
     <b>{{tech.name}}</b>: {{tech.details}}
   </li>
