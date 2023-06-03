@@ -1,5 +1,10 @@
+<script setup>
+import TechItems from './components/TechItems.vue'
+import logoSVG from '@/assets/logo.svg';
+</script>
+
 <template>
-  <div id="app">
+  <main id="app">
     <h2 class="title">project-name</h2>
     <div class="logo">
       <img :src="logoSVG" height="150" alt="logo" />
@@ -16,24 +21,8 @@
       and <code>server/web/app.go</code>.
       <TechItems />
     </div>
-  </div>
+  </main>
 </template>
-
-<script>
-import TechItems from './components/TechItems.vue'
-
-export default {
-  name: 'App',
-  components: {
-    TechItems
-  },
-  data() {
-    return {
-      logoSVG: require('./assets/logo.svg')
-    }
-  }
-};
-</script>
 
 <style>
 body {
