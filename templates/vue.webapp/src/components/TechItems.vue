@@ -18,7 +18,7 @@ export default {
   },
   mounted() {
     axios
-      .get(`${process.env.VUE_APP_API_URL}/api/technologies`)
+      .get(`${import.meta.env.VITE_API_URL}/api/technologies`)
       .then(response => (this.technologies = response.data));
   }
 };

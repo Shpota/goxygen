@@ -1,7 +1,6 @@
 name: verify-templates
 on:
   push:
-  pull_request:
   schedule:
     - cron: '0 14 * * *'
 jobs:
@@ -18,7 +17,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v1
         with:
-          go-version: 1.18
+          go-version: 1.20
       - name: Checkout project
         uses: actions/checkout@v2
       - name: Generate application
@@ -29,8 +28,28 @@ jobs:
         run: timeout 60 bash -c 'until curl -s localhost:8080/api/technologies | grep Go > /dev/null; do sleep 1; done'
       - name: Check availability of frontend
         run: |
-          npm i domcurl
-          timeout 60 bash -c 'until ./node_modules/domcurl/index.js http://localhost:8080 | grep Go > /dev/null; do sleep 1; done'
+          npm i puppeteer
+          cat > index.js << EOF
+          const puppeteer = require('puppeteer');
+          (async () => {
+            try {
+              const browser = await puppeteer.launch({headless: "new"});
+              const page = await browser.newPage();
+              await page.goto('http://localhost:8080');
+              page.on('console', (message) => { 
+                console.log('Console ' + message.type().toUpperCase() + ': ' + message.text());
+              });
+              await page.waitForSelector('.technologies', { timeout: 60000 });
+              const content = await page.content();
+              console.log(content);
+              await browser.close();
+            } catch (error) {
+              console.error('Error:', error);
+              throw error;
+            }
+          })();
+          EOF
+          node index.js
       - name: Stop application
         run: cd app && docker-compose down
         if: always()
