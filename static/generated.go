@@ -2659,7 +2659,7 @@ module.exports = {
 `,
 		"vue.webapp/package.json": `{
   "name": "project-name",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "vite --port 3000",
