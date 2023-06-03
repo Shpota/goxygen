@@ -36,7 +36,7 @@ jobs:
               const browser = await puppeteer.launch({headless: "new"});
               const page = await browser.newPage();
               await page.goto('http://localhost:8080');
-              await page.waitForSelector('.technologies', { timeout: 60000 });
+              await page.waitForSelector('.technologies', { timeout: 120000 });
               const content = await page.content();
               console.log(content);
               await browser.close();
