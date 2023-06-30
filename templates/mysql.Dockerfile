@@ -3,7 +3,7 @@ COPY webapp /webapp
 WORKDIR /webapp
 RUN npm install && npm run build
 
-FROM golang:1.19.0-alpine3.16 AS GO_BUILD
+FROM golang:1.20-alpine3.16 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server

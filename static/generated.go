@@ -867,7 +867,7 @@ COPY webapp /webapp
 WORKDIR /webapp
 RUN npm install && npm run build
 
-FROM golang:1.19.0-alpine3.16 AS GO_BUILD
+FROM golang:1.20-alpine3.16 AS GO_BUILD
 RUN apk update && apk add build-base
 COPY server /server
 WORKDIR /server
@@ -1024,7 +1024,7 @@ func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
 `,
 		"mongo.server/go.mod": `module project-name
 
-go 1.19
+go 1.20
 
 require go.mongodb.org/mongo-driver v1.9.0
 
@@ -1134,7 +1134,7 @@ COPY webapp /webapp
 WORKDIR /webapp
 RUN npm install && npm run build
 
-FROM golang:1.19.0-alpine3.16 AS GO_BUILD
+FROM golang:1.20-alpine3.16 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
@@ -1292,7 +1292,7 @@ func (d MySQLDB) GetTechnologies() ([]*model.Technology, error) {
 `,
 		"mysql.server/go.mod": `module project-name
 
-go 1.19
+go 1.20
 
 require github.com/go-sql-driver/mysql v1.6.0
 `,
@@ -1338,7 +1338,7 @@ COPY webapp /webapp
 WORKDIR /webapp
 RUN npm install && npm run build
 
-FROM golang:1.19.0-alpine3.16 AS GO_BUILD
+FROM golang:1.20-alpine3.16 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
@@ -1493,7 +1493,7 @@ func (d PostgresDB) GetTechnologies() ([]*model.Technology, error) {
 `,
 		"postgres.server/go.mod": `module project-name
 
-go 1.19
+go 1.20
 
 require github.com/lib/pq v1.10.4
 `,
