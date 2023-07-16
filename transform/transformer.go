@@ -118,7 +118,8 @@ func sortedImagePaths(images map[string][]byte) []string {
 	return paths
 }
 
-const prefix = `// THIS CODE IS GENERATED, DO NOT EDIT
+// Standard header defined at https://golang.org/s/generatedcode
+const prefix = `// Code generated from transform/transformer.go; DO NOT EDIT.
 
 // Package 'static' contains static assets such as
 // source code, text files or images generated form
