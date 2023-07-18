@@ -32,7 +32,7 @@ jobs:
       matrix:
         go: [ 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19 ]
     steps:
-      - name: Check out
+      - name: Checkout
         uses: actions/checkout@v3
       - name: Set up Go ${{ matrix.go }}
         uses: actions/setup-go@v4
