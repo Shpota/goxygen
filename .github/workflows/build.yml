@@ -1,17 +1,17 @@
 name: build
-on: [push]
+on: [push, pull_request]
 jobs:
 
   test:
     name: Build & Test
     runs-on: ubuntu-latest
     steps:
-      - name: Check out
+      - name: Checkout
         uses: actions/checkout@v3
       - name: Set up Go 1.20
         uses: actions/setup-go@v4
         with:
-          go-version: 1.20
+          go-version: '1.20'
         id: go
       - name: Build
         run: go build .
@@ -32,7 +32,7 @@ jobs:
       matrix:
         go: [ 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19 ]
     steps:
-      - name: Check out
+      - name: Checkout
         uses: actions/checkout@v3
       - name: Set up Go ${{ matrix.go }}
         uses: actions/setup-go@v4
