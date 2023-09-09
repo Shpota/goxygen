@@ -11,7 +11,7 @@ services:
       profile: prod
       db_pass: pass
   db:
-    image: postgres:15.1-alpine3.17
+    image: postgres:15.4-alpine3.18
     environment:
       POSTGRES_PASSWORD: pass
       POSTGRES_USER: goxygen
