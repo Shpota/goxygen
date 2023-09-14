@@ -1,6 +1,6 @@
 <h1 align="center">
     <a href="https://github.com/Shpota/goxygen/tree/main/.github/README.md">
-        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
+        <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_zh.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
@@ -12,7 +12,7 @@
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/kr.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_pt-br.md">
-        <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/br.svg">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/br.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_by.md">
         <img height="20px" src="https://raw.githubusercontent.com/Shpota/goxygen/main/.github/flag-by.svg">
@@ -92,18 +92,37 @@ executar em ambientes de desenvolvimento e produção.
 ## Requisitos
 Você precisa de Go 1.11 ou mais recente na sua máquina.
 
-A variável de ambiente `GO111MODULE` precisa ser configurada como `auto`
-para que a lógica de geração funcione. Isso é padrão no Go
-até a versão 1.15. Para o Go 1.16, você precisa a configurar de maneira explícita:
+## Como utilizar
+
+Go 1.17 e posterior:
+```go
+go run github.com/shpota/goxygen@latest init my-app
+```
+
+<details>
+  <summary>Versões anteriores de Go</summary>
+
+### Go 1.16
+
+Configure a variável de ambiente `GO111MODULE` como `auto`.
 ```
 export GO111MODULE=auto
 ```
-
-## Como utilizar
+Rode os comandos
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
+
+### Go 1.11 - 1.15
+
+Rode os comandos
+```go
+go get -u github.com/shpota/goxygen
+go run github.com/shpota/goxygen init my-app
+```
+</details>
+
 Isso gera um projeto no diretório `my-app`.
 
 Por padrão, será usado React e MongoDB. Você pode selecionar
