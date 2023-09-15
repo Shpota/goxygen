@@ -58,7 +58,7 @@
 Goxygen visa poupar seu tempo ao montar um novo projeto. Ele 
 cria o esqueleto de uma aplicação com todas as configurações 
 prontas para você. Você pode começar a implementar sua lógica 
-de negócios imediatamente. Goxygen gera o código back end Go, 
+de negócios imediatamente. Goxygen gera o código back end em Go, 
 conecta ele com os componentes front end, fornece o Dockerfile
 para a aplicação e cria o arquivo docker-compose para rapidamente
 executar em ambientes de desenvolvimento e produção.
@@ -66,7 +66,7 @@ executar em ambientes de desenvolvimento e produção.
 <table>
     <thead>
     <tr align="center">
-        <td colspan=4><b>Supported Technologies</b></td>
+        <td colspan=4><b>Tecnologias suportadas</b></td>
     </tr>
     </thead>
     <tbody>
@@ -89,34 +89,53 @@ executar em ambientes de desenvolvimento e produção.
     </tbody>
 </table>
 
-## Requirements
-Você precisa ter Go 1.11 ou mais recente na sua máquina.
+## Requisitos
+Você precisa de Go 1.11 ou mais recente na sua máquina.
 
-The `GO111MODULE` environment variable has to be set to `auto`
-for the generation logic to work. It is a default for Go
-versions up to 1.15. For Go 1.16, you need to set it explicitly:
+## Como utilizar
+
+Go 1.17 e posterior:
+```go
+go run github.com/shpota/goxygen@latest init my-app
+```
+
+<details>
+  <summary>Versões anteriores de Go</summary>
+
+### Go 1.16
+
+Configure a variável de ambiente `GO111MODULE` como `auto`.
 ```
 export GO111MODULE=auto
 ```
-
-## Como utilizar
+Rode os comandos
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
+
+### Go 1.11 - 1.15
+
+Rode os comandos
+```go
+go get -u github.com/shpota/goxygen
+go run github.com/shpota/goxygen init my-app
+```
+</details>
+
 Isso gera um projeto no diretório `my-app`.
 
-By default, it will use React and MongoDB. You can select
-a different front end framework and a database using
-`--frontend` and `--db` flags. For instance, this command
-will create a project with Vue and PostgreSQL:
+Por padrão, será usado React e MongoDB. Você pode selecionar
+um framework de front end e um banco de dados diferentes usando
+os argumentos `--frontend` e `--db`. Por exemplo, este comando
+criará um projeto usando Vue e PostgreSQL:
 
 ```go
 go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
 
-The `--frontend` flag accepts `angular`, `react` and `vue`.
-The `--db` flag accepts `mongo`, `mysql` and `postgres`.
+O argumento `--frontend` aceita as opções `angular`, `react` e `vue`.
+O argumento `--db` aceita as opções `mongo`, `mysql` e `postgres`.
 
 O projeto gerado está pronto para ser executado com `docker-compose`:
 ```sh
@@ -124,57 +143,57 @@ cd my-app
 docker-compose up
 ```
 
-Após o build ser concluído, a aplicação está disponível em 
+Após o build ser concluído, a aplicação ficará disponível em 
 http://localhost:8080. 
 
-Você pode encontrar mais detalhes de como trabalhar com o projeto
+Você pode encontrar mais detalhes de como utilizar o projeto
 gerado em seu arquivo README.
 
 ![Showcase](showcase.gif)
 
-## Estrutura do projeto gerado (React/MongoDB example)
+## Estrutura do projeto gerado (Exemplo com React/MongoDB)
 
     my-app
-    ├── server                   # Go project files
-    │   ├── db                   # MongoDB communications
-    │   ├── model                # domain objects
-    │   ├── web                  # REST APIs, web server
-    │   ├── server.go            # O ponto inicial do server
-    │   └── go.mod               # dependências do server
+    ├── server                   # Arquivos do projeto Go
+    │   ├── db                   # Comunicação com o MongoDB
+    │   ├── model                # Objetos de domínio
+    │   ├── web                  # REST APIs, servidor web
+    │   ├── server.go            # O ponto de acesso do servidor
+    │   └── go.mod               # dependências do servidor
     ├── webapp                    
     │   ├── public               # ícones, arquivos estáticos e index.html
     │   ├── src                       
     │   │   ├── App.js           # O principal componente React
     │   │   ├── App.css          # Estilização do componente App
     │   │   ├── index.js         # Ponto de entrada da aplicação          
-    │   │   └── index.css        # global styles
+    │   │   └── index.css        # Estilos globais
     │   ├── package.json         # dependências do front end
     │   ├── .env.development     # API endpoint para ambiente de desenvolvimento
     │   └── .env.production      # API endpoint para ambiente de produção
     ├── Dockerfile               # faz o build do back end e o front end juntos
-    ├── docker-compose.yml       # deploy em abiente de produção
+    ├── docker-compose.yml       # deploy em ambiente de produção
     ├── docker-compose-dev.yml   # executa um MongoDB local para fins de desenvolvimento
     ├── init-db.js               # cria um MongoDB collection com dados de teste
     ├── .dockerignore            # especifica arquivos ignorados no Docker build
     ├── .gitignore
     └── README.md                # guia sobre como usar o repositório gerado
 
-Arquivos como testes de unidade ou sample components não estão incluídos 
-aqui pela simplicidade.
+Arquivos como testes unitários ou componentes de exemplo não estão incluídos 
+aqui para fins de simplicidade.
 
 ## Dependências
 
 Goxygen gera uma estrutura básica de um projeto e não o força usar um 
 conjunto específico de ferramentas. E por isso não traz dependências 
 desnecessárias para o seu projeto. Ele usa apenas
-database driver no back end
+um driver de banco de dados no back end
 e [axios](https://github.com/axios/axios) nos projetos React e Vue.
 Projetos Angular usam apenas bibliotecas específicas do Angular.
 
 ## Como contribuir
 
-Se você encontrou um bug ou tem alguma idéia de como melhorar o projeto,
-[abra uma issue](https://github.com/Shpota/goxygen/issues)
+Se você encontrou um bug ou tem alguma ideia de como melhorar o projeto,
+[abra um issue](https://github.com/Shpota/goxygen/issues)
 e nós iremos consertar o mais rápido possível. Você também pode enviar
 suas alterações via Pull Request. Dê um fork no repositório, faça
 alterações, nos envie um pull request que nós iremos analisar em breve. 
