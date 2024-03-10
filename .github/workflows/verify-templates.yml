@@ -16,11 +16,11 @@ jobs:
         frontend: [angular, vue, react]
     steps:
       - name: Checkout project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
-          go-version: '1.21'
+          go-version: '1.22'
       - name: Generate application
         run: go run main.go init --db ${{ matrix.db }} --frontend ${{ matrix.frontend }} app
       - name: Start the application
