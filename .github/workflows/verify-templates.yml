@@ -24,7 +24,7 @@ jobs:
       - name: Generate application
         run: go run main.go init --db ${{ matrix.db }} --frontend ${{ matrix.frontend }} app
       - name: Start the application
-        run: cd app && docker-compose up -d
+        run: cd app && docker compose up -d
       - name: Check availability of backend
         run: timeout 60 bash -c 'until curl -s localhost:8080/api/technologies | grep Go > /dev/null; do sleep 1; done'
       - name: Check availability of frontend
@@ -52,5 +52,5 @@ jobs:
           EOF
           node index.js
       - name: Stop application
-        run: cd app && docker-compose down
+        run: cd app && docker compose down
         if: always()
