@@ -121,7 +121,7 @@ go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 Сфарміраваны праект гатовы да запуску з `docker-compose`: 
 ```sh
 cd my-app
-docker-compose up
+docker compose up
 ```
 Пасля завяршэння зборкі, дадатак будзе даступны на
 http://localhost:8080.

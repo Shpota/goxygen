@@ -116,7 +116,7 @@ The `--db` flag accepts `mongo`, `mysql` and `postgres`.
 생성된 프로젝트는 `docker-compose`를 통해 실행 될 수 있습니다.
 ```sh
 cd my-app
-docker-compose up
+docker compose up
 ```
 빌드가 끝나면, 어플리케이션은 http://localhost:8080에서 연결이 
 가능합니다. 

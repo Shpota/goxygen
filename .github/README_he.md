@@ -143,7 +143,7 @@ go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 
 ```sh
 cd my-app
-docker-compose up
+docker compose up
 ```
 
 <div dir="rtl">

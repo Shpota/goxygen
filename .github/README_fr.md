@@ -123,7 +123,7 @@ Le projet généré est prêt à l'utilisation avec `docker-compose`:
 
 ```sh
 cd my-app
-docker-compose up
+docker compose up
 ```
 
 Aprés la fin du build, l'application est

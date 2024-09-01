@@ -140,7 +140,7 @@ O argumento `--db` aceita as opções `mongo`, `mysql` e `postgres`.
 O projeto gerado está pronto para ser executado com `docker-compose`:
 ```sh
 cd my-app
-docker-compose up
+docker compose up
 ```
 
 Após o build ser concluído, a aplicação ficará disponível em 

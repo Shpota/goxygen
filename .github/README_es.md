@@ -120,7 +120,7 @@ The `--db` flag accepts `mongo`, `mysql` and `postgres`.
 El proyecto generado se puede correr utilizando `docker-compose`:
 ```sh
 cd my-app
-docker-compose up
+docker compose up
 ```
 
 Una vez la construccion se haya completado la aplicacion estara accesible 

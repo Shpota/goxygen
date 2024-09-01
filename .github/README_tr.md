@@ -118,7 +118,7 @@ Oluşturulan proje `docker-compose` komutu ile çalıştırmaya hazır olacaktı
 
 ```sh
 cd my-app
-docker-compose up
+docker compose up
 ```
 
 Build tamamlandıktan sonra, uygulama http://localhost:8080 adresinden erişilebilir olacaktır.

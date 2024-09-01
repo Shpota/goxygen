@@ -115,7 +115,7 @@ The `--db` flag accepts `mongo`, `mysql` and `postgres`.
 这个项目已经可以用`docker-compose`来运行了：  
 ```sh
 cd my-app
-docker-compose up
+docker compose up
 ```
 build完成之后，就可以在 http://localhost:8080 查看你的Web项目了。    
 
