@@ -139,11 +139,11 @@ go run github.com/shpota/goxygen@latest init --frontend vue --db postgres my-app
 The `--frontend` flag accepts `angular`, `react` and `vue`.
 The `--db` flag accepts `mongo`, `mysql` and `postgres`.
 
-The generated project is ready to run with `docker-compose`:
+The generated project is ready to run with Docker Compose`:
 
 ```sh
 cd my-app
-docker-compose up
+docker compose up
 ```
 
 After the build is completed, the application is accessible

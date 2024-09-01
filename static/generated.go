@@ -882,11 +882,9 @@ CMD ./server
 
 ## Environment setup
 
-You need to have [Go](https://golang.org/),
-[Node.js](https://nodejs.org/),
-[Docker](https://www.docker.com/), and
-[Docker Compose](https://docs.docker.com/compose/)
-(comes pre-installed with Docker on Mac and Windows)
+You need to have [Go](https://go.dev/),
+[Node.js](https://nodejs.org/) and
+[Docker](https://www.docker.com/)
 installed on your computer.
 
 Verify the tools by running the following commands:
@@ -895,7 +893,6 @@ Verify the tools by running the following commands:
 go version
 npm --version
 docker --version
-docker-compose --version
 ` + "`" + `` + "`" + `` + "`" + `
 
 If you are using Windows you will also need
@@ -907,7 +904,7 @@ on Mac and almost all Linux distributions.
 In the project directory run the command (you might
 need to prepend it with ` + "`" + `sudo` + "`" + ` depending on your setup):
 ` + "`" + `` + "`" + `` + "`" + `sh
-docker-compose -f docker-compose-dev.yml up
+docker compose -f docker-compose-dev.yml up
 ` + "`" + `` + "`" + `` + "`" + `
 
 This starts a local MongoDB on ` + "`" + `localhost:27017` + "`" + `.
@@ -936,7 +933,7 @@ The application will be available on http://localhost:3000.
 
 Perform:
 ` + "`" + `` + "`" + `` + "`" + `sh
-docker-compose up
+docker compose up
 ` + "`" + `` + "`" + `` + "`" + `
 This will build the application and start it together with
 its database. Access the application on http://localhost:8080.
@@ -1149,11 +1146,9 @@ CMD ./server
 
 ## Environment setup
 
-You need to have [Go](https://golang.org/),
-[Node.js](https://nodejs.org/),
-[Docker](https://www.docker.com/), and
-[Docker Compose](https://docs.docker.com/compose/)
-(comes pre-installed with Docker on Mac and Windows)
+You need to have [Go](https://go.dev/),
+[Node.js](https://nodejs.org/) and
+[Docker](https://www.docker.com/)
 installed on your computer.
 
 Verify the tools by running the following commands:
@@ -1162,7 +1157,6 @@ Verify the tools by running the following commands:
 go version
 npm --version
 docker --version
-docker-compose --version
 ` + "`" + `` + "`" + `` + "`" + `
 
 ## Start in development mode
@@ -1170,7 +1164,7 @@ docker-compose --version
 In the project directory run the command (you might
 need to prepend it with ` + "`" + `sudo` + "`" + ` depending on your setup):
 ` + "`" + `` + "`" + `` + "`" + `sh
-docker-compose -f docker-compose-dev.yml up
+docker compose -f docker-compose-dev.yml up
 ` + "`" + `` + "`" + `` + "`" + `
 
 This starts a local MySQL database on ` + "`" + `localhost:3306` + "`" + `.
@@ -1199,7 +1193,7 @@ The application will be available on http://localhost:3000.
 
 Perform:
 ` + "`" + `` + "`" + `` + "`" + `sh
-docker-compose up
+docker compose up
 ` + "`" + `` + "`" + `` + "`" + `
 This will build the application and start it together with
 its database. Access the application on http://localhost:8080.
@@ -1352,11 +1346,9 @@ CMD ./server
 
 ## Environment setup
 
-You need to have [Go](https://golang.org/),
-[Node.js](https://nodejs.org/),
-[Docker](https://www.docker.com/), and
-[Docker Compose](https://docs.docker.com/compose/)
-(comes pre-installed with Docker on Mac and Windows)
+You need to have [Go](https://go.dev/),
+[Node.js](https://nodejs.org/) and
+[Docker](https://www.docker.com/)
 installed on your computer.
 
 Verify the tools by running the following commands:
@@ -1365,7 +1357,6 @@ Verify the tools by running the following commands:
 go version
 npm --version
 docker --version
-docker-compose --version
 ` + "`" + `` + "`" + `` + "`" + `
 
 ## Start in development mode
@@ -1373,7 +1364,7 @@ docker-compose --version
 In the project directory run the command (you might
 need to prepend it with ` + "`" + `sudo` + "`" + ` depending on your setup):
 ` + "`" + `` + "`" + `` + "`" + `sh
-docker-compose -f docker-compose-dev.yml up
+docker compose -f docker-compose-dev.yml up
 ` + "`" + `` + "`" + `` + "`" + `
 
 This starts a local PostgreSQL database on ` + "`" + `localhost:5432` + "`" + `.
@@ -1402,7 +1393,7 @@ The application will be available on http://localhost:3000.
 
 Perform:
 ` + "`" + `` + "`" + `` + "`" + `sh
-docker-compose up
+docker compose up
 ` + "`" + `` + "`" + `` + "`" + `
 This will build the application and start it together with
 its database. Access the application on http://localhost:8080.
