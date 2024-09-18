@@ -1,38 +1,38 @@
 <h1 align="center">
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README.md">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_zh.md">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README_zh.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/cn.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_ua.md">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README_ua.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/ua.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_ko.md">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README_ko.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/kr.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_pt-br.md">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README_pt-br.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/br.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_by.md">
-        <img height="20px" src="https://raw.githubusercontent.com/Shpota/goxygen/main/.github/flag-by.svg">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README_by.md">
+        <img height="20px" src="https://raw.githubusercontent.com/Shpota/goxygen/main/docs/flag-by.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_fr.md">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README_fr.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/fr.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_es.md">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README_es.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/es.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_jp.md">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README_jp.md">
         <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/jp.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_id.md">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README_id.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/id.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_he.md">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README_he.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/il.svg">
     </a>
-    <a href="https://github.com/Shpota/goxygen/tree/main/.github/README_tr.md">
+    <a href="https://github.com/Shpota/goxygen/tree/main/docs/README_tr.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/tr.svg">
     </a>
     <br>
