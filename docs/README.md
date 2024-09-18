@@ -1,4 +1,4 @@
-<h1 align="center">
+<div align="center">
     <a href="https://github.com/Shpota/goxygen/tree/main/docs/README.md">
         <img height="25px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/gb.svg">
     </a>
@@ -49,7 +49,7 @@
     <a href="https://github.com/Shpota/goxygen/pulls">
         <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
     </a>
-</h1>
+</div>
 
 <img src="logo.svg" align="right" width="230px" alt="goxygen logo">
 
