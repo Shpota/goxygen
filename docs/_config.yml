@@ -4,8 +4,9 @@ social:
   twitter: https://twitter.com/sashashpota
   github: https://github.com/shpota
   linkedin: https://www.linkedin.com/in/shpota
+
 minima:
   social_links:
-    twitter: https://twitter.com/sashashpota
-    github: https://github.com/shpota
-    linkedin: https://www.linkedin.com/in/shpota
+    - { platform: github,  user_url: "https://github.com/shpota" }
+    - { platform: twitter, user_url: "https://twitter.com/sashashpota" }
+    - { platform: linkedin, user_url: "https://www.linkedin.com/in/shpota" }
