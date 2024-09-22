@@ -3,3 +3,6 @@ theme: minima
 twitter_username: sashashpota
 github_username:  shpota
 linkedin_username: shpota
+mastodon:
+  - username: shpota
+    instance: mastodon.social
