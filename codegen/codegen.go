@@ -3,7 +3,6 @@ package codegen
 import (
 	"fmt"
 	"github.com/shpota/goxygen/static"
-	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
@@ -54,7 +53,7 @@ func (g generator) processFile(path string, content []byte) {
 		os.ModePerm,
 	)
 	fmt.Println("creating: " + strings.Join(pathElements, separator))
-	err := ioutil.WriteFile(
+	err := os.WriteFile(
 		strings.Join(pathElements, separator),
 		content,
 		0644,
