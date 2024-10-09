@@ -89,7 +89,7 @@ Goxygen захавае ваш час пры стварэнні новых дад
 </table>
 
 ## Requirements
-Вам трэба мець Go 1.11 або навей вэрсію.
+Вам трэба мець Go 1.16 або навей вэрсію.
 
 The `GO111MODULE` environment variable has to be set to `auto`
 for the generation logic to work. It is a default for Go

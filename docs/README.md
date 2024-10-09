@@ -91,7 +91,7 @@ environments.
 
 ## Requirements
 
-You need to have Go 1.11 or newer on your machine.
+You need to have Go 1.16 or newer on your machine.
 
 ## How to use
 

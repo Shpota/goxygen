@@ -88,7 +88,7 @@ y te ofrece los archivos necesarios para que docker componga los entornos de des
 </table>
 
 ## Requirements
-Necesitas tener instalado Go 1.11 o posterior en tu equipo.
+Necesitas tener instalado Go 1.16 o posterior en tu equipo.
 
 The `GO111MODULE` environment variable has to be set to `auto`
 for the generation logic to work. It is a default for Go

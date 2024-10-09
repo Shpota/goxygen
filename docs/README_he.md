@@ -98,7 +98,7 @@ Goxygen מג'נרט back-end בשפת Go, מחבר אותו עם הרכיבים 
 <div dir="rtl">
 
 ## Requirements
-עליכם להתקין Go 1.11 ומעלה במחשב שלכם.
+עליכם להתקין Go 1.16 ומעלה במחשב שלכם.
 
 The `GO111MODULE` environment variable has to be set to `auto`
 for the generation logic to work. It is a default for Go

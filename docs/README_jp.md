@@ -89,7 +89,7 @@ Goxygen は、新しいプロジェクトを始める際の時間の節約を目
 </table>
 
 ## Requirements
-Go 1.11 以上が必要です。
+Go 1.16 以上が必要です。
 
 The `GO111MODULE` environment variable has to be set to `auto`
 for the generation logic to work. It is a default for Go
