@@ -22,7 +22,7 @@ func Generate(projectName string, techStack []string) {
 func (g generator) generate() {
 	fmt.Println("Generating", g.projectName)
 	for path, srcText := range static.Sources() {
-		srcText = strings.Replace(srcText, "project-name", g.projectName, -1)
+		srcText = strings.ReplaceAll(srcText, "project-name", g.projectName)
 		binary := []byte(srcText)
 		g.processFile(path, binary)
 	}
