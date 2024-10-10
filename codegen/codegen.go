@@ -2,11 +2,12 @@ package codegen
 
 import (
 	"fmt"
-	"github.com/shpota/goxygen/static"
 	"log"
 	"os"
 	"os/exec"
 	"strings"
+
+	"github.com/shpota/goxygen/static"
 )
 
 type generator struct {
@@ -53,10 +54,11 @@ func (g generator) processFile(path string, content []byte) {
 		os.ModePerm,
 	)
 	fmt.Println("creating: " + strings.Join(pathElements, separator))
+	const FILEMODE = os.FileMode(0644)
 	err := os.WriteFile(
 		strings.Join(pathElements, separator),
 		content,
-		0644,
+		FILEMODE,
 	)
 	if err != nil {
 		log.Fatal(err)
