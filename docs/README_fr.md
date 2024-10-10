@@ -89,7 +89,7 @@ dans des environnements de développement et de production.
 </table>
 
 ## Requirements
-Vous devez disposer de la version 1.11 ou supérieure de Go sur votre machine.
+Vous devez disposer de la version 1.16 ou supérieure de Go sur votre machine.
 
 The `GO111MODULE` environment variable has to be set to `auto`
 for the generation logic to work. It is a default for Go

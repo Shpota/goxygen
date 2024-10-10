@@ -83,7 +83,7 @@ Goxygen致力于节省你搭建一个项目的时间。它自动生成一个完�
 </table>
 
 ## Requirements
-你需要安装Go 1.11或者更新的版本。
+你需要安装Go 1.16或者更新的版本。
 
 The `GO111MODULE` environment variable has to be set to `auto`
 for the generation logic to work. It is a default for Go

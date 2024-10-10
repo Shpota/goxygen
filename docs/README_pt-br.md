@@ -90,7 +90,7 @@ executar em ambientes de desenvolvimento e produção.
 </table>
 
 ## Requisitos
-Você precisa de Go 1.11 ou mais recente na sua máquina.
+Você precisa de Go 1.16 ou mais recente na sua máquina.
 
 ## Como utilizar
 

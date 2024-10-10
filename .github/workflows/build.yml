@@ -21,7 +21,7 @@ jobs:
         run: cd transform && go test ./...
       - name: Lint
         run: |
-          docker run -v $(pwd):/app -w /app golangci/golangci-lint:v1.24.0 \
+          docker run -v $(pwd):/app -w /app golangci/golangci-lint:v1.61-alpine \
           golangci-lint run --config .github/.golangci.yml cli codegen static .
 
   build:
@@ -30,7 +30,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        go: [ '1.11', '1.12', '1.13', '1.14', '1.15', '1.16', '1.17', '1.18', '1.19', '1.20', '1.21' ]
+        go: [ '1.16', '1.17', '1.18', '1.19', '1.20', '1.21' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v4

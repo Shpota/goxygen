@@ -92,7 +92,7 @@ dan fase produksi.
 </table>
 
 ## Requirements
-Anda harus mempunyai Go versi 1.11 atau yang lebih pada mesin Anda.
+Anda harus mempunyai Go versi 1.16 atau yang lebih pada mesin Anda.
 
 The `GO111MODULE` environment variable has to be set to `auto`
 for the generation logic to work. It is a default for Go

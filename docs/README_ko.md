@@ -87,7 +87,7 @@ Goxygen은 사용자가 새로운 프로젝트를 설정하는데 필요한 시�
 </table>
 
 ## Requirements
-사용자는 Go 1.11 또는 그 이상의 버젼이 필요합니다.
+사용자는 Go 1.16 또는 그 이상의 버젼이 필요합니다.
 
 The `GO111MODULE` environment variable has to be set to `auto`
 for the generation logic to work. It is a default for Go

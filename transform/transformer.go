@@ -5,7 +5,6 @@ package main
 
 import (
 	"bytes"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -33,7 +32,7 @@ func main() {
 func createSourceFile(path string, content []byte) {
 	pkgDir := filepath.Join("..", "static")
 	_ = os.MkdirAll(pkgDir, os.ModePerm)
-	err := ioutil.WriteFile(path, content, 0644)
+	err := os.WriteFile(path, content, 0644)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -49,7 +48,7 @@ func contentFromFiles(root string) (map[string]string, map[string][]byte) {
 			path = strings.Replace(path, sep, "/", -1)
 		}
 		ext := filepath.Ext(originalPath)
-		content, err := ioutil.ReadFile(originalPath)
+		content, err := os.ReadFile(originalPath)
 		if err != nil {
 			log.Fatalln(err)
 		}
