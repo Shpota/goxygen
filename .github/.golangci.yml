@@ -1,7 +1,8 @@
 run:
   output:
     format: tab
-  skip-dirs:
+issues:
+  exclude-dirs:
     - templates
 linters:
   disable-all: true
