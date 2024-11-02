@@ -1,6 +1,6 @@
-package main
-
 //go:generate go run transform/transformer.go
+
+package main
 
 import (
 	"github.com/shpota/goxygen/cli"
