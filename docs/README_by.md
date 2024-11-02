@@ -101,9 +101,9 @@ export GO111MODULE=auto
 ## Выкарыстанне
 
 ```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
+go run github.com/shpota/goxygen@latest init my-app
 ```
+
 У выніку будзе згенераваны праект у дырэкторыі `my-app`.
 
 React і MongoDB  выкарыстоўваецца па змаўчанню. Вы 
@@ -112,7 +112,7 @@ React і MongoDB  выкарыстоўваецца па змаўчанню. Вы
 Напрыклад, гэтая каманда створыць праект з Vue і PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
+go run github.com/shpota/goxygen@latest init --frontend vue --db postgres my-app
 ```
 
 Сцяг `--frontend` прымае `angular`, `react` або ` vue`.

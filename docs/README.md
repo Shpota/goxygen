@@ -95,35 +95,11 @@ You need to have Go 1.16 or newer on your machine.
 
 ## How to use
 
-Go 1.17 and later:
+Run:
 
 ```go
 go run github.com/shpota/goxygen@latest init my-app
 ```
-
-<details>
-  <summary>Older versions of Go</summary>
-
-### Go 1.16
-
-Set the `GO111MODULE` environment variable to `auto`.
-```
-export GO111MODULE=auto
-```
-Run 
-```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
-```
-
-### Go 1.11 - 1.15
-
-Run
-```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
-```
-</details>
 
 This generates a project in `my-app` folder.
 

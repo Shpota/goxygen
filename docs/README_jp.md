@@ -91,17 +91,9 @@ Goxygen は、新しいプロジェクトを始める際の時間の節約を目
 ## Requirements
 Go 1.16 以上が必要です。
 
-The `GO111MODULE` environment variable has to be set to `auto`
-for the generation logic to work. It is a default for Go
-versions up to 1.15. For Go 1.16, you need to set it explicitly:
-```
-export GO111MODULE=auto
-```
-
 ## 使用方法
 ```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
+go run github.com/shpota/goxygen@latest init my-app
 ```
 `my-app` プロジェクトを `my-app` フォルダに生成します。
 
@@ -111,7 +103,7 @@ go run github.com/shpota/goxygen init my-app
 例えば、次のコマンドは Vue と PostgreSQL を含むプロジェクト作成します:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
+go run github.com/shpota/goxygen@latest init --frontend vue --db postgres my-app
 ```
 
 `--frontend` フラグは、`angular` や `react`、`vue` を受け取ります。
