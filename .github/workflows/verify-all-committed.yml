@@ -1,0 +1,21 @@
+name: Verify template changes are committed
+on: [push]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+      - name: Generate and format code
+        run: |
+          go generate ./...
+          go fmt ./...
+      - name: Check for changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Generated files are not up to date!"
+            git status
+            exit 1
+          fi

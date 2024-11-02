@@ -87,20 +87,12 @@ Goxygen, yeni bir proje oluştururken sizin zamandan tasarruf etmenize odaklanı
 
 Makinenizde Go 1.16 veya daha yenisine sahip olmanız gerekmektedir.
 
-`GO111MODULE` ortam değişkeni üretim mantığının çalışması için `auto` olarak ayarlanmalıdır. Bu ayar, Go 1.15'e kadar olan sürümlerde varsayılan ayardır. Ancak, Go 1.16 için, bunu açıkça ayarlamanız gerekmektedir:
-
-```
-export GO111MODULE=auto
-```
-
 ## Nasıl Kullanılır
 
 Çalıştır:
 
 ```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
-
+go run github.com/shpota/goxygen@latest init my-app
 ```
 
 `my-app` klasöründe bir proje oluşturur.
@@ -108,7 +100,7 @@ go run github.com/shpota/goxygen init my-app
 Varsayılan olarak React ve MongoDB'yi kullanacaktır. Farklı bir front-end framework'ü ve veritabanını `--frontend` ve `--db` flag'lerini kullanarak seçebilirsin. Örneğin bu komut Vue ve PostgreSQL ile bir proje oluşturacaktır:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
+go run github.com/shpota/goxygen@latest init --frontend vue --db postgres my-app
 ```
 
 `--frontend` flag'i `angular`, `react` ve `vue` değerlerini kabul eder.

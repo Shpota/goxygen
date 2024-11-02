@@ -88,21 +88,10 @@ dans des environnements de développement et de production.
     </tbody>
 </table>
 
-## Requirements
-Vous devez disposer de la version 1.16 ou supérieure de Go sur votre machine.
-
-The `GO111MODULE` environment variable has to be set to `auto`
-for the generation logic to work. It is a default for Go
-versions up to 1.15. For Go 1.16, you need to set it explicitly:
-```
-export GO111MODULE=auto
-```
-
 ## Guide d'utilisation
 
 ```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
+go run github.com/shpota/goxygen@latest init my-app
 ```
 
 Ces commandes génèrent un projet dans le dossier `my-app`.
@@ -113,7 +102,7 @@ utilisant les flags `--frontend` et `--db`. Par exemple, cette
 commande va créer un projet avec Vue et PostreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
+go run github.com/shpota/goxygen@latest init --frontend vue --db postgres my-app
 ```
 
 Le flag `--frontend` accepte les valeurs `angular`, `react` and `vue`.

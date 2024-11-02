@@ -94,19 +94,13 @@ dan fase produksi.
 ## Requirements
 Anda harus mempunyai Go versi 1.16 atau yang lebih pada mesin Anda.
 
-The `GO111MODULE` environment variable has to be set to `auto`
-for the generation logic to work. It is a default for Go
-versions up to 1.15. For Go 1.16, you need to set it explicitly:
-```
-export GO111MODULE=auto
-```
 
 ## Cara penggunaan
 
 ```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
+go run github.com/shpota/goxygen@latest init my-app
 ```
+
 Ini akan meng-generate sebuah projek di dalam `my-app` folder. 
 
 By default, it will use React and MongoDB. You can select
@@ -115,7 +109,7 @@ a different front end framework and a database using
 will create a project with Vue and PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
+go run github.com/shpota/goxygen@latest init --frontend vue --db postgres my-app
 ```
 
 The `--frontend` flag accepts `angular`, `react` and `vue`.

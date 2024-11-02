@@ -8,15 +8,19 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"runtime"
 	"sort"
 	"strconv"
 	"strings"
 )
 
 func main() {
+	_, filename, _, _ := runtime.Caller(0)
+	projectRoot := filepath.Join(filepath.Dir(filename), "..")
+
 	var buffer bytes.Buffer
 	buffer.WriteString(prefix)
-	textFiles, images := contentFromFiles("../templates")
+	textFiles, images := contentFromFiles(filepath.Join(projectRoot, "templates"))
 	for _, path := range sortedFilePaths(textFiles) {
 		writeTextFile(path, textFiles[path], &buffer)
 	}
@@ -25,12 +29,12 @@ func main() {
 		writeImage(path, images[path], &buffer)
 	}
 	buffer.WriteString(suffix)
-	createSourceFile("../static/generated.go", buffer.Bytes())
+	createSourceFile(filepath.Join(projectRoot, "static", "generated.go"), buffer.Bytes())
 	log.Println("Completed.")
 }
 
 func createSourceFile(path string, content []byte) {
-	pkgDir := filepath.Join("..", "static")
+	pkgDir := filepath.Dir(path)
 	_ = os.MkdirAll(pkgDir, os.ModePerm)
 	err := os.WriteFile(path, content, 0644)
 	if err != nil {

@@ -100,20 +100,13 @@ Goxygen מג'נרט back-end בשפת Go, מחבר אותו עם הרכיבים 
 ## Requirements
 עליכם להתקין Go 1.16 ומעלה במחשב שלכם.
 
-The `GO111MODULE` environment variable has to be set to `auto`
-for the generation logic to work. It is a default for Go
-versions up to 1.15. For Go 1.16, you need to set it explicitly:
-```
-export GO111MODULE=auto
-```
-
 ## איך להשתמש
 </div>
 
 ```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
+go run github.com/shpota/goxygen@latest init my-app
 ```
+
 <div dir="rtl">
 
 פקודה זו תייצר פרויקט בתיקיית <span dir="ltr">`my-app`</span>.  
@@ -127,7 +120,7 @@ go run github.com/shpota/goxygen init my-app
 </div>
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
+go run github.com/shpota/goxygen@latest init --frontend vue --db postgres my-app
 ```
 
 <div dir="rtl">

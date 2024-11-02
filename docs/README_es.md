@@ -87,22 +87,12 @@ y te ofrece los archivos necesarios para que docker componga los entornos de des
     </tbody>
 </table>
 
-## Requirements
-Necesitas tener instalado Go 1.16 o posterior en tu equipo.
-
-The `GO111MODULE` environment variable has to be set to `auto`
-for the generation logic to work. It is a default for Go
-versions up to 1.15. For Go 1.16, you need to set it explicitly:
-```
-export GO111MODULE=auto
-```
-
 ## Como se usa
 
 ```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
+go run github.com/shpota/goxygen@latest init my-app
 ```
+
 Este codigo genera un proyecto en el directorio ``my-app``.
 
 By default, it will use React and MongoDB. You can select
@@ -111,7 +101,7 @@ a different front end framework and a database using
 will create a project with Vue and PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
+go run github.com/shpota/goxygen@latest init --frontend vue --db postgres my-app
 ```
 
 The `--frontend` flag accepts `angular`, `react` and `vue`.

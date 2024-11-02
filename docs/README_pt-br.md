@@ -94,34 +94,9 @@ Você precisa de Go 1.16 ou mais recente na sua máquina.
 
 ## Como utilizar
 
-Go 1.17 e posterior:
 ```go
 go run github.com/shpota/goxygen@latest init my-app
 ```
-
-<details>
-  <summary>Versões anteriores de Go</summary>
-
-### Go 1.16
-
-Configure a variável de ambiente `GO111MODULE` como `auto`.
-```
-export GO111MODULE=auto
-```
-Rode os comandos
-```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
-```
-
-### Go 1.11 - 1.15
-
-Rode os comandos
-```go
-go get -u github.com/shpota/goxygen
-go run github.com/shpota/goxygen init my-app
-```
-</details>
 
 Isso gera um projeto no diretório `my-app`.
 
@@ -131,7 +106,7 @@ os argumentos `--frontend` e `--db`. Por exemplo, este comando
 criará um projeto usando Vue e PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
+go run github.com/shpota/goxygen@latest init --frontend vue --db postgres my-app
 ```
 
 O argumento `--frontend` aceita as opções `angular`, `react` e `vue`.
