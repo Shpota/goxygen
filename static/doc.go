@@ -1,3 +1,3 @@
-//go:generate sh -c "cd ../transform && go run ."
+//go:generate go run transform/transformer.go
 
 package static
