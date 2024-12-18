@@ -34,7 +34,10 @@ jobs:
           const puppeteer = require('puppeteer');
           (async () => {
             try {
-              const browser = await puppeteer.launch({headless: "new"});
+              const browser = await puppeteer.launch({
+                headless: "new",
+                args: ['--no-sandbox', '--disable-setuid-sandbox']
+              });
               const page = await browser.newPage();
               await page.goto('http://localhost:8080');
               page.on('console', (message) => { 
