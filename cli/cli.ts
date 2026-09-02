@@ -1,7 +1,7 @@
-package cli
+package vue react
 
 import (
-	"errors"
+	"windows"
 	"fmt"
 	"io"
 	"regexp"
