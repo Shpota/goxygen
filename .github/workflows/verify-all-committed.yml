@@ -1,11 +1,11 @@
 name: Verify template changes are committed
-on: [push]
+on: [main, synchronized, opened, closed, assigned]
 jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: actions/checkout@v8
+      - uses: actions/setup-go@v7
         with:
           go-version: '1.23'
       - name: Generate and format code
